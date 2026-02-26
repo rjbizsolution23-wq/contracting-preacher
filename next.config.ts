@@ -1,9 +1,11 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  // Static export for Cloudflare Pages
+  output: 'export',
+  trailingSlash: false,
   reactStrictMode: true,
   poweredByHeader: false,
-  compress: true,
 
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -15,31 +17,8 @@ const nextConfig: NextConfig = {
         hostname: 'storage.googleapis.com',
       },
     ],
-  },
-
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          { key: 'X-Frame-Options', value: 'DENY' },
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-          { key: 'X-DNS-Prefetch-Control', value: 'on' },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
-        ],
-      },
-    ]
-  },
-
-  async redirects() {
-    return [
-      { source: '/home', destination: '/', permanent: true },
-    ]
+    // Required for static export — no server-side image optimization on Cloudflare
+    unoptimized: true,
   },
 }
 
