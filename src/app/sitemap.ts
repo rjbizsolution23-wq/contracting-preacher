@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
+import { SITE_CONFIG, SERVICES, BLOG_POSTS } from '@/lib/constants'
 
 export const dynamic = 'force-static'
-import { SITE_CONFIG, SERVICES, BLOG_POSTS } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url

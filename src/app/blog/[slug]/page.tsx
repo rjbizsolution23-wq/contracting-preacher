@@ -1,7 +1,8 @@
+import React from 'react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Calendar, Clock, User, ArrowLeft, Tag } from 'lucide-react'
+import { Calendar, Clock, User, ArrowLeft, Tag, ChevronRight } from 'lucide-react'
 import { generateSEO } from '@/lib/seo'
 import { generateArticleSchema } from '@/lib/schema'
 import { BLOG_POSTS } from '@/lib/constants'
@@ -34,6 +35,63 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   })
 }
 
+/** Convert markdown-ish content (bold, bullets, paragraphs) to HTML */
+function renderContent(content: string) {
+  const paragraphs = content.split(/\n\n+/)
+
+  return paragraphs.map((para, i) => {
+    const trimmed = para.trim()
+    if (!trimmed) return null
+
+    // Heading: **Heading**\n or line that starts with ** and ends with **
+    if (/^\*\*[^*]+\*\*$/.test(trimmed)) {
+      const heading = trimmed.replace(/\*\*/g, '')
+      return (
+        <h2 key={i} className="text-2xl md:text-3xl font-heading font-bold text-brand-navy mt-10 mb-4">
+          {heading}
+        </h2>
+      )
+    }
+
+    // Bullet list block
+    if (trimmed.startsWith('- ') || trimmed.includes('\n- ')) {
+      const lines = trimmed.split('\n').filter(l => l.trim())
+      return (
+        <ul key={i} className="list-none space-y-3 my-6 pl-0">
+          {lines.map((line, j) => {
+            const lineText = line.replace(/^- /, '').trim()
+            const rendered = renderInline(lineText)
+            return (
+              <li key={j} className="flex items-start gap-3">
+                <ChevronRight className="w-5 h-5 text-brand-gold mt-0.5 flex-shrink-0" />
+                <span className="text-gray-700 text-lg leading-relaxed">{rendered}</span>
+              </li>
+            )
+          })}
+        </ul>
+      )
+    }
+
+    // Regular paragraph
+    return (
+      <p key={i} className="text-gray-700 text-lg leading-relaxed mb-6">
+        {renderInline(trimmed)}
+      </p>
+    )
+  })
+}
+
+/** Handle inline **bold** formatting */
+function renderInline(text: string): React.ReactNode[] {
+  const parts = text.split(/(\*\*[^*]+\*\*)/)
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} className="font-bold text-brand-navy">{part.slice(2, -2)}</strong>
+    }
+    return <span key={i}>{part}</span>
+  })
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = BLOG_POSTS.find((p) => p.slug === slug)
@@ -50,6 +108,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     author: post.author,
   })
 
+  // Related posts (same category, excluding current)
+  const relatedPosts = BLOG_POSTS.filter(
+    (p) => p.id !== post.id && (p.category === post.category || p.tags.some(t => post.tags.includes(t)))
+  ).slice(0, 3)
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
@@ -61,10 +124,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Back */}
             <Link href="/blog" className="inline-flex items-center gap-2 text-brand-gold font-accent font-semibold text-sm mb-8 hover:gap-3 transition-all">
               <ArrowLeft className="w-4 h-4" />
-              Back to Blog
+              Back to All Articles
             </Link>
 
-            {/* Category */}
+            {/* Category badge */}
             <span className="inline-flex items-center bg-brand-gold/10 text-brand-gold font-accent font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full mb-4">
               {post.category}
             </span>
@@ -74,54 +137,54 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {post.title}
             </h1>
 
-            {/* Meta */}
-            <div className="flex flex-wrap items-center gap-6 text-gray-500 mb-8 pb-8 border-b border-gray-200">
-              <span className="flex items-center gap-2"><User className="w-4 h-4" />{post.author}</span>
-              <span className="flex items-center gap-2"><Calendar className="w-4 h-4" />{formatDate(post.date)}</span>
-              <span className="flex items-center gap-2"><Clock className="w-4 h-4" />{post.readTime}</span>
+            {/* Meta row */}
+            <div className="flex flex-wrap items-center gap-6 text-gray-500 text-sm mb-8 pb-8 border-b border-gray-200">
+              <span className="flex items-center gap-2">
+                <User className="w-4 h-4 text-brand-gold" />
+                <span className="font-semibold text-brand-navy">{post.author}</span>
+              </span>
+              <span className="flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-brand-gold" />
+                {formatDate(post.date)}
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-brand-gold" />
+                {post.readTime}
+              </span>
             </div>
 
-            {/* Content */}
-            <div className="mb-12">
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">{post.excerpt}</p>
+            {/* Excerpt / lead */}
+            <p className="text-xl text-gray-600 leading-relaxed mb-10 font-medium border-l-4 border-brand-gold pl-6 py-2 bg-brand-offWhite/50 rounded-r-xl">
+              {post.excerpt}
+            </p>
 
-              <div className="bg-brand-offWhite rounded-2xl p-8 my-10 border border-gray-200">
-                <h2 className="text-2xl font-heading font-bold text-brand-navy mb-4">Ready to Take Action?</h2>
-                <p className="text-gray-600 mb-6">
-                  This article covers the key concepts, but every business situation is unique. Schedule
-                  a free consultation with Pastor McKnight to get personalized guidance for your specific
-                  federal contracting goals.
-                </p>
-                <Link href="/free-consultation" className="btn-primary inline-flex">
-                  Schedule Free Consultation
-                </Link>
-              </div>
+            {/* Full article content */}
+            <div className="mb-10">
+              {renderContent(post.content)}
+            </div>
 
-              <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
-                <p>
-                  Federal contracting represents one of the most stable and lucrative revenue streams
-                  available to small businesses in America. The U.S. federal government spends over
-                  $600 billion annually on contracts, and small businesses are awarded more than 23%
-                  of that total — that&apos;s over $150 billion going to businesses just like yours every year.
-                </p>
-                <p>
-                  The key to accessing this marketplace is positioning your business correctly from the
-                  start. This means getting registered on SAM.gov, selecting the right NAICS codes,
-                  pursuing relevant certifications, and developing the skills to write winning proposals.
-                </p>
-                <p>
-                  Pastor McKnight has helped over 500 businesses navigate this landscape. The businesses
-                  that succeed share common traits: they&apos;re patient with the process, thorough in their
-                  preparation, and strategic in which contracts they pursue. Quality over quantity is
-                  always the winning approach in federal contracting.
-                </p>
-              </div>
+            {/* CTA box mid-article */}
+            <div className="bg-brand-navy rounded-2xl p-8 my-12 text-center">
+              <p className="text-brand-gold font-accent font-bold text-sm uppercase tracking-widest mb-3">Ready to Win Contracts?</p>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+                Get Personalized Guidance from Pastor McKnight
+              </h2>
+              <p className="text-gray-300 mb-6 max-w-xl mx-auto">
+                Every business situation is unique. Schedule a free 30-minute consultation and get a custom roadmap for winning federal contracts.
+              </p>
+              <Link
+                href="/free-consultation"
+                className="inline-flex items-center gap-2 bg-brand-gold text-brand-navy font-accent font-bold px-8 py-4 rounded-xl hover:bg-brand-lightGold transition-colors"
+              >
+                Schedule Free Consultation
+                <ChevronRight className="w-5 h-5" />
+              </Link>
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8 pb-8 border-b border-gray-200">
+            <div className="flex flex-wrap gap-2 mb-10 pb-10 border-b border-gray-200">
               {post.tags.map((tag) => (
-                <span key={tag} className="inline-flex items-center gap-1 text-xs font-accent font-semibold text-gray-500 bg-gray-100 rounded-full px-3 py-1">
+                <span key={tag} className="inline-flex items-center gap-1 text-xs font-accent font-semibold text-gray-500 bg-gray-100 rounded-full px-3 py-1.5 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors">
                   <Tag className="w-3 h-3" />
                   {tag}
                 </span>
@@ -129,8 +192,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             {/* Author box */}
-            <div className="bg-brand-navy rounded-2xl p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              <div className="w-20 h-20 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="bg-brand-navy rounded-2xl p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-12">
+              <div className="w-20 h-20 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0 border-2 border-brand-gold">
                 <span className="text-brand-gold font-heading font-bold text-2xl">PM</span>
               </div>
               <div>
@@ -140,12 +203,41 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </p>
                 <p className="text-gray-400 leading-relaxed text-sm">
                   Pastor McKnight is a licensed preacher and federal contracting expert based in South
-                  Carolina. He helps small businesses nationwide win government contracts through SAM
-                  registration, certifications, and expert proposal writing.
+                  Carolina with 15+ years of experience. He has helped over 500 businesses win more than
+                  $50M in federal contracts through SAM registration, SBA certifications, and expert proposal writing.
                 </p>
               </div>
             </div>
           </div>
+
+          {/* Related posts */}
+          {relatedPosts.length > 0 && (
+            <div className="max-w-5xl mx-auto pt-12 border-t border-gray-200">
+              <h2 className="text-2xl font-heading font-bold text-brand-navy mb-8 text-center">
+                Related Articles
+              </h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                {relatedPosts.map((related) => (
+                  <Link
+                    key={related.id}
+                    href={`/blog/${related.slug}`}
+                    className="group bg-white rounded-2xl border border-gray-200 p-6 hover:border-brand-gold hover:shadow-lg transition-all duration-300"
+                  >
+                    <span className="inline-flex bg-brand-gold/10 text-brand-gold font-accent font-bold text-xs uppercase tracking-wider px-2 py-0.5 rounded-full mb-3">
+                      {related.category}
+                    </span>
+                    <h3 className="font-heading font-bold text-brand-navy group-hover:text-brand-gold transition-colors text-base leading-snug mb-2">
+                      {related.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm line-clamp-2">{related.excerpt}</p>
+                    <span className="inline-flex items-center gap-1 text-brand-gold text-sm font-semibold mt-4 group-hover:gap-2 transition-all">
+                      Read more <ChevronRight className="w-4 h-4" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </article>
 
