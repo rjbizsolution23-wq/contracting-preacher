@@ -74,7 +74,7 @@ export default function NewsletterSection() {
           </h2>
 
           <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-            Join 2,000+ small business owners getting weekly insights on SAM registration, SBA certifications, proposal writing, and winning government contracts — all from Pastor McKnight.
+            Join 2,000+ small business owners getting weekly insights on SAM registration, SBA certifications, proposal writing, and winning government contracts — all from Dr. McKnight.
           </p>
 
           {isSubscribed ? (
@@ -88,7 +88,7 @@ export default function NewsletterSection() {
               </div>
               <div>
                 <p className="text-white font-heading font-bold text-xl mb-1">You&apos;re In! 🙏</p>
-                <p className="text-gray-400">Check your inbox for a welcome message from Pastor McKnight.</p>
+                <p className="text-gray-400">Check your inbox for a welcome message from Dr. McKnight.</p>
               </div>
             </motion.div>
           ) : (

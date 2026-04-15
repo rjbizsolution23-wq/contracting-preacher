@@ -8,7 +8,7 @@ import { SITE_CONFIG } from '@/lib/constants'
 export const metadata: Metadata = generateSEO({
   title: 'Contact The Contracting Preacher — Get Federal Contracting Help',
   description:
-    'Contact Pastor McKnight for federal contracting consulting. SAM.gov registration, bid writing, certifications. Based in South Carolina, serving nationwide. Free consultation available.',
+    'Contact Dr. McKnight for federal contracting consulting. SAM.gov registration, bid writing, certifications. 15 offices nationwide. Free consultation available.',
   canonical: '/contact',
 })
 
@@ -32,7 +32,7 @@ export default function ContactPage() {
               <div className="gold-divider mb-8" />
               <p className="text-lg text-gray-600 leading-relaxed mb-10">
                 Ready to explore federal contracting opportunities? Have questions about SAM registration
-                or certifications? Reach out — Pastor McKnight is here to help. Your first consultation
+                or certifications? Reach out — Dr. McKnight is here to help. Your first consultation
                 is always free.
               </p>
 
@@ -40,7 +40,7 @@ export default function ContactPage() {
                 {[
                   { icon: Phone, label: 'Phone', value: SITE_CONFIG.phone, href: `tel:${SITE_CONFIG.phone}` },
                   { icon: Mail, label: 'Email', value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}` },
-                  { icon: MapPin, label: 'Location', value: 'South Carolina, United States (Serving Nationwide)', href: null },
+                  { icon: MapPin, label: 'Main Office', value: '1225 Laurel Street, Ste 415, Columbia, SC 29201', href: null },
                   { icon: Clock, label: 'Office Hours', value: 'Monday – Friday, 8:00 AM – 6:00 PM EST', href: null },
                 ].map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-start gap-4">

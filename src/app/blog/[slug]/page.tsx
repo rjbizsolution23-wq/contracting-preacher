@@ -167,7 +167,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="bg-brand-navy rounded-2xl p-8 my-12 text-center">
               <p className="text-brand-gold font-accent font-bold text-sm uppercase tracking-widest mb-3">Ready to Win Contracts?</p>
               <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
-                Get Personalized Guidance from Pastor McKnight
+                Get Personalized Guidance from Dr. McKnight
               </h2>
               <p className="text-gray-300 mb-6 max-w-xl mx-auto">
                 Every business situation is unique. Schedule a free 30-minute consultation and get a custom roadmap for winning federal contracts.
@@ -202,7 +202,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   The Contracting Preacher | Federal Contracting Consultant
                 </p>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  Pastor McKnight is a licensed preacher and federal contracting expert based in South
+                  Dr. McKnight is a licensed preacher and federal contracting expert based in South
                   Carolina with 15+ years of experience. He has helped over 500 businesses win more than
                   $50M in federal contracts through SAM registration, SBA certifications, and expert proposal writing.
                 </p>

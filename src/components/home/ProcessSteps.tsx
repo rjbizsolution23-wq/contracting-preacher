@@ -26,7 +26,7 @@ export default function ProcessSteps() {
         <SectionHeading
           eyebrow="Our Process"
           title="From First Call to First Contract"
-          description="Pastor McKnight's proven 6-step process takes you from where you are to where you want to be — winning federal contracts."
+          description="Dr. McKnight's proven 6-step process takes you from where you are to where you want to be — winning federal contracts."
           light
         />
 

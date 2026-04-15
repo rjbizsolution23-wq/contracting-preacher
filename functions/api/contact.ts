@@ -50,12 +50,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         body: JSON.stringify({
           personalizations: [
             {
-              to: [{ email: env.SENDGRID_FROM_EMAIL || 'pastor@thecontractingpreacher.com' }],
+              to: [{ email: env.SENDGRID_FROM_EMAIL || 'info@thecontractingpreacher.com' }],
               subject: `New Contact: ${firstName} ${lastName} — ${company}`,
             },
           ],
           from: {
-            email: env.SENDGRID_FROM_EMAIL || 'pastor@thecontractingpreacher.com',
+            email: env.SENDGRID_FROM_EMAIL || 'info@thecontractingpreacher.com',
             name: 'The Contracting Preacher Website',
           },
           reply_to: { email, name: `${firstName} ${lastName}` },

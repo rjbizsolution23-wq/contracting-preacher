@@ -28,7 +28,7 @@ export function generateSEO({
 }: SEOProps = {}): Metadata {
   const siteTitle = title
     ? `${title} | ${SITE_CONFIG.name}`
-    : `${SITE_CONFIG.name} — Federal Contracting Consultant South Carolina`
+    : `${SITE_CONFIG.name} — Federal Contracting Consultant`
 
   const siteDescription = description || SITE_CONFIG.description
 
@@ -38,11 +38,11 @@ export function generateSEO({
 
   const defaultKeywords = [
     'federal contracting consultant',
-    'government contracts South Carolina',
+    'government contracts',
     'SAM registration help',
     'win government contracts',
     'the contracting preacher',
-    'Pastor McKnight',
+    'Dr. McKnight',
     'federal bid writing',
     '8a certification',
     'small business government contracts',

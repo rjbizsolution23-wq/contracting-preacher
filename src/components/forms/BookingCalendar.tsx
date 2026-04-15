@@ -146,7 +146,7 @@ export default function BookingCalendar() {
         </p>
         <p className="text-lg font-bold text-brand-gold mb-6">{selectedTime} EST</p>
         <p className="text-gray-500 text-sm">
-          Pastor McKnight will reach out to confirm. Check your email for details.
+          Dr. McKnight will reach out to confirm. Check your email for details.
         </p>
         <Button
           type="button"
@@ -356,7 +356,7 @@ export default function BookingCalendar() {
               id="b-notes"
               rows={3}
               className="input-field resize-none"
-              placeholder="Anything you'd like Pastor McKnight to know before the call..."
+              placeholder="Anything you'd like Dr. McKnight to know before the call..."
               {...register('notes')}
             />
           </div>
@@ -401,7 +401,7 @@ export default function BookingCalendar() {
             </div>
             <div className="border-t pt-4 text-sm text-gray-500">
               <p>A confirmation email will be sent to the address you provided.</p>
-              <p>Pastor McKnight will call you at the scheduled time.</p>
+              <p>Dr. McKnight will call you at the scheduled time.</p>
             </div>
           </div>
 

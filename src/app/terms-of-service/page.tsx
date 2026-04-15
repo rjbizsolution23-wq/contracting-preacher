@@ -38,7 +38,7 @@ export default function TermsOfServicePage() {
                   By accessing and using the website and services of {SITE_CONFIG.name} (&quot;The Contracting Preacher,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), you accept and agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, please do not use our website or services.
                 </p>
                 <p className="leading-relaxed mt-4">
-                  These Terms of Service apply to all visitors, users, and clients of {SITE_CONFIG.url} and any related consulting services provided by Pastor McKnight.
+                  These Terms of Service apply to all visitors, users, and clients of {SITE_CONFIG.url} and any related consulting services provided by Dr. McKnight.
                 </p>
               </div>
 
@@ -125,7 +125,7 @@ export default function TermsOfServicePage() {
               <div>
                 <h2 className="text-2xl font-heading font-bold text-brand-navy mb-4">8. Limitation of Liability</h2>
                 <p className="leading-relaxed">
-                  To the fullest extent permitted by law, The Contracting Preacher, Pastor McKnight, and associated staff shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from:
+                  To the fullest extent permitted by law, The Contracting Preacher, Dr. McKnight, and associated staff shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from:
                 </p>
                 <ul className="list-disc pl-6 mt-4 space-y-2">
                   <li>Your use of or inability to use our services</li>
@@ -186,8 +186,8 @@ export default function TermsOfServicePage() {
                 </p>
                 <div className="mt-4 bg-brand-offWhite rounded-xl p-6 space-y-2">
                   <p className="font-heading font-bold text-brand-navy">{SITE_CONFIG.name}</p>
-                  <p className="text-gray-700">Attn: Pastor McKnight</p>
-                  <p className="text-gray-700">South Carolina, United States</p>
+                  <p className="text-gray-700">Attn: Dr. McKnight</p>
+                  <p className="text-gray-700">Columbia, SC 29201</p>
                   <p>
                     <a href={`mailto:${SITE_CONFIG.email}`} className="text-brand-gold hover:underline font-semibold">
                       {SITE_CONFIG.email}

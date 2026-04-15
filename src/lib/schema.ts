@@ -14,16 +14,18 @@ export function generateOrganizationSchema() {
     founder: {
       '@type': 'Person',
       name: SITE_CONFIG.founder,
-      jobTitle: 'Federal Contracting Consultant & Licensed Pastor',
+      jobTitle: 'Federal Contracting Consultant',
     },
     address: {
       '@type': 'PostalAddress',
+      streetAddress: '1225 Laurel Street, Ste 415',
+      addressLocality: 'Columbia',
       addressRegion: 'SC',
+      postalCode: '29201',
       addressCountry: 'US',
     },
     areaServed: [
       { '@type': 'Country', name: 'United States' },
-      { '@type': 'State', name: 'South Carolina' },
     ],
     serviceType: [
       'Federal Contracting Consulting',

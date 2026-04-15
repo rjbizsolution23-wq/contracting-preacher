@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
             },
             {
               title: '6. Contact Us',
-              content: `If you have questions about this Privacy Policy, contact us: ${SITE_CONFIG.name} | Email: ${SITE_CONFIG.email} | Phone: ${SITE_CONFIG.phone} | South Carolina, United States`,
+              content: `If you have questions about this Privacy Policy, contact us: ${SITE_CONFIG.name} | Email: ${SITE_CONFIG.email} | Phone: ${SITE_CONFIG.phone} | Columbia, SC 29201`,
             },
           ].map((section) => (
             <div key={section.title} className="mb-8">

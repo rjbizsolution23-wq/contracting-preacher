@@ -43,7 +43,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const { env } = context
 
     if (env.SENDGRID_API_KEY) {
-      // Send notification to Pastor McKnight
+      // Send notification to Dr. McKnight
       const notificationResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
         method: 'POST',
         headers: {
@@ -53,12 +53,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         body: JSON.stringify({
           personalizations: [
             {
-              to: [{ email: env.SENDGRID_FROM_EMAIL || 'pastor@thecontractingpreacher.com' }],
+              to: [{ email: env.SENDGRID_FROM_EMAIL || 'info@thecontractingpreacher.com' }],
               subject: `📅 New Consultation Booking: ${firstName} ${lastName} — ${date} at ${time}`,
             },
           ],
           from: {
-            email: env.SENDGRID_FROM_EMAIL || 'pastor@thecontractingpreacher.com',
+            email: env.SENDGRID_FROM_EMAIL || 'info@thecontractingpreacher.com',
             name: 'The Contracting Preacher Bookings',
           },
           reply_to: { email, name: `${firstName} ${lastName}` },
@@ -108,8 +108,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             },
           ],
           from: {
-            email: env.SENDGRID_FROM_EMAIL || 'pastor@thecontractingpreacher.com',
-            name: 'Pastor McKnight — The Contracting Preacher',
+            email: env.SENDGRID_FROM_EMAIL || 'info@thecontractingpreacher.com',
+            name: 'Dr. McKnight — The Contracting Preacher',
           },
           content: [
             {
@@ -125,16 +125,16 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     <p style="margin: 8px 0;"><strong>⏱ Duration:</strong> 30 minutes</p>
                     <p style="margin: 8px 0;"><strong>📋 Service:</strong> ${service}</p>
                   </div>
-                  <p>Pastor McKnight will call you at <strong>${phone}</strong> at the scheduled time.</p>
+                  <p>Dr. McKnight will call you at <strong>${phone}</strong> at the scheduled time.</p>
                   <h3 style="color: #1a365d;">What to Prepare</h3>
                   <ul>
                     <li>Your business details (name, structure, NAICS codes if known)</li>
                     <li>Any current SAM.gov registration or certifications</li>
                     <li>Questions about federal contracting you'd like answered</li>
                   </ul>
-                  <p>If you need to reschedule, simply reply to this email or call (843) 555-0127.</p>
+                  <p>If you need to reschedule, simply reply to this email or call (202) 276-2913.</p>
                   <p>Looking forward to helping you win federal contracts!</p>
-                  <p><strong>Pastor McKnight</strong><br>The Contracting Preacher<br>thecontractingpreacher.com</p>
+                  <p><strong>Dr. McKnight</strong><br>The Contracting Preacher<br>thecontractingpreacher.com</p>
                 </div>
               `,
             },

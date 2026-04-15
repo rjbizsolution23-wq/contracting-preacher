@@ -70,8 +70,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
               },
             ],
             from: {
-              email: env.SENDGRID_FROM_EMAIL || 'pastor@thecontractingpreacher.com',
-              name: 'Pastor McKnight — The Contracting Preacher',
+              email: env.SENDGRID_FROM_EMAIL || 'info@thecontractingpreacher.com',
+              name: 'Dr. McKnight — The Contracting Preacher',
             },
             content: [
               {

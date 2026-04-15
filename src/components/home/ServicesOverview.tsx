@@ -22,7 +22,7 @@ export default function ServicesOverview() {
         <SectionHeading
           eyebrow="What We Do"
           title="Federal Contracting Services That Win"
-          description="From SAM.gov registration to winning proposals, Pastor McKnight provides end-to-end federal contracting support tailored to your business."
+          description="From SAM.gov registration to winning proposals, Dr. McKnight provides end-to-end federal contracting support tailored to your business."
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -44,7 +44,7 @@ export default function ContactForm() {
 
       if (!response.ok) throw new Error('Failed to send message')
 
-      toast.success('Message sent successfully! Pastor McKnight will be in touch shortly.')
+      toast.success('Message sent successfully! Dr. McKnight will be in touch shortly.')
       reset()
     } catch {
       toast.error('Something went wrong. Please try again or call us directly.')

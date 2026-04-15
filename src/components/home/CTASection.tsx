@@ -39,7 +39,7 @@ export default function CTASection() {
           </h2>
 
           <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed">
-            Schedule a free 30-minute consultation with Pastor McKnight. We&apos;ll assess your business,
+            Schedule a free 30-minute consultation with Dr. McKnight. We&apos;ll assess your business,
             identify your opportunities, and create a clear roadmap to federal contracting success.
             No obligation, no pressure — just real guidance.
           </p>

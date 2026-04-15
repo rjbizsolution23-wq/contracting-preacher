@@ -20,7 +20,7 @@ export default function FAQPreview() {
       <div className="container-custom">
         <SectionHeading
           eyebrow="Frequently Asked Questions"
-          title="Got Questions? Pastor McKnight Has Answers."
+          title="Got Questions? Dr. McKnight Has Answers."
           description="Here are the most common questions we hear from businesses exploring federal contracting opportunities."
         />
 

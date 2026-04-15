@@ -8,7 +8,7 @@ import { SITE_CONFIG } from '@/lib/constants'
 export const metadata: Metadata = generateSEO({
   title: 'Book Your Free Federal Contracting Consultation — Schedule Now',
   description:
-    'Schedule a free 30-minute consultation with Pastor McKnight. Get personalized guidance on SAM.gov registration, government certifications, bid writing, and your path to winning federal contracts. No obligation.',
+    'Schedule a free 30-minute consultation with Dr. McKnight. Get personalized guidance on SAM.gov registration, government certifications, bid writing, and your path to winning federal contracts. No obligation.',
   keywords: [
     'free federal contracting consultation',
     'government contracting consultation',
@@ -38,7 +38,7 @@ export default function FreeConsultationPage() {
               </h1>
               <div className="gold-divider mb-8" />
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                Pick a date and time that works for you. Pastor McKnight will personally
+                Pick a date and time that works for you. Dr. McKnight will personally
                 call you for a free 30-minute strategy session — no sales pitch, no
                 pressure, just real guidance.
               </p>
@@ -69,7 +69,7 @@ export default function FreeConsultationPage() {
                   ))}
                 </div>
                 <p className="text-sm text-gray-700 italic mb-2">
-                  &ldquo;Pastor McKnight&apos;s consultation alone was worth thousands. He laid out a
+                  &ldquo;Dr. McKnight&apos;s consultation alone was worth thousands. He laid out a
                   clear path and within 6 months we had our first federal contract.&rdquo;
                 </p>
                 <p className="text-xs font-accent font-bold text-brand-navy">

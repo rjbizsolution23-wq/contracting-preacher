@@ -24,12 +24,12 @@ export async function POST(request: NextRequest) {
         body: JSON.stringify({
           personalizations: [
             {
-              to: [{ email: process.env.SENDGRID_FROM_EMAIL || 'pastor@thecontractingpreacher.com' }],
+              to: [{ email: process.env.SENDGRID_FROM_EMAIL || 'info@thecontractingpreacher.com' }],
               subject: `New Contact: ${firstName} ${lastName} — ${company}`,
             },
           ],
           from: {
-            email: process.env.SENDGRID_FROM_EMAIL || 'pastor@thecontractingpreacher.com',
+            email: process.env.SENDGRID_FROM_EMAIL || 'info@thecontractingpreacher.com',
             name: 'The Contracting Preacher Website',
           },
           reply_to: { email, name: `${firstName} ${lastName}` },

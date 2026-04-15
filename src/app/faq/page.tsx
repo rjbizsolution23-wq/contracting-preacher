@@ -28,7 +28,7 @@ export default function FAQPage() {
           <SectionHeading
             eyebrow="Frequently Asked Questions"
             title="Everything You Need to Know About Federal Contracting"
-            description="Pastor McKnight answers the most common questions from businesses exploring government contracting opportunities."
+            description="Dr. McKnight answers the most common questions from businesses exploring government contracting opportunities."
           />
 
           <div className="max-w-3xl mx-auto">

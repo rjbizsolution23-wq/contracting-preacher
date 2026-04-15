@@ -21,7 +21,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed text-sm">
-              Pastor McKnight helps small businesses navigate the federal contracting landscape with faith, expertise, and a commitment to your success. Based in South Carolina, serving clients nationwide.
+              Dr. McKnight helps small businesses navigate the federal contracting landscape with faith, expertise, and a commitment to your success. 15 offices nationwide.
             </p>
             <p className="text-sm font-accent font-semibold italic text-brand-gold/80 mb-4">
               &quot;For I know the plans I have for you...&quot; — Jeremiah 29:11
@@ -67,7 +67,7 @@ export default function Footer() {
             <h3 className="text-lg font-heading font-bold mb-6 text-brand-gold">Quick Links</h3>
             <ul className="space-y-3">
               {[
-                { label: 'About Pastor McKnight', href: '/about' },
+                { label: 'About Dr. McKnight', href: '/about' },
                 { label: 'Client Testimonials', href: '/testimonials' },
                 { label: 'Blog & Resources', href: '/blog' },
                 { label: 'FAQ', href: '/faq' },
@@ -100,7 +100,7 @@ export default function Footer() {
               </a>
               <div className="flex items-start gap-3 text-gray-400 text-sm">
                 <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <span>South Carolina, United States</span>
+                <span>Columbia, SC (HQ) — 15 Offices Nationwide</span>
               </div>
             </div>
 
@@ -118,7 +118,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-brand-blue/30">
         <div className="container-custom py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-          <p>&copy; {currentYear} {SITE_CONFIG.name}. All rights reserved. | Pastor McKnight, Federal Contracting Consultant, South Carolina</p>
+          <p>&copy; {currentYear} {SITE_CONFIG.name}. All rights reserved. | Dr. McKnight, Federal Contracting Consultant</p>
           <p className="flex items-center gap-1">Built with faith &amp; excellence</p>
         </div>
       </div>

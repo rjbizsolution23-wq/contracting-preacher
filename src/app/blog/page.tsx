@@ -26,7 +26,7 @@ export default function BlogPage() {
           <SectionHeading
             eyebrow="Blog & Resources"
             title="Federal Contracting Insights from the Pulpit"
-            description="Pastor McKnight shares expert guidance, industry updates, and practical tips to help your business succeed in government contracting."
+            description="Dr. McKnight shares expert guidance, industry updates, and practical tips to help your business succeed in government contracting."
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

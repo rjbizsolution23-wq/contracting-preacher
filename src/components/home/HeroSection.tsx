@@ -66,8 +66,8 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-xl text-pretty"
             >
-              Pastor McKnight — The Contracting Preacher — helps small businesses in South Carolina
-              and nationwide navigate SAM.gov registration, government certifications, bid writing,
+              Dr. McKnight — The Contracting Preacher — helps small businesses nationwide
+              navigate SAM.gov registration, government certifications, bid writing,
               and proposal preparation to win lucrative federal contracts.
             </motion.p>
 
@@ -102,7 +102,7 @@ export default function HeroSection() {
               <a href={`tel:${SITE_CONFIG.phone}`}>
                 <Button variant="secondary" size="lg">
                   <Phone className="mr-2 w-5 h-5" />
-                  Call Pastor McKnight
+                  Call Dr. McKnight
                 </Button>
               </a>
             </motion.div>

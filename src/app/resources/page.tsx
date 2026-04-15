@@ -94,7 +94,7 @@ export default function ResourcesPage() {
           <SectionHeading
             eyebrow="Free Resources"
             title="Federal Contracting Resources & Tools"
-            description="Pastor McKnight has curated the most important government contracting resources to help you on your journey. Bookmark this page — you'll need it."
+            description="Dr. McKnight has curated the most important government contracting resources to help you on your journey. Bookmark this page — you'll need it."
           />
 
           <div className="space-y-16">

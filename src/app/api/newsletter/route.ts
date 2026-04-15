@@ -57,8 +57,8 @@ export async function POST(request: NextRequest) {
               },
             ],
             from: {
-              email: process.env.SENDGRID_FROM_EMAIL || 'pastor@thecontractingpreacher.com',
-              name: 'Pastor McKnight — The Contracting Preacher',
+              email: process.env.SENDGRID_FROM_EMAIL || 'info@thecontractingpreacher.com',
+              name: 'Dr. McKnight — The Contracting Preacher',
             },
             content: [
               {
@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
                       <!-- Footer -->
                       <div style="background:#060E1A; padding:24px 40px; text-align:center;">
                         <p style="color:#6B7280; font-size:12px; margin:0 0 8px;">
-                          © ${new Date().getFullYear()} The Contracting Preacher | South Carolina, United States
+                          © ${new Date().getFullYear()} The Contracting Preacher | Columbia, SC — 15 Offices Nationwide
                         </p>
                         <p style="color:#6B7280; font-size:11px; margin:0;">
                           You received this because you subscribed at thecontractingpreacher.com

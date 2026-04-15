@@ -13,18 +13,18 @@ import CTASection from '@/components/home/CTASection'
 import NewsletterSection from '@/components/home/NewsletterSection'
 
 export const metadata: Metadata = generateSEO({
-  title: 'Federal Contracting Consultant South Carolina — Win Government Contracts',
+  title: 'Federal Contracting Consultant — Win Government Contracts Nationwide',
   description:
-    'Pastor McKnight — The Contracting Preacher — helps small businesses in South Carolina win federal government contracts. SAM.gov registration, 8(a) certification, bid writing, proposal preparation. Free consultation. 89% win rate.',
+    'Dr. McKnight — The Contracting Preacher — helps small businesses nationwide win federal government contracts. SAM.gov registration, 8(a) certification, bid writing, proposal preparation. Free consultation. 89% win rate.',
   keywords: [
-    'federal contracting consultant South Carolina',
+    'federal contracting consultant',
     'win government contracts',
     'SAM.gov registration help',
     'government bid writing',
     '8a certification consultant',
     'the contracting preacher',
-    'Pastor McKnight federal contracts',
-    'small business government contracts South Carolina',
+    'Dr. McKnight federal contracts',
+    'small business government contracts',
     'federal proposal writing services',
     'government contracting help near me',
   ],
@@ -33,8 +33,8 @@ export const metadata: Metadata = generateSEO({
 
 export default function HomePage() {
   const pageSchema = generateWebPageSchema({
-    title: 'The Contracting Preacher — Federal Contracting Consultant South Carolina',
-    description: 'Pastor McKnight helps small businesses win federal government contracts.',
+    title: 'The Contracting Preacher — Federal Contracting Consultant Nationwide',
+    description: 'Dr. McKnight helps small businesses win federal government contracts.',
     url: '/',
   })
 

@@ -22,11 +22,11 @@ export default function AboutContent() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <BookOpen className="w-24 h-24 text-brand-gold/30 mx-auto mb-4" />
-                    <p className="text-gray-400 font-accent text-sm">Pastor McKnight Photo</p>
+                    <p className="text-gray-400 font-accent text-sm">Dr. McKnight Photo</p>
                   </div>
                 </div>
                 <div className="absolute bottom-8 left-8 right-8">
-                  <h2 className="text-3xl font-heading font-bold text-white">Pastor McKnight</h2>
+                  <h2 className="text-3xl font-heading font-bold text-white">Dr. McKnight</h2>
                   <p className="text-brand-gold font-accent font-semibold">The Contracting Preacher</p>
                 </div>
               </div>
@@ -55,12 +55,12 @@ export default function AboutContent() {
 
               <div className="space-y-5 text-gray-600 text-lg leading-relaxed">
                 <p>
-                  Pastor McKnight is not your typical government contracting consultant. He&apos;s a licensed
+                  Dr. McKnight is not your typical government contracting consultant. He&apos;s a licensed
                   pastor who discovered his calling at the intersection of faith and federal procurement —
                   and he&apos;s been helping small businesses win government contracts ever since.
                 </p>
                 <p>
-                  Based in South Carolina with deep roots in the community, Pastor McKnight brings over
+                  With offices across the Southeast, Mid-Atlantic, and nationwide, Dr. McKnight brings over
                   15 years of experience in federal contracting, including SAM.gov registration, SBA
                   certification programs, bid and proposal writing, and contract compliance. He&apos;s helped
                   over 500 businesses collectively win more than $50 million in federal contracts.
@@ -68,14 +68,14 @@ export default function AboutContent() {
                 <p>
                   His approach is unique: combining hard-earned expertise with faith-driven values of
                   integrity, service, and genuine care for every client. Whether you&apos;re a veteran, a
-                  woman entrepreneur, or a first-time contractor — Pastor McKnight meets you where you
+                  woman entrepreneur, or a first-time contractor — Dr. McKnight meets you where you
                   are and takes you where you need to go.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mt-10">
                 {[
-                  { icon: Gavel, label: 'Licensed Pastor' },
+                  { icon: Gavel, label: 'Federal Expert' },
                   { icon: Award, label: 'Certified Consultant' },
                   { icon: Users, label: '500+ Clients Served' },
                   { icon: Heart, label: 'Faith-Based Values' },
@@ -104,7 +104,7 @@ export default function AboutContent() {
               <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                 <p>
                   The name &quot;The Contracting Preacher&quot; wasn&apos;t a marketing idea — it was born from lived
-                  experience. Pastor McKnight spent years serving his community from the pulpit while
+                  experience. Dr. McKnight spent years serving his community from the pulpit while
                   simultaneously building expertise in federal procurement. He saw too many talented,
                   hardworking business owners missing out on government contracting opportunities simply
                   because they didn&apos;t know the process.
@@ -116,8 +116,8 @@ export default function AboutContent() {
                   to his pastoral work.
                 </p>
                 <p>
-                  Today, The Contracting Preacher serves clients across South Carolina and all 50 states.
-                  Every engagement starts with a conversation — not a sales pitch. Because Pastor McKnight
+                  Today, The Contracting Preacher serves clients from 15 offices across the country and all 50 states.
+                  Every engagement starts with a conversation — not a sales pitch. Because Dr. McKnight
                   believes that when you lead with service, success follows.
                 </p>
               </div>

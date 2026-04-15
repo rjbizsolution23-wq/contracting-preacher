@@ -4,16 +4,38 @@ export const SITE_CONFIG = {
   name: 'The Contracting Preacher',
   tagline: 'Faith-Driven Federal Contracting Success',
   description:
-    'Pastor McKnight — The Contracting Preacher — helps small businesses in South Carolina and nationwide win federal government contracts. SAM registration, bid writing, 8(a) certification, proposal preparation, and more.',
+    'Dr. McKnight — The Contracting Preacher — helps small businesses nationwide win federal government contracts. SAM registration, bid writing, 8(a) certification, proposal preparation, and more.',
   url: 'https://thecontractingpreacher.com',
-  phone: '(843) 555-0127',
-  email: 'pastor@thecontractingpreacher.com',
-  address: 'South Carolina',
-  founder: 'Pastor McKnight',
+  phone: '(202) 276-2913',
+  email: 'info@thecontractingpreacher.com',
+  founder: 'Dr. McKnight',
   foundedYear: 2024,
+  mainOffice: {
+    address: '1225 Laurel Street, Ste 415',
+    city: 'Columbia',
+    state: 'SC',
+    zip: '29201',
+  },
+  offices: [
+    { address: '1225 Laurel Street, Ste 415', city: 'Columbia', state: 'SC', zip: '29201', isMain: true },
+    { address: '1535 Hobby Street, Suite 300', city: 'N. Charleston', state: 'SC', zip: '29405' },
+    { address: '201 Sigma Drive, Suite 300', city: 'Summerville', state: 'SC', zip: '29486' },
+    { address: '2 Corpus Christie Place, Suite 200', city: 'Hilton Head', state: 'SC', zip: '29228' },
+    { address: '101 S. Tryon Street, Suite 2700', city: 'Charlotte', state: 'NC', zip: '28280' },
+    { address: '1301 Riverplace Blvd., Suite 800', city: 'Jacksonville', state: 'FL', zip: '32207' },
+    { address: '1200 Brickell Ave., Suite 800', city: 'Miami', state: 'FL', zip: '33131' },
+    { address: '999 Peachtree St. NE, Suite 300 & 400', city: 'Atlanta', state: 'GA', zip: '30309' },
+    { address: '151 Calle De San Francisco', city: 'San Juan', state: 'PR', zip: '00901' },
+    { address: '1717 Pennsylvania Ave NW, Suite 1025', city: 'Washington', state: 'DC', zip: '20006' },
+    { address: '400 Army Navy Drive, Unit 1422', city: 'Arlington', state: 'VA', zip: '22202' },
+    { address: '48 Wall Street, 11th Floor', city: 'New York', state: 'NY', zip: '10005' },
+    { address: '1000 Dean Street, Suite 101', city: 'Brooklyn', state: 'NY', zip: '11238' },
+    { address: '8565 S. Eastern Avenue, Suite 150', city: 'Las Vegas', state: 'NV', zip: '89123' },
+    { address: '111 W. Illinois Street', city: 'Chicago', state: 'IL', zip: '60654' },
+  ],
   social: {
     facebook: 'https://facebook.com/thecontractingpreacher',
-    linkedin: 'https://linkedin.com/in/pastor-mcknight',
+    linkedin: 'https://linkedin.com/in/thecontractingpreacher',
     youtube: 'https://youtube.com/@thecontractingpreacher',
     instagram: 'https://instagram.com/thecontractingpreacher',
     tiktok: 'https://tiktok.com/@thecontractingpreacher',
@@ -50,7 +72,7 @@ export const SERVICES: Service[] = [
     shortDescription:
       'Complete System for Award Management registration so your business can bid on federal contracts and receive government payments.',
     longDescription:
-      'SAM.gov registration is the mandatory first step for any business wanting to work with the federal government. Pastor McKnight handles your entire SAM registration from start to finish — obtaining your UEI number, completing your entity registration, setting up your NAICS codes, configuring your socioeconomic representations, and ensuring your profile is optimized so contracting officers can find you. We also handle annual renewals so you never lose your active status.',
+      'SAM.gov registration is the mandatory first step for any business wanting to work with the federal government. Dr. McKnight handles your entire SAM registration from start to finish — obtaining your UEI number, completing your entity registration, setting up your NAICS codes, configuring your socioeconomic representations, and ensuring your profile is optimized so contracting officers can find you. We also handle annual renewals so you never lose your active status.',
     icon: 'ClipboardCheck',
     features: [
       'UEI Number acquisition and setup',
@@ -72,7 +94,7 @@ export const SERVICES: Service[] = [
     shortDescription:
       'Professional government bid and proposal writing services that position your business to win federal contracts.',
     longDescription:
-      'Winning federal contracts requires more than just showing up — it requires proposals that speak the government\'s language, meet every evaluation criteria, and stand out from the competition. Pastor McKnight and his team craft compelling, compliant proposals that address every requirement in the solicitation. From RFPs and RFQs to sole-source justifications, we write proposals that win.',
+      'Winning federal contracts requires more than just showing up — it requires proposals that speak the government\'s language, meet every evaluation criteria, and stand out from the competition. Dr. McKnight and his team craft compelling, compliant proposals that address every requirement in the solicitation. From RFPs and RFQs to sole-source justifications, we write proposals that win.',
     icon: 'FileText',
     features: [
       'RFP and RFQ response writing',
@@ -93,7 +115,7 @@ export const SERVICES: Service[] = [
     shortDescription:
       'Navigate the 8(a) Business Development Program application process and unlock sole-source and set-aside contract opportunities.',
     longDescription:
-      'The SBA 8(a) Business Development Program is one of the most powerful tools for disadvantaged small businesses to access federal contracting opportunities. Pastor McKnight guides you through every step of the application — from eligibility assessment to document preparation to submission and follow-up. This 9-year program opens doors to sole-source contracts up to $4.5 million for goods and services and $7 million for manufacturing.',
+      'The SBA 8(a) Business Development Program is one of the most powerful tools for disadvantaged small businesses to access federal contracting opportunities. Dr. McKnight guides you through every step of the application — from eligibility assessment to document preparation to submission and follow-up. This 9-year program opens doors to sole-source contracts up to $4.5 million for goods and services and $7 million for manufacturing.',
     icon: 'Award',
     features: [
       'Eligibility pre-assessment',
@@ -114,7 +136,7 @@ export const SERVICES: Service[] = [
     shortDescription:
       'Qualify for the Historically Underutilized Business Zone program and access set-aside federal contract opportunities.',
     longDescription:
-      'The HUBZone program helps small businesses in historically underutilized areas gain preferential access to federal procurement opportunities. The government\'s goal is to award at least 3% of all federal contract dollars to HUBZone-certified businesses. Pastor McKnight helps you determine eligibility based on your business location and employee residences, prepares your application, and manages the certification process from start to finish.',
+      'The HUBZone program helps small businesses in historically underutilized areas gain preferential access to federal procurement opportunities. The government\'s goal is to award at least 3% of all federal contract dollars to HUBZone-certified businesses. Dr. McKnight helps you determine eligibility based on your business location and employee residences, prepares your application, and manages the certification process from start to finish.',
     icon: 'MapPin',
     features: [
       'HUBZone map eligibility verification',
@@ -135,7 +157,7 @@ export const SERVICES: Service[] = [
     shortDescription:
       'Women-Owned and Economically Disadvantaged Women-Owned Small Business certification for set-aside federal contracts.',
     longDescription:
-      'The federal government has a goal of awarding at least 5% of all federal contracting dollars to women-owned small businesses. The WOSB and EDWOSB certifications qualify your business for exclusive set-aside contracts. Pastor McKnight walks you through the entire certification process, ensuring your documentation meets SBA requirements and your business is positioned to compete for these reserved opportunities.',
+      'The federal government has a goal of awarding at least 5% of all federal contracting dollars to women-owned small businesses. The WOSB and EDWOSB certifications qualify your business for exclusive set-aside contracts. Dr. McKnight walks you through the entire certification process, ensuring your documentation meets SBA requirements and your business is positioned to compete for these reserved opportunities.',
     icon: 'Heart',
     features: [
       'WOSB eligibility assessment',
@@ -156,7 +178,7 @@ export const SERVICES: Service[] = [
     shortDescription:
       'Service-Disabled Veteran-Owned and Veteran-Owned Small Business certification through the SBA.',
     longDescription:
-      'The federal government is committed to awarding at least 3% of all federal contracting dollars to service-disabled veteran-owned small businesses. The SDVOSB and VOSB certifications through the SBA\'s Veterans Small Business Certification Program give veteran entrepreneurs access to sole-source and set-aside contracts. Pastor McKnight honors your service by helping you navigate the certification process with dignity and precision.',
+      'The federal government is committed to awarding at least 3% of all federal contracting dollars to service-disabled veteran-owned small businesses. The SDVOSB and VOSB certifications through the SBA\'s Veterans Small Business Certification Program give veteran entrepreneurs access to sole-source and set-aside contracts. Dr. McKnight honors your service by helping you navigate the certification process with dignity and precision.',
     icon: 'Shield',
     features: [
       'Veteran status verification',
@@ -179,7 +201,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: 'Williams Construction Services LLC',
     role: 'Owner',
     quote:
-      'Pastor McKnight didn\'t just help me register on SAM.gov — he helped me understand the entire federal contracting ecosystem. Within 6 months of working with him, I won my first $350,000 government contract. His faith-based approach gave me the confidence I needed.',
+      'Dr. McKnight didn\'t just help me register on SAM.gov — he helped me understand the entire federal contracting ecosystem. Within 6 months of working with him, I won my first $350,000 government contract. His faith-based approach gave me the confidence I needed.',
     rating: 5,
     contractValue: '$350,000',
   },
@@ -189,7 +211,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: 'Simmons IT Solutions',
     role: 'CEO',
     quote:
-      'I was completely lost trying to get my 8(a) certification. Pastor McKnight walked me through every single step, prepared all my documents, and even helped me write my personal narrative. Approved on the first try! Now I\'m competing for set-aside contracts I never knew existed.',
+      'I was completely lost trying to get my 8(a) certification. Dr. McKnight walked me through every single step, prepared all my documents, and even helped me write my personal narrative. Approved on the first try! Now I\'m competing for set-aside contracts I never knew existed.',
     rating: 5,
     contractValue: '$1.2M',
   },
@@ -199,7 +221,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: 'J&T Janitorial Services',
     role: 'Co-Owners',
     quote:
-      'We\'re a small husband-and-wife cleaning company from Charleston. Pastor McKnight helped us realize we could compete for federal facility maintenance contracts. He handled our SAM registration, wrote our first proposal, and we won a $180K annual contract with a military base. God is good!',
+      'We\'re a small husband-and-wife cleaning company from Charleston. Dr. McKnight helped us realize we could compete for federal facility maintenance contracts. He handled our SAM registration, wrote our first proposal, and we won a $180K annual contract with a military base. God is good!',
     rating: 5,
     contractValue: '$180,000/yr',
   },
@@ -209,7 +231,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: 'Lowcountry Logistics LLC',
     role: 'Founder',
     quote:
-      'Pastor McKnight\'s proposal writing is on another level. He understands how the government evaluates bids and knows exactly what contracting officers are looking for. We\'ve now won 4 contracts totaling over $2 million. The Contracting Preacher is the real deal.',
+      'Dr. McKnight\'s proposal writing is on another level. He understands how the government evaluates bids and knows exactly what contracting officers are looking for. We\'ve now won 4 contracts totaling over $2 million. The Contracting Preacher is the real deal.',
     rating: 5,
     contractValue: '$2M+',
   },
@@ -219,7 +241,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: 'Thompson Environmental Services',
     role: 'President',
     quote:
-      'As a woman-owned small business, I qualified for WOSB set-aside contracts but didn\'t even know it. Pastor McKnight got me certified, optimized my SAM profile, and connected me to opportunities I would have missed. My first year in federal contracting brought in $750K in revenue.',
+      'As a woman-owned small business, I qualified for WOSB set-aside contracts but didn\'t even know it. Dr. McKnight got me certified, optimized my SAM profile, and connected me to opportunities I would have missed. My first year in federal contracting brought in $750K in revenue.',
     rating: 5,
     contractValue: '$750,000',
   },
@@ -229,7 +251,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: 'Monroe Security Group',
     role: 'CEO',
     quote:
-      'After 20 years in the Army, I wanted to start a security company. Pastor McKnight helped me get my SDVOSB certification and navigate the VA verification process. His respect for veterans shows in everything he does. I\'m now living my dream with two active federal security contracts.',
+      'After 20 years in the Army, I wanted to start a security company. Dr. McKnight helped me get my SDVOSB certification and navigate the VA verification process. His respect for veterans shows in everything he does. I\'m now living my dream with two active federal security contracts.',
     rating: 5,
     contractValue: '$500,000+',
   },
@@ -240,7 +262,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     step: 1,
     title: 'Free Consultation',
     description:
-      'Schedule a free 30-minute call with Pastor McKnight. We\'ll discuss your business, your goals, and map out a clear path to federal contracting success.',
+      'Schedule a free 30-minute call with Dr. McKnight. We\'ll discuss your business, your goals, and map out a clear path to federal contracting success.',
     icon: 'Phone',
   },
   {
@@ -307,9 +329,9 @@ export const FAQS: FAQ[] = [
     category: 'Certifications',
   },
   {
-    question: 'Do I need to be in South Carolina to work with you?',
+    question: 'Do I need to be local to work with you?',
     answer:
-      'Not at all! While Pastor McKnight is based in South Carolina and deeply connected to the local business community, we serve clients nationwide. Federal contracting is a national marketplace, and our services work the same regardless of your location. We\'ve helped businesses across all 50 states win federal contracts.',
+      'Not at all! With 15 offices across the country — from Columbia, SC to New York, Washington DC, Miami, Atlanta, Chicago, Las Vegas, and San Juan, PR — we serve clients nationwide. Federal contracting is a national marketplace, and our services work the same regardless of your location. We\'ve helped businesses across all 50 states win federal contracts.',
     category: 'General',
   },
   {
@@ -345,7 +367,7 @@ export const FAQS: FAQ[] = [
   {
     question: 'How is The Contracting Preacher different from other consultants?',
     answer:
-      'Pastor McKnight brings a unique combination of deep federal contracting expertise and faith-driven values. We don\'t just process paperwork — we build relationships, educate our clients, and genuinely care about your success. Our approach is hands-on and personalized. You won\'t be treated like a number. And with an 89% proposal win rate and over $50 million in contracts won for our clients, the results speak for themselves.',
+      'Dr. McKnight brings a unique combination of deep federal contracting expertise and faith-driven values. We don\'t just process paperwork — we build relationships, educate our clients, and genuinely care about your success. Our approach is hands-on and personalized. You won\'t be treated like a number. And with an 89% proposal win rate and over $50 million in contracts won for our clients, the results speak for themselves.',
     category: 'General',
   },
 ]
@@ -356,7 +378,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: '5 Steps to Win Your First Federal Government Contract in 2026',
     slug: '5-steps-win-first-federal-contract-2026',
     excerpt:
-      'Breaking into federal contracting doesn\'t have to be overwhelming. Pastor McKnight shares the five essential steps every small business needs to take to win their first government contract this year.',
+      'Breaking into federal contracting doesn\'t have to be overwhelming. Dr. McKnight shares the five essential steps every small business needs to take to win their first government contract this year.',
     content: `The federal government is the world's largest buyer — spending over $600 billion annually on goods and services. Small businesses receive more than 23% of those dollars, which means there's more than $150 billion available to companies just like yours every single year. Yet most small business owners don't know where to start. That changes today.
 
 Here are the five non-negotiable steps to winning your first federal contract in 2026.
@@ -420,7 +442,7 @@ Winning your first federal contract is absolutely achievable for any well-run sm
 If you want to shortcut the learning curve, that's exactly what The Contracting Preacher is here for. We've guided over 500 businesses through this exact process, and our 89% proposal win rate speaks to what's possible when you approach federal contracting the right way.
 
 Schedule your free consultation today and let's map out your path to your first — or next — federal contract.`,
-    author: 'Pastor McKnight',
+    author: 'Dr. McKnight',
     date: '2026-02-20',
     category: 'Getting Started',
     readTime: '8 min read',
@@ -522,7 +544,7 @@ SAM.gov registration seems straightforward, but the details matter enormously. A
 The Contracting Preacher offers comprehensive SAM.gov registration assistance starting at $497. We handle the entire process — from UEI acquisition to final submission — and ensure your profile is optimized for maximum visibility to contracting officers.
 
 Ready to get registered? Schedule your free consultation today.`,
-    author: 'Pastor McKnight',
+    author: 'Dr. McKnight',
     date: '2026-02-15',
     category: 'SAM Registration',
     readTime: '12 min read',
@@ -628,7 +650,7 @@ Understanding why applications get denied helps you avoid these pitfalls:
 
 **How The Contracting Preacher Can Help**
 
-Pastor McKnight has guided numerous South Carolina businesses through the 8(a) application process successfully — including approvals on the first submission. Our 8(a) Certification assistance includes:
+Dr. McKnight has guided numerous South Carolina businesses through the 8(a) application process successfully — including approvals on the first submission. Our 8(a) Certification assistance includes:
 
 - Complete eligibility pre-assessment before you invest time in the application
 - Full application document preparation and organization
@@ -639,7 +661,7 @@ Pastor McKnight has guided numerous South Carolina businesses through the 8(a) a
 - Mentor-Protégé program guidance
 
 If you're a South Carolina small business owner from a socially and economically disadvantaged background, the 8(a) program could be the most powerful business development tool available to you. Schedule your free consultation to find out if you qualify.`,
-    author: 'Pastor McKnight',
+    author: 'Dr. McKnight',
     date: '2026-02-10',
     category: 'Certifications',
     readTime: '10 min read',
@@ -650,7 +672,7 @@ If you're a South Carolina small business owner from a socially and economically
     title: 'The Art of Writing a Winning Federal Proposal: Lessons from the Pulpit',
     slug: 'writing-winning-federal-proposal-lessons-from-pulpit',
     excerpt:
-      'What do great sermons and winning proposals have in common? More than you think. Pastor McKnight draws parallels between powerful preaching and persuasive proposal writing.',
+      'What do great sermons and winning proposals have in common? More than you think. Dr. McKnight draws parallels between powerful preaching and persuasive proposal writing.',
     content: `People sometimes ask me how a preacher became a federal contracting expert. My answer is always the same: the skills are the same.
 
 A great sermon and a winning proposal share the same fundamental architecture. Both must know their audience intimately. Both must be organized, clear, and compelling. Both must address specific needs and answer real questions. Both must build to a conclusion that moves the listener to action.
@@ -726,7 +748,7 @@ There isn't. The principles are the same ones I've described above — the same 
 What separates winning proposals from losing ones is usually not technical brilliance — it's disciplined application of these fundamentals.
 
 If you want help applying these principles to your next federal contract opportunity, The Contracting Preacher's proposal writing team is ready. Schedule a free consultation and let's talk about what you're bidding on.`,
-    author: 'Pastor McKnight',
+    author: 'Dr. McKnight',
     date: '2026-02-05',
     category: 'Proposal Writing',
     readTime: '7 min read',
@@ -837,7 +859,7 @@ If you're close to eligibility but not quite there, it's worth evaluating whethe
 The Contracting Preacher offers complete HUBZone eligibility assessments and certification assistance starting at $1,997. We handle the entire application, from documenting employee residences to filing with the SBA and responding to any SBA inquiries.
 
 Schedule your free consultation today and let's check whether your South Carolina business qualifies for HUBZone certification.`,
-    author: 'Pastor McKnight',
+    author: 'Dr. McKnight',
     date: '2026-01-28',
     category: 'Certifications',
     readTime: '9 min read',
@@ -951,7 +973,7 @@ NAICS code selection is one of the most important decisions in your SAM.gov regi
 The Contracting Preacher includes comprehensive NAICS code consultation as part of every SAM.gov registration engagement. We research federal spending in codes relevant to your business, help you identify the right primary code, and ensure your registration reflects all of your capabilities.
 
 Schedule your free consultation to discuss your business and identify the NAICS codes that will open the most federal contracting doors for you.`,
-    author: 'Pastor McKnight',
+    author: 'Dr. McKnight',
     date: '2026-01-20',
     category: 'Getting Started',
     readTime: '11 min read',

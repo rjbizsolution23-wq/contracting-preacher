@@ -8,7 +8,7 @@ const reasons = [
   {
     icon: BookOpen,
     title: 'Faith-Driven Guidance',
-    description: 'Pastor McKnight brings integrity, honesty, and faith-based values to every client relationship. Your success is our ministry.',
+    description: 'Dr. McKnight brings integrity, honesty, and faith-based values to every client relationship. Your success is our ministry.',
   },
   {
     icon: TrendingUp,
@@ -33,7 +33,7 @@ const reasons = [
   {
     icon: HeartHandshake,
     title: 'Personalized Support',
-    description: 'You\'re never just a number. Pastor McKnight personally guides each client through the process with hands-on, one-on-one attention.',
+    description: 'You\'re never just a number. Dr. McKnight personally guides each client through the process with hands-on, one-on-one attention.',
   },
 ]
 
