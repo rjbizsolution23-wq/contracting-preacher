@@ -6,6 +6,7 @@ import { generateOrganizationSchema } from '@/lib/schema'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import ScrollToTop from '@/components/ui/ScrollToTop'
+import UTMTracker from '@/components/ui/UTMTracker'
 import './globals.css'
 
 const inter = Inter({
@@ -64,6 +65,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <ScrollToTop />
+        <UTMTracker />
         <Toaster
           position="bottom-right"
           richColors
