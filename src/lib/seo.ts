@@ -19,7 +19,7 @@ export function generateSEO({
   description,
   keywords = [],
   canonical,
-  ogImage = '/images/og-image.svg',
+  ogImage = '/images/og-image.png',
   ogType = 'website',
   publishedTime,
   modifiedTime,
