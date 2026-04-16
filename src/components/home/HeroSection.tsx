@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Star, Shield, Award, CheckCircle2, Phone } from 'lucide-react'
@@ -133,6 +134,19 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hidden lg:block relative"
           >
+            {/* Dr. McKnight portrait */}
+            <div className="flex justify-center mb-8">
+              <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-brand-gold/40 shadow-2xl shadow-brand-gold/20">
+                <Image
+                  src="/images/dr-mcknight.jpg"
+                  alt="Dr. McKnight — The Contracting Preacher"
+                  fill
+                  className="object-cover object-top"
+                  sizes="160px"
+                />
+              </div>
+            </div>
+
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-10 relative overflow-hidden">
               <div className="absolute top-6 right-6 opacity-10" aria-hidden="true">
                 <svg width="80" height="80" viewBox="0 0 80 80" fill="none">

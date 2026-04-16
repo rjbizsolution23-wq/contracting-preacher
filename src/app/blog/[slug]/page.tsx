@@ -193,8 +193,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Author box */}
             <div className="bg-brand-navy rounded-2xl p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-12">
-              <div className="w-20 h-20 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0 border-2 border-brand-gold">
-                <span className="text-brand-gold font-heading font-bold text-2xl">PM</span>
+              <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 border-2 border-brand-gold relative">
+                <img src="/images/dr-mcknight.jpg" alt="Dr. McKnight" className="w-full h-full object-cover object-top" />
               </div>
               <div>
                 <h3 className="text-xl font-heading font-bold text-white mb-1">{post.author}</h3>
@@ -202,8 +202,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   The Contracting Preacher | Federal Contracting Consultant
                 </p>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  Dr. McKnight is a licensed preacher and federal contracting expert based in South
-                  Carolina with 15+ years of experience. He has helped over 500 businesses win more than
+                  Dr. McKnight is a federal contracting expert with 15+ years of experience and
+                  offices across the country. He has helped over 500 businesses win more than
                   $50M in federal contracts through SAM registration, SBA certifications, and expert proposal writing.
                 </p>
               </div>

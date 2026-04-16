@@ -1,7 +1,8 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { BookOpen, Gavel, Users, Award, Heart, Quote } from 'lucide-react'
+import { Gavel, Users, Award, Heart, Quote } from 'lucide-react'
 
 export default function AboutContent() {
   return (
@@ -18,13 +19,15 @@ export default function AboutContent() {
               className="relative"
             >
               <div className="aspect-[4/5] bg-gray-100 rounded-3xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/0 to-brand-navy/60" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <BookOpen className="w-24 h-24 text-brand-gold/30 mx-auto mb-4" />
-                    <p className="text-gray-400 font-accent text-sm">Dr. McKnight Photo</p>
-                  </div>
-                </div>
+                <Image
+                  src="/images/dr-mcknight.jpg"
+                  alt="Dr. McKnight — The Contracting Preacher — Federal Contracting Consultant"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/0 via-brand-navy/0 to-brand-navy/70" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <h2 className="text-3xl font-heading font-bold text-white">Dr. McKnight</h2>
                   <p className="text-brand-gold font-accent font-semibold">The Contracting Preacher</p>
