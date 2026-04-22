@@ -156,8 +156,9 @@ contracting-preacher/
 │   └── deploy.yml              # CI/CD pipeline
 ├── functions/
 │   └── api/
-│       ├── contact/index.ts    # Contact form Cloudflare Function
-│       └── newsletter/index.ts # Newsletter Cloudflare Function
+│       ├── contact.ts          # Contact form Cloudflare Function
+│       ├── newsletter.ts       # Newsletter Cloudflare Function
+│       └── booking.ts          # Free Consultation Booking Function
 ├── public/
 │   ├── _headers                # Cloudflare security headers
 │   ├── _redirects              # Cloudflare redirects
@@ -166,7 +167,6 @@ contracting-preacher/
 │       └── og-image.svg        # Open Graph social image
 ├── src/
 │   ├── app/                    # Next.js App Router pages
-│   │   ├── api/                # Next.js API routes (dev only)
 │   │   ├── blog/               # Blog list + [slug] detail
 │   │   ├── services/           # Service pages (6 pages)
 │   │   ├── sitemap.ts          # Auto XML sitemap
