@@ -7,8 +7,9 @@
     "build": "NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "next build && wrangler pages deploy out --project-name contracting-preacher",
-    "preview": "next build && wrangler pages dev out"
+    "verify": "npm run lint && npm run build",
+    "deploy": "npm run build && wrangler pages deploy out --project-name contracting-preacher --branch production --commit-dirty=true",
+    "preview": "npm run build && wrangler pages dev out"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
