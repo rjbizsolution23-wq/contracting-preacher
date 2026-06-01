@@ -140,13 +140,13 @@ export default function AdminPage() {
                 type="password"
                 value={accessCode}
                 onChange={(event) => setAccessCode(event.target.value)}
-                placeholder="Set ADMIN_ACCESS_CODE in Cloudflare Pages"
+                placeholder="Enter admin access code"
               />
             </label>
             <Button type="button" onClick={saveCode}>Unlock CRM</Button>
           </div>
           <p className="mt-3 text-sm text-gray-500">
-            Production should set <code>ADMIN_ACCESS_CODE</code>. Without D1, the API returns seeded demo leads so the UI stays testable.
+            Use the private access code issued for Dr. McKnight&apos;s team.
           </p>
         </div>
       </section>

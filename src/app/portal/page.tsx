@@ -57,8 +57,8 @@ export default function PortalPage() {
             Your contracting roadmap, documents, deadlines, and opportunity watchlist.
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-gray-200">
-            Clients can use this portal shell to see status and next steps. Production identity can
-            later be connected to Clerk, Auth.js, HighLevel, or a Cloudflare Access policy.
+            Review your federal contracting plan, track required documents, watch matching
+            opportunities, and see the next steps your business should complete.
           </p>
         </div>
       </section>
@@ -140,11 +140,10 @@ export default function PortalPage() {
                 })}
               </div>
               <div className="rounded-lg bg-brand-navy p-6 text-white">
-                <h2 className="font-accent text-2xl font-bold">Portal security note</h2>
+                <h2 className="font-accent text-2xl font-bold">Your next step</h2>
                 <p className="mt-3 text-sm leading-6 text-gray-300">
-                  This build includes a functional access-code gate for the portal shell. For paid
-                  production use, connect a real identity provider and avoid storing sensitive client
-                  documents until account-level access control is live.
+                  Complete the intake, gather your business documents, and use the assistant to
+                  understand which opportunities are worth reviewing with The Contracting Preacher team.
                 </p>
               </div>
             </>
