@@ -21,10 +21,10 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
+  const closeNavigation = () => {
     setIsMobileOpen(false)
     setActiveDropdown(null)
-  }, [pathname])
+  }
 
   useEffect(() => {
     document.body.style.overflow = isMobileOpen ? 'hidden' : ''
@@ -81,6 +81,7 @@ export default function Header() {
                 >
                   <Link
                     href={link.href}
+                    onClick={closeNavigation}
                     className={cn(
                       'nav-link px-4 py-2 rounded-lg flex items-center gap-1',
                       pathname === link.href && 'text-brand-gold'
@@ -103,6 +104,7 @@ export default function Header() {
                           <Link
                             key={child.href}
                             href={child.href}
+                            onClick={closeNavigation}
                             className={cn(
                               'block px-5 py-3 text-sm font-accent font-semibold text-gray-700 hover:bg-brand-offWhite hover:text-brand-navy transition-colors',
                               pathname === child.href && 'text-brand-gold bg-brand-offWhite/50'
@@ -150,6 +152,7 @@ export default function Header() {
                   <div key={link.href}>
                     <Link
                       href={link.href}
+                      onClick={closeNavigation}
                       className={cn(
                         'block px-4 py-3 rounded-lg font-accent font-semibold text-gray-700 hover:bg-brand-offWhite hover:text-brand-navy transition-colors',
                         pathname === link.href && 'text-brand-gold bg-brand-offWhite/50'
@@ -163,6 +166,7 @@ export default function Header() {
                           <Link
                             key={child.href}
                             href={child.href}
+                            onClick={closeNavigation}
                             className="block px-4 py-2 text-sm text-gray-500 hover:text-brand-gold transition-colors"
                           >
                             {child.label}

@@ -62,6 +62,24 @@
 |----------|--------|-------------|
 | `/api/contact` | `POST` | Contact form → SendGrid email |
 | `/api/newsletter` | `POST` | Newsletter signup → SendGrid contacts + welcome email |
+| `/api/crm/leads` | `GET/POST` | Admin CRM lead list + intake submission with readiness scoring |
+| `/api/portal/login` | `POST` | Client portal access-code login shell |
+| `/api/agent/status` | `GET` | Live AI agent, LLM, tool, D1, and KV readiness report |
+| `/api/agent/chat` | `POST` | Cloudflare/OpenAI-backed chat agent with federal search tools |
+| `/api/funding/status` | `GET` | Federal API/key/binding status report |
+| `/api/funding/discover` | `GET` | Unified opportunity finder across contracts, grants, awards, SBIR/STTR, and Federal Register NOFOs |
+| `/api/funding/search` | `GET` | SAM.gov, Grants.gov, USAspending, SBIR.gov, and Federal Register proxy/search |
+| `/api/open-data/search` | `GET` | Open-data enrichment search for entity risk, website evidence, university partners, public context, and location research |
+
+### Federal Funding Intelligence Additions
+| Route | Description |
+|-------|-------------|
+| `/intelligence` | FedFunding Intel Engine overview, API arsenal, CRM workflow, portal modules, and upstream repo map |
+| `/opportunities` | Unified federal opportunity finder for contracts, grants, SBIR/STTR, NOFOs, and award intelligence |
+| `/agent` | Live ContractingPreacher AI chat agent with federal search tools and source status |
+| `/intake` | Client intake form feeding readiness scoring and CRM lead creation |
+| `/admin` | Dr. McKnight admin CRM, pipeline view, risk flags, and live opportunity search |
+| `/portal` | Client portal shell with readiness report, roadmap, documents, deadlines, and watchlist |
 
 ---
 
@@ -111,6 +129,24 @@ Create a `.env.local` file for local development:
 # SendGrid (for contact form & newsletter emails)
 SENDGRID_API_KEY=your_sendgrid_api_key_here
 SENDGRID_FROM_EMAIL=pastor@thecontractingpreacher.com
+
+# Admin/portal gates
+ADMIN_ACCESS_CODE=change_me_admin_code
+PORTAL_ACCESS_CODE=change_me_client_code
+
+# Federal data APIs
+SAM_API_KEY=your_sam_gov_api_key
+# Also supported for existing secret naming:
+SAMS_API_KEY=your_sam_gov_api_key
+SIMPLER_GRANTS_API_KEY=your_simpler_grants_api_key
+DATA_GOV_API_KEY=your_api_data_gov_key
+OPEN_CORPORATES_API_KEY=your_opencorporates_key
+OPENSANCTIONS_API_KEY=your_opensanctions_key
+
+# LLM agent runtime
+OPENAI_API_KEY=your_openai_api_key_optional_fallback
+OPENAI_MODEL=gpt-4o-mini
+AGENT_MODEL=@cf/meta/llama-3.1-8b-instruct
 ```
 
 For Cloudflare Pages production, add these as **Secret environment variables** in:
@@ -139,7 +175,86 @@ npx wrangler pages deploy out --project-name contracting-preacher
 ```bash
 npx wrangler pages secret put SENDGRID_API_KEY --project-name contracting-preacher
 npx wrangler pages secret put SENDGRID_FROM_EMAIL --project-name contracting-preacher
+npx wrangler pages secret put ADMIN_ACCESS_CODE --project-name contracting-preacher
+npx wrangler pages secret put PORTAL_ACCESS_CODE --project-name contracting-preacher
+npx wrangler pages secret put SAM_API_KEY --project-name contracting-preacher
+npx wrangler pages secret put SIMPLER_GRANTS_API_KEY --project-name contracting-preacher
+npx wrangler pages secret put DATA_GOV_API_KEY --project-name contracting-preacher
+npx wrangler pages secret put OPEN_CORPORATES_API_KEY --project-name contracting-preacher
+npx wrangler pages secret put OPENSANCTIONS_API_KEY --project-name contracting-preacher
+npx wrangler pages secret put OPENAI_API_KEY --project-name contracting-preacher
+npx wrangler pages secret put OPENAI_MODEL --project-name contracting-preacher
+npx wrangler pages secret put AGENT_MODEL --project-name contracting-preacher
 ```
+
+For the preferred Cloudflare-native LLM runtime, add a **Workers AI binding**
+named `AI` to the Cloudflare Pages project in the Cloudflare dashboard. The
+agent function uses `env.AI.run()` when that binding exists, then falls back to
+`OPENAI_API_KEY` if configured. Without either, `/api/agent/chat` still returns
+a deterministic tool summary so the CRM/search workflow remains testable.
+
+### Optional D1/KV Setup for CRM Persistence + API Cache
+
+The CRM and funding functions run without bindings, but production should add D1
+and KV so leads persist and API calls are cached.
+
+```bash
+# Create resources
+npx wrangler d1 create contracting_preacher_crm
+npx wrangler kv namespace create FEDFUNDING_CACHE
+
+# Apply schema after adding the returned binding IDs in Cloudflare Pages settings
+npx wrangler d1 execute contracting_preacher_crm --file db/0001_fedfunding_crm.sql
+```
+
+Cloudflare Pages bindings to configure:
+
+| Binding | Type | Purpose |
+|---------|------|---------|
+| `DB` | D1 database | Stores CRM leads submitted through `/intake` |
+| `FEDFUNDING_CACHE` | KV namespace | Caches federal API search results to respect rate limits |
+
+### Federal Data Verification Commands
+
+```bash
+curl https://main.contracting-preacher.pages.dev/api/funding/status
+curl https://main.contracting-preacher.pages.dev/api/agent/status
+curl -X POST https://main.contracting-preacher.pages.dev/api/agent/chat \
+  -H 'Content-Type: application/json' \
+  --data '{"messages":[{"role":"user","content":"Find cybersecurity contracts and grants"}]}'
+curl 'https://main.contracting-preacher.pages.dev/api/funding/discover?q=cybersecurity&limit=5'
+curl 'https://main.contracting-preacher.pages.dev/api/funding/search?source=awards&q=construction'
+curl 'https://main.contracting-preacher.pages.dev/api/funding/search?source=contracts&q=cybersecurity'
+curl 'https://main.contracting-preacher.pages.dev/api/open-data/search?source=opensanctions&q=company'
+curl 'https://main.contracting-preacher.pages.dev/api/open-data/search?source=universities&q=south%20carolina'
+```
+
+Live-data rules:
+- SAM.gov search requires `SAM_API_KEY` or `SAMS_API_KEY`.
+- Simpler.Grants.gov search requires `SIMPLER_GRANTS_API_KEY`; otherwise the function falls back to open legacy Grants.gov Search2.
+- USAspending.gov, SBIR.gov, and Federal Register searches do not require project API keys.
+- Do not treat CRM scores as legal/certification determinations. Official SAM.gov status, SBA certification eligibility, proposal deadlines, and NSF/SBIR solicitation values must be verified against current primary sources.
+
+### Open Data Enrichment Layer
+
+The public API list was filtered for sources that help the federal contracting
+mission. The operating set is:
+
+| Source | Mission use | Status |
+|--------|-------------|--------|
+| OpenCorporates | Entity/company validation and officer/director due diligence | Ready, needs `OPEN_CORPORATES_API_KEY` |
+| OpenSanctions | Sanctions, PEP, crime, and watchlist screening | Ready, needs `OPENSANCTIONS_API_KEY` |
+| Microlink.io | Client/competitor website metadata and evidence extraction | Wired |
+| College Scorecard | Workforce, education, training, and partner research | Wired |
+| Universities List | STTR/research partner and teaming discovery | Wired |
+| Wikidata / Wikipedia | Public context for agencies, programs, companies, and technologies | Wired |
+| Archive.org | Historical website evidence and audit trail context | Wired |
+| Socrata | State/local procurement and public data portals | Reference |
+| Recreation Information Database | Federal lands/recreation/facilities opportunity context | Ready, needs key |
+| AcreLens | Rural/property/site context for HUBZone, facilities, and construction clients | Ready, needs key |
+| Teleport | Location quality/context for expansion and regional narratives | Wired |
+| Kaggle | NSFGrantCraft technical datasets and validation research | Reference |
+| LinkPreview | Fallback website preview extraction | Ready, needs key |
 
 ### Connect Custom Domain
 In Cloudflare Dashboard → Pages → contracting-preacher → Custom domains:
