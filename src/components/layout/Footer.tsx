@@ -70,6 +70,8 @@ export default function Footer() {
                 { label: 'About Dr. McKnight', href: '/about' },
                 { label: 'Client Testimonials', href: '/testimonials' },
                 { label: 'Blog & Resources', href: '/blog' },
+                { label: 'SC Contracting Resource Vault', href: '/south-carolina-contracting-resources' },
+                { label: 'Business Funding Command Center', href: '/command-center' },
                 { label: 'FAQ', href: '/faq' },
                 { label: 'Free Consultation', href: '/free-consultation' },
                 { label: 'Contact Us', href: '/contact' },

@@ -61,9 +61,29 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Intel CRM', href: '/intelligence' },
   { label: 'Opportunities', href: '/opportunities' },
   { label: 'AI Agent', href: '/agent' },
+  {
+    label: 'Funding Command Center',
+    href: '/command-center',
+    children: [
+      { label: 'Command Center Overview', href: '/command-center' },
+      { label: 'Start Intake', href: '/command-center/intake' },
+      { label: 'Opportunity Scoring Engine', href: '/command-center/scoring' },
+      { label: 'Master Data Room (24 Folders)', href: '/command-center/data-room' },
+      { label: 'AI Workflow & Approval Gates', href: '/command-center/workflow' },
+      { label: 'South Carolina Profile', href: '/command-center/south-carolina' },
+      { label: 'Copy-and-Complete Starter Intake', href: '/command-center/starter-intake' },
+    ],
+  },
   { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/faq' },
-  { label: 'Resources', href: '/resources' },
+  {
+    label: 'Resources',
+    href: '/resources',
+    children: [
+      { label: 'Federal Resources', href: '/resources' },
+      { label: 'South Carolina Resource Vault', href: '/south-carolina-contracting-resources' },
+    ],
+  },
   { label: 'Contact', href: '/contact' },
 ]
 
