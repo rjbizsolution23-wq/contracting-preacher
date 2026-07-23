@@ -63,7 +63,14 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'AI Agent', href: '/agent' },
   { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/faq' },
-  { label: 'Resources', href: '/resources' },
+  {
+    label: 'Resources',
+    href: '/resources',
+    children: [
+      { label: 'Federal Resources', href: '/resources' },
+      { label: 'South Carolina Resource Vault', href: '/south-carolina-contracting-resources' },
+    ],
+  },
   { label: 'Contact', href: '/contact' },
 ]
 

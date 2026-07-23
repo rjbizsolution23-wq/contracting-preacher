@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ExternalLink, Globe, Shield, Building2 } from 'lucide-react'
+import { ArrowRight, ExternalLink, Globe, Shield, Building2 } from 'lucide-react'
 import { generateSEO } from '@/lib/seo'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import SectionHeading from '@/components/ui/SectionHeading'
 import CTASection from '@/components/home/CTASection'
+import { RESOURCE_STATS } from '@/lib/scResources'
 
 export const metadata: Metadata = generateSEO({
   title: 'Federal Contracting Resources — Free Guides, Tools & Links',
@@ -96,6 +97,29 @@ export default function ResourcesPage() {
             title="Federal Contracting Resources & Tools"
             description="Dr. McKnight has curated the most important government contracting resources to help you on your journey. Bookmark this page — you'll need it."
           />
+
+          <Link
+            href="/south-carolina-contracting-resources"
+            className="mb-16 flex flex-col justify-between gap-4 rounded-2xl border border-brand-gold/30 bg-brand-navy p-8 text-white transition-colors hover:border-brand-gold md:flex-row md:items-center"
+          >
+            <div>
+              <p className="font-accent text-sm font-bold uppercase tracking-widest text-brand-lightGold">
+                New: Statewide Vault
+              </p>
+              <h3 className="mt-2 text-2xl font-heading font-bold">
+                South Carolina Government Contracting Resource Vault
+              </h3>
+              <p className="mt-2 max-w-2xl text-gray-300">
+                A searchable database of {RESOURCE_STATS.totalResources}+ South Carolina government buyers — all 46 counties,
+                271 municipalities, state agencies, schools, universities, transportation, utilities, housing authorities,
+                and federal installations — with bid portals, registration links, and certifications.
+              </p>
+            </div>
+            <span className="btn-primary flex-shrink-0">
+              Explore the Vault
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </span>
+          </Link>
 
           <div className="space-y-16">
             {resources.map((category) => (
