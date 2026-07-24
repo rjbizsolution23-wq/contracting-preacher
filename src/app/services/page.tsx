@@ -25,7 +25,7 @@ export default function ServicesPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: 'Services', href: '/services' }]} />
-      <ServicesOverview />
+      <ServicesOverview as="h1" />
       <CTASection />
     </>
   )

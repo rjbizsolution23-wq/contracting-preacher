@@ -1,6 +1,6 @@
 # The Contracting Preacher
 
-> Pastor McKnight — The Contracting Preacher — helps small businesses in South Carolina and nationwide win federal government contracts. SAM registration, bid writing, 8(a) certification, proposal preparation, and more.
+> Dr. McKnight — The Contracting Preacher — helps small businesses nationwide win federal government contracts. SAM.gov registration, bid writing, 8(a) certification, proposal preparation, funding readiness, and more. Based in Columbia, South Carolina, serving businesses nationwide with 15 offices across the country.
 
 ## Services
 
@@ -11,12 +11,34 @@
 - WOSB/EDWOSB Certification — Starting at $1,497
 - SDVOSB/VOSB Certification — Starting at $1,497
 
+## Business Funding + Contracting AI Command Center
+
+A funding-ready business data room at /command-center that lets AI search grants, contracts,
+investors, sponsors, loans, accelerators, and partnerships, then score fit, draft applications,
+and track every deadline. Includes an AI opportunity-scoring engine (9 weighted factors, 100-point
+scale), a 24-folder master data room, workflow and approval gates, and a South Carolina funding
+profile.
+
+## South Carolina Government Contracting Resource Vault
+
+A searchable database at /south-carolina-contracting-resources covering every South Carolina
+government buyer: all 46 counties, 271 municipalities, state agencies, school districts,
+universities, transportation authorities, utilities, housing authorities, and federal
+installations — with bid portals, registration links, and certification requirements.
+
+## AI Tools On This Site
+
+- AI Contracting Assistant (/agent) — plain-language search across contracts, grants, SBIR/STTR, and award history
+- Federal Opportunity Finder (/opportunities) — unified search of SAM.gov, Grants.gov, USAspending, SBIR.gov, and Federal Register
+- Federal Funding Intelligence (/intelligence) — live data source directory with SAM.gov, Simpler.Grants.gov, USAspending, CourtListener case law search, and Data.gov dataset catalog
+
 ## Contact
 
-- Phone: (843) 555-0127
-- Email: pastor@thecontractingpreacher.com
+- Phone: (202) 276-2913
+- Email: info@thecontractingpreacher.com
 - Website: https://thecontractingpreacher.com
 - Free Consultation: https://thecontractingpreacher.com/free-consultation
+- Main Office: 1225 Laurel Street, Ste 415, Columbia, SC 29201
 
 ## Results
 
@@ -28,21 +50,23 @@
 ## Credentials
 
 - Federal Contracting Consultant
-- Licensed Pastor
 - SAM.gov Registration Expert
-- SBA Certification Specialist
+- SBA Certification Specialist (8(a), HUBZone, WOSB, SDVOSB)
 - Government Proposal Writer
-- Nationwide Service (All 50 States)
+- Nationwide Service (All 50 States), 15 offices from South Carolina to Puerto Rico
 
 ## Location
 
-- Based in South Carolina
+- Based in Columbia, South Carolina
+- Additional offices in North Charleston, Summerville, and Hilton Head (SC); Charlotte (NC);
+  Jacksonville and Miami (FL); Atlanta (GA); San Juan (PR); Washington, DC; Arlington (VA);
+  New York and Brooklyn (NY); Las Vegas (NV); Chicago (IL)
 - Serving businesses nationwide
 
 ## Social
 
 - Facebook: https://facebook.com/thecontractingpreacher
-- LinkedIn: https://linkedin.com/in/pastor-mcknight
+- LinkedIn: https://linkedin.com/in/thecontractingpreacher
 - YouTube: https://youtube.com/@thecontractingpreacher
 - Instagram: https://instagram.com/thecontractingpreacher
 - TikTok: https://tiktok.com/@thecontractingpreacher

@@ -9,7 +9,7 @@ import TruthBanner from '@/components/commandCenter/TruthBanner'
 import { COMMAND_CENTER_MODULES, LAUNCH_REQUIREMENTS, WORKFLOW_STEPS } from '@/lib/commandCenter'
 
 export const metadata: Metadata = generateSEO({
-  title: 'Business Funding + Contracting AI Command Center | The Contracting Preacher',
+  title: 'Business Funding + Contracting AI Command Center',
   description:
     'A funding-ready business data room: one master profile that lets AI search grants, contracts, investors, sponsors, loans, accelerators, and partnerships, then score fit, draft applications, and track every deadline.',
   keywords: [

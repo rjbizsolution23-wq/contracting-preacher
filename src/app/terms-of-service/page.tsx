@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import { SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = generateSEO({
-  title: 'Terms of Service — The Contracting Preacher',
+  title: 'Terms of Service',
   description:
     'Terms of Service for The Contracting Preacher. Read our terms and conditions governing the use of our federal contracting consulting services.',
   canonical: '/terms-of-service',

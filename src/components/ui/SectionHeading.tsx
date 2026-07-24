@@ -10,6 +10,8 @@ interface SectionHeadingProps {
   centered?: boolean
   light?: boolean
   className?: string
+  /** Heading element to render. Use "h1" for the page's single primary heading (SEO). Defaults to "h2". */
+  as?: 'h1' | 'h2'
 }
 
 export default function SectionHeading({
@@ -19,7 +21,9 @@ export default function SectionHeading({
   centered = true,
   light = false,
   className,
+  as = 'h2',
 }: SectionHeadingProps) {
+  const Heading = as
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -38,14 +42,14 @@ export default function SectionHeading({
           {eyebrow}
         </span>
       )}
-      <h2
+      <Heading
         className={cn(
           'text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 text-balance leading-tight',
           light ? 'text-white' : 'text-brand-navy'
         )}
       >
         {title}
-      </h2>
+      </Heading>
       <div className={cn('gold-divider mb-6', centered ? 'mx-auto' : 'mx-0')} />
       {description && (
         <p

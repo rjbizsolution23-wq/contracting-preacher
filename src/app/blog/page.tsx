@@ -24,6 +24,7 @@ export default function BlogPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <SectionHeading
+            as="h1"
             eyebrow="Blog & Resources"
             title="Federal Contracting Insights from the Pulpit"
             description="Dr. McKnight shares expert guidance, industry updates, and practical tips to help your business succeed in government contracting."

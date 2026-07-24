@@ -93,6 +93,7 @@ export default function ResourcesPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <SectionHeading
+            as="h1"
             eyebrow="Free Resources"
             title="Federal Contracting Resources & Tools"
             description="Dr. McKnight has curated the most important government contracting resources to help you on your journey. Bookmark this page — you'll need it."

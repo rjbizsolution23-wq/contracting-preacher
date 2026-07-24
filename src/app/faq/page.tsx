@@ -26,6 +26,7 @@ export default function FAQPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <SectionHeading
+            as="h1"
             eyebrow="Frequently Asked Questions"
             title="Everything You Need to Know About Federal Contracting"
             description="Dr. McKnight answers the most common questions from businesses exploring government contracting opportunities."

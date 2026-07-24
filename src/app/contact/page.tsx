@@ -6,7 +6,7 @@ import ContactForm from '@/components/forms/ContactForm'
 import { SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = generateSEO({
-  title: 'Contact The Contracting Preacher — Get Federal Contracting Help',
+  title: 'Contact Us — Get Federal Contracting Help',
   description:
     'Contact Dr. McKnight for federal contracting consulting. SAM.gov registration, bid writing, certifications. 15 offices nationwide. Free consultation available.',
   canonical: '/contact',

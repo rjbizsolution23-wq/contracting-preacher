@@ -15,11 +15,12 @@ const iconMap: Record<string, React.ElementType> = {
   Shield,
 }
 
-export default function ServicesOverview() {
+export default function ServicesOverview({ as = 'h2' }: { as?: 'h1' | 'h2' }) {
   return (
     <section className="section-padding bg-white" id="services">
       <div className="container-custom">
         <SectionHeading
+          as={as}
           eyebrow="What We Do"
           title="Federal Contracting Services That Win"
           description="From SAM.gov registration to winning proposals, Dr. McKnight provides end-to-end federal contracting support tailored to your business."

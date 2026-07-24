@@ -21,6 +21,7 @@ export default function TestimonialsPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <SectionHeading
+            as="h1"
             eyebrow="Success Stories"
             title="Our Clients Win — And Their Stories Prove It"
             description="Every testimonial represents a real business owner who trusted The Contracting Preacher and achieved real results in federal contracting."
