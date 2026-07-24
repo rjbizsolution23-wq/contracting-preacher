@@ -51,13 +51,6 @@ export function generateOrganizationSchema() {
       SITE_CONFIG.social.youtube,
       SITE_CONFIG.social.instagram,
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '127',
-      bestRating: '5',
-      worstRating: '1',
-    },
   }
 }
 

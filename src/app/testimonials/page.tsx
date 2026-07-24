@@ -9,7 +9,7 @@ import CTASection from '@/components/home/CTASection'
 export const metadata: Metadata = generateSEO({
   title: 'Client Testimonials — Federal Contracting Success Stories',
   description:
-    'Read real success stories from businesses that won federal government contracts with help from The Contracting Preacher. Over $50M in contracts won. 89% proposal win rate.',
+    'Read success stories from businesses that won federal government contracts with help from The Contracting Preacher.',
   canonical: '/testimonials',
 })
 
@@ -24,7 +24,7 @@ export default function TestimonialsPage() {
             as="h1"
             eyebrow="Success Stories"
             title="Our Clients Win — And Their Stories Prove It"
-            description="Every testimonial represents a real business owner who trusted The Contracting Preacher and achieved real results in federal contracting."
+            description="Testimonials reflect client-reported experiences and outcomes shared with The Contracting Preacher. Individual results vary based on each business's specific circumstances."
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

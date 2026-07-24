@@ -1,13 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Shield, BadgeCheck, Award, Lock } from 'lucide-react'
+import { Shield, BadgeCheck, HeartHandshake, Lock } from 'lucide-react'
 
 const badges = [
-  { icon: Shield, label: 'SAM.gov Certified' },
-  { icon: BadgeCheck, label: 'SBA Approved' },
-  { icon: Award, label: 'Licensed & Insured' },
-  { icon: Lock, label: 'OWASP Compliant' },
+  { icon: Shield, label: 'SAM.gov Registration Support' },
+  { icon: BadgeCheck, label: 'SBA Certification Guidance' },
+  { icon: HeartHandshake, label: 'Faith-Driven Service' },
+  { icon: Lock, label: 'Confidential & Secure' },
 ]
 
 export default function TrustBadges() {

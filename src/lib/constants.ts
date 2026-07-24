@@ -326,10 +326,10 @@ export const PROCESS_STEPS: ProcessStep[] = [
 ]
 
 export const STATS: Stat[] = [
-  { value: '500', suffix: '+', label: 'Businesses Served' },
-  { value: '89', suffix: '%', label: 'Proposal Win Rate' },
-  { value: '50', prefix: '$', suffix: 'M+', label: 'Contracts Won' },
-  { value: '15', suffix: '+', label: 'Years Experience' },
+  { value: '6', suffix: '', label: 'Certification Types Supported' },
+  { value: '15', suffix: '', label: 'Office Locations' },
+  { value: '50', suffix: '', label: 'States Served' },
+  { value: '1', suffix: ':1', label: 'Personalized Guidance' },
 ]
 
 export const FAQS: FAQ[] = [
@@ -378,7 +378,7 @@ export const FAQS: FAQ[] = [
   {
     question: 'What is your proposal win rate?',
     answer:
-      'Our proposal win rate is 89%, which is significantly above the industry average of 25-40%. This success comes from our disciplined approach: we only recommend bidding on contracts where you have a genuine competitive advantage, and we invest the time to craft proposals that directly address every evaluation criterion. Quality over quantity — that\'s the Contracting Preacher way.',
+      'We don\'t publish a specific win-rate percentage, because outcomes depend on factors outside any consultant\'s control — the specific solicitation, competition, pricing, and the agency\'s final evaluation. What we can promise is a disciplined approach: we only recommend bidding on contracts where you have a genuine, honestly-assessed competitive advantage, and we invest the time to craft proposals that directly address every evaluation criterion. Quality over quantity — that\'s the Contracting Preacher way.',
     category: 'Results',
   },
   {
@@ -390,7 +390,7 @@ export const FAQS: FAQ[] = [
   {
     question: 'How is The Contracting Preacher different from other consultants?',
     answer:
-      'Dr. McKnight brings a unique combination of deep federal contracting expertise and faith-driven values. We don\'t just process paperwork — we build relationships, educate our clients, and genuinely care about your success. Our approach is hands-on and personalized. You won\'t be treated like a number. And with an 89% proposal win rate and over $50 million in contracts won for our clients, the results speak for themselves.',
+      'Dr. McKnight brings a combination of federal contracting knowledge and faith-driven values. We don\'t just process paperwork — we build relationships, educate our clients, and genuinely care about your success. Our approach is hands-on and personalized: you work directly with Dr. McKnight and his team, not a call center, and every recommendation is honest about what the process actually requires and what outcomes we can and can\'t control.',
     category: 'General',
   },
 ]
@@ -462,7 +462,7 @@ Key principles for a winning proposal:
 
 Winning your first federal contract is absolutely achievable for any well-run small business. The process has a learning curve, but it's learnable — and once you understand the system, it becomes a repeatable, reliable revenue stream.
 
-If you want to shortcut the learning curve, that's exactly what The Contracting Preacher is here for. We've guided over 500 businesses through this exact process, and our 89% proposal win rate speaks to what's possible when you approach federal contracting the right way.
+If you want to shortcut the learning curve, that's exactly what The Contracting Preacher is here for. We've guided small businesses through this exact process, and a disciplined, honest approach to federal contracting is what makes the difference.
 
 Schedule your free consultation today and let's map out your path to your first — or next — federal contract.`,
     author: 'Dr. McKnight',
@@ -700,7 +700,7 @@ If you're a South Carolina small business owner from a socially and economically
 
 A great sermon and a winning proposal share the same fundamental architecture. Both must know their audience intimately. Both must be organized, clear, and compelling. Both must address specific needs and answer real questions. Both must build to a conclusion that moves the listener to action.
 
-After 15 years in federal contracting and a lifetime in ministry, I'm convinced that the principles of effective communication that make a sermon powerful are the same principles that make a proposal win. Let me walk you through the parallels.
+After years in federal contracting and a lifetime in ministry, I'm convinced that the principles of effective communication that make a sermon powerful are the same principles that make a proposal win. Let me walk you through the parallels.
 
 **Know Your Congregation (Know Your Evaluators)**
 
@@ -762,11 +762,11 @@ Your proposal's executive summary is the close. It should be written last, but p
 
 A great executive summary answers this question in two pages: "Why should the government award this contract to us rather than to anyone else?" If you can answer that compellingly and specifically — not generically — you've written a close that wins.
 
-**The 89% Win Rate Isn't Magic**
+**A Strong Proposal Isn't Magic**
 
-People sometimes react with disbelief when I tell them our proposal win rate is 89%. They assume there's some secret technique, some insider knowledge.
+People sometimes ask what the secret technique is, what the insider knowledge is that makes a proposal win.
 
-There isn't. The principles are the same ones I've described above — the same ones that make a sermon move a congregation. Know your audience. Start with their problem. Organize logically. Use concrete evidence. Address doubts. Price honestly. Close with conviction.
+There isn't one. The principles are the same ones I've described above — the same ones that make a sermon move a congregation. Know your audience. Start with their problem. Organize logically. Use concrete evidence. Address doubts. Price honestly. Close with conviction.
 
 What separates winning proposals from losing ones is usually not technical brilliance — it's disciplined application of these fundamentals.
 

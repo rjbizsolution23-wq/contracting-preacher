@@ -74,7 +74,7 @@ export default function NewsletterSection() {
           </h2>
 
           <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-            Join 2,000+ small business owners getting weekly insights on SAM registration, SBA certifications, proposal writing, and winning government contracts — all from Dr. McKnight.
+            Get practical insights on SAM registration, SBA certifications, proposal writing, and winning government contracts — straight from Dr. McKnight.
           </p>
 
           {isSubscribed ? (

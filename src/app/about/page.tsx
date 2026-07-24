@@ -7,7 +7,7 @@ import AboutContent from './AboutContent'
 export const metadata: Metadata = generateSEO({
   title: 'About Dr. McKnight',
   description:
-    'Meet Dr. McKnight, the federal contracting expert helping small businesses win government contracts nationwide. 15+ years experience, 89% win rate, $50M+ in contracts won.',
+    'Meet Dr. McKnight, a faith-driven federal contracting consultant helping small businesses nationwide navigate SAM.gov registration, SBA certifications, and proposal writing.',
   keywords: [
     'Dr. McKnight',
     'the contracting preacher about',

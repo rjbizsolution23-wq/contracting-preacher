@@ -43,7 +43,7 @@ export default function HeroSection() {
                 ))}
               </div>
               <span className="text-brand-gold font-accent font-semibold text-sm">
-                Trusted by 500+ Businesses Nationwide
+                Faith-Driven Federal Contracting Guidance
               </span>
             </motion.div>
 
@@ -79,7 +79,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-wrap gap-x-6 gap-y-3 mb-10"
             >
-              {['89% Proposal Win Rate', '$50M+ in Contracts Won', 'Free Consultation'].map((benefit) => (
+              {['SAM.gov & SBA Certification Guidance', 'Hands-On Proposal Support', 'Free Consultation'].map((benefit) => (
                 <div key={benefit} className="flex items-center gap-2 text-white">
                   <CheckCircle2 className="w-5 h-5 text-brand-gold flex-shrink-0" />
                   <span className="font-accent font-semibold text-sm">{benefit}</span>
@@ -116,8 +116,8 @@ export default function HeroSection() {
               className="flex flex-wrap items-center gap-6 pt-6 border-t border-brand-blue/30"
             >
               {[
-                { icon: Shield, text: 'SAM.gov Certified Expert' },
-                { icon: Award, text: 'SBA Approved Consultant' },
+                { icon: Shield, text: 'SAM.gov Registration Guidance' },
+                { icon: Award, text: 'SBA Certification Support' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-2 text-gray-400">
                   <Icon className="w-5 h-5 text-brand-gold" />
@@ -192,8 +192,8 @@ export default function HeroSection() {
               transition={{ delay: 1, duration: 0.5 }}
               className="absolute -bottom-8 -left-8 bg-brand-gold rounded-2xl p-6 shadow-2xl shadow-brand-gold/20"
             >
-              <div className="text-brand-navy font-heading font-bold text-3xl">$50M+</div>
-              <div className="text-brand-navy/70 font-accent text-sm font-semibold">Contracts Won for Clients</div>
+              <div className="text-brand-navy font-heading font-bold text-3xl">15 Offices</div>
+              <div className="text-brand-navy/70 font-accent text-sm font-semibold">Serving Clients Nationwide</div>
             </motion.div>
           </motion.div>
         </div>
