@@ -39,8 +39,8 @@ export default function AboutContent() {
                 transition={{ delay: 0.5 }}
                 className="absolute -bottom-8 -right-8 bg-brand-gold rounded-2xl p-6 shadow-2xl shadow-brand-gold/20 hidden md:block"
               >
-                <div className="text-brand-navy font-heading font-bold text-2xl">15+ Years</div>
-                <div className="text-brand-navy/70 font-accent text-sm font-semibold">Helping Businesses Win</div>
+                <div className="text-brand-navy font-heading font-bold text-2xl">15 Offices</div>
+                <div className="text-brand-navy/70 font-accent text-sm font-semibold">Serving Clients Nationwide</div>
               </motion.div>
             </motion.div>
 
@@ -58,15 +58,15 @@ export default function AboutContent() {
 
               <div className="space-y-5 text-gray-600 text-lg leading-relaxed">
                 <p>
-                  Dr. McKnight is not your typical government contracting consultant. He&apos;s a licensed
-                  pastor who discovered his calling at the intersection of faith and federal procurement —
-                  and he&apos;s been helping small businesses win government contracts ever since.
+                  Dr. McKnight is not your typical government contracting consultant. He&apos;s a pastor
+                  who discovered his calling at the intersection of faith and federal procurement —
+                  and he&apos;s been helping small businesses navigate government contracting ever since.
                 </p>
                 <p>
-                  With offices across the Southeast, Mid-Atlantic, and nationwide, Dr. McKnight brings over
-                  15 years of experience in federal contracting, including SAM.gov registration, SBA
-                  certification programs, bid and proposal writing, and contract compliance. He&apos;s helped
-                  over 500 businesses collectively win more than $50 million in federal contracts.
+                  With offices across the Southeast, Mid-Atlantic, and nationwide, Dr. McKnight brings
+                  hands-on experience in federal contracting, including SAM.gov registration, SBA
+                  certification programs, bid and proposal writing, and contract compliance. He works
+                  directly with each client to help them pursue and win federal contracts.
                 </p>
                 <p>
                   His approach is unique: combining hard-earned expertise with faith-driven values of
@@ -78,9 +78,9 @@ export default function AboutContent() {
 
               <div className="grid grid-cols-2 gap-4 mt-10">
                 {[
-                  { icon: Gavel, label: 'Federal Expert' },
-                  { icon: Award, label: 'Certified Consultant' },
-                  { icon: Users, label: '500+ Clients Served' },
+                  { icon: Gavel, label: 'Federal Contracting Focus' },
+                  { icon: Award, label: 'Personalized Guidance' },
+                  { icon: Users, label: 'Nationwide Service' },
                   { icon: Heart, label: 'Faith-Based Values' },
                 ].map(({ icon: Icon, label }) => (
                   <div key={label} className="flex items-center gap-3 bg-brand-offWhite rounded-xl px-4 py-3">
@@ -119,7 +119,7 @@ export default function AboutContent() {
                   to his pastoral work.
                 </p>
                 <p>
-                  Today, The Contracting Preacher serves clients from 15 offices across the country and all 50 states.
+                  Today, The Contracting Preacher supports clients from 15 office locations across the country.
                   Every engagement starts with a conversation — not a sales pitch. Because Dr. McKnight
                   believes that when you lead with service, success follows.
                 </p>

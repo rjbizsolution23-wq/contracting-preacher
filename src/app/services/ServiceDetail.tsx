@@ -90,11 +90,11 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                 <h4 className="font-heading font-bold text-brand-navy mb-4">Why Choose Us</h4>
                 <ul className="space-y-3">
                   {[
-                    '89% Proposal Win Rate',
-                    '500+ Businesses Served',
-                    '$50M+ Contracts Won',
+                    'Disciplined, Honest Proposal Guidance',
+                    'Personalized, Hands-On Support',
+                    'Real Client Success Stories',
                     'Free Initial Consultation',
-                    '100% Compliance Guaranteed',
+                    'Compliance-First Process',
                     'Nationwide Service',
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-2">

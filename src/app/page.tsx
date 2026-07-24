@@ -15,7 +15,7 @@ import NewsletterSection from '@/components/home/NewsletterSection'
 export const metadata: Metadata = generateSEO({
   title: 'Federal Contracting Consultant — Win Government Contracts Nationwide',
   description:
-    'Dr. McKnight — The Contracting Preacher — helps small businesses nationwide win federal government contracts. SAM.gov registration, 8(a) certification, bid writing, proposal preparation. Free consultation. 89% win rate.',
+    'Dr. McKnight — The Contracting Preacher — helps small businesses nationwide win federal government contracts. SAM.gov registration, 8(a) certification, bid writing, proposal preparation. Free consultation.',
   keywords: [
     'federal contracting consultant',
     'win government contracts',

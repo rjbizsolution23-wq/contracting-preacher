@@ -12,23 +12,23 @@ const reasons = [
   },
   {
     icon: TrendingUp,
-    title: '89% Win Rate',
-    description: 'Our proposal win rate is more than double the industry average. We only bid when we know you can win.',
+    title: 'We Only Bid to Win',
+    description: 'We only recommend bidding on contracts where you have a genuine, honestly-assessed competitive advantage — quality over quantity.',
   },
   {
     icon: Users,
-    title: '500+ Businesses Served',
-    description: 'From solo entrepreneurs to established companies, we\'ve helped over 500 businesses across all industries break into federal contracting.',
+    title: 'Nationwide Reach',
+    description: 'From solo entrepreneurs to established companies, we work with businesses across all industries and all 50 states to break into federal contracting.',
   },
   {
     icon: ShieldCheck,
-    title: 'Complete Compliance',
-    description: 'Every registration, certification, and proposal we prepare meets 100% of government compliance requirements. No shortcuts.',
+    title: 'Compliance-First Process',
+    description: 'Every registration, certification, and proposal we prepare is built to meet current government compliance requirements. No shortcuts.',
   },
   {
     icon: Award,
-    title: '$50M+ in Contracts Won',
-    description: 'Our clients have collectively won over $50 million in federal contracts. That\'s real revenue, real growth, real impact.',
+    title: 'Real Client Results',
+    description: 'Our clients have won real federal contracts across construction, IT, janitorial, logistics, and security services. See their stories on our testimonials page.',
   },
   {
     icon: HeartHandshake,

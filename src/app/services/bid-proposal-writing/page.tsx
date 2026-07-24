@@ -10,7 +10,7 @@ const service = SERVICES.find((s) => s.slug === 'bid-proposal-writing')!
 
 export const metadata: Metadata = generateSEO({
   title: 'Government Bid & Proposal Writing — Win Federal Contracts',
-  description: 'Expert government bid writing and federal proposal preparation from The Contracting Preacher. RFP responses, technical proposals, cost volumes, and compliance reviews. 89% win rate.',
+  description: 'Expert government bid writing and federal proposal preparation from The Contracting Preacher. RFP responses, technical proposals, cost volumes, and compliance reviews.',
   canonical: '/services/bid-proposal-writing',
 })
 

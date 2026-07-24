@@ -88,7 +88,7 @@ export default function TermsOfServicePage() {
               <div>
                 <h2 className="text-2xl font-heading font-bold text-brand-navy mb-4">5. No Guarantee of Results</h2>
                 <p className="leading-relaxed">
-                  While The Contracting Preacher maintains an 89% proposal win rate and has a proven track record, we cannot and do not guarantee specific outcomes including but not limited to:
+                  While The Contracting Preacher applies a disciplined, experienced approach to every engagement, we cannot and do not guarantee specific outcomes including but not limited to:
                 </p>
                 <ul className="list-disc pl-6 mt-4 space-y-2">
                   <li>SAM.gov registration approval or timelines</li>

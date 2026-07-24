@@ -202,9 +202,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   The Contracting Preacher | Federal Contracting Consultant
                 </p>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  Dr. McKnight is a federal contracting expert with 15+ years of experience and
-                  offices across the country. He has helped over 500 businesses win more than
-                  $50M in federal contracts through SAM registration, SBA certifications, and expert proposal writing.
+                  Dr. McKnight is a federal contracting consultant with offices across the country.
+                  He helps small businesses navigate SAM registration, SBA certifications, and
+                  proposal writing to pursue federal contracting opportunities.
                 </p>
               </div>
             </div>
