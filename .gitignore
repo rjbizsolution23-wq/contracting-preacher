@@ -34,8 +34,15 @@ yarn-error.log*
 .env*
 !.env.example
 
+# Cloudflare Wrangler local secrets - never commit real values
+.dev.vars
+.dev.vars.*
+
 # vercel
 .vercel
+
+# wrangler local state
+.wrangler/
 
 # typescript
 *.tsbuildinfo

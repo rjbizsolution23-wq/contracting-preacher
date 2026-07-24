@@ -477,6 +477,28 @@ export const OPEN_DATA_ENRICHMENT_SOURCES: OpenDataSource[] = [
     sourceUrl: 'https://www.linkpreview.net',
     status: 'ready',
   },
+  {
+    id: 'courtlistener',
+    name: 'CourtListener Case Law Search',
+    missionFit: 'useful',
+    auth: 'apiKey',
+    category: 'reference',
+    useCase: 'Bid protest precedent, GAO/COFC decisions, and case law research to support capture strategy and compliance narratives.',
+    sourceUrl: 'https://www.courtlistener.com/help/api/rest/',
+    route: '/api/open-data/search?source=courtlistener&q=bid%20protest',
+    status: 'wired',
+  },
+  {
+    id: 'data-gov-catalog',
+    name: 'Data.gov Dataset Catalog (v4)',
+    missionFit: 'useful',
+    auth: 'apiKey',
+    category: 'research',
+    useCase: 'Federal, state, local, and tribal dataset discovery for market research, grant narratives, and technical evidence.',
+    sourceUrl: 'https://resources.data.gov/catalog-api/',
+    route: '/api/open-data/search?source=data-gov-catalog&q=small%20business%20contracting',
+    status: 'wired',
+  },
 ]
 
 export const SYSTEM_PROMISES = [
@@ -523,4 +545,6 @@ export const FEDERAL_TOOLBOX = [
   { label: 'Website Evidence', href: '/api/open-data/search?source=microlink&q=https%3A%2F%2Fexample.com', icon: Globe2 },
   { label: 'University Partners', href: '/api/open-data/search?source=universities&q=south%20carolina', icon: FileCheck2 },
   { label: 'Location Context', href: '/api/open-data/search?source=teleport&q=Columbia', icon: MapPinned },
+  { label: 'Bid Protest Case Law', href: '/api/open-data/search?source=courtlistener&q=bid%20protest', icon: Gavel },
+  { label: 'Dataset Catalog', href: '/api/open-data/search?source=data-gov-catalog&q=small%20business%20contracting', icon: Database },
 ]

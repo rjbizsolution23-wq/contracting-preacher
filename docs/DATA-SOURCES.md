@@ -23,6 +23,8 @@
 | Wikidata/Wikipedia | Public context | None |
 | Archive.org | Historical website evidence | None |
 | Teleport | Location context | None |
+| CourtListener | Bid protest and case law search (GAO/COFC decisions, precedent) | `COURTLISTENER_API_KEY` |
+| Data.gov Dataset Catalog (v4) | Federal/state/local/tribal dataset discovery | `DATA_GOV_API_KEY` |
 
 ## Source Handling Rules
 

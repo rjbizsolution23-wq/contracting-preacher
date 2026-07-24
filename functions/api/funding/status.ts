@@ -7,6 +7,7 @@ type Env = {
   DATA_GOV_API_KEY?: string
   OPEN_CORPORATES_API_KEY?: string
   OPENSANCTIONS_API_KEY?: string
+  COURTLISTENER_API_KEY?: string
   DB?: D1Database
   FEDFUNDING_CACHE?: KVNamespace
 }
@@ -23,6 +24,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
       sam: Boolean(env.SAM_API_KEY || env.SAMS_API_KEY),
       simplerGrants: Boolean(env.SIMPLER_GRANTS_API_KEY),
       dataGov: Boolean(env.DATA_GOV_API_KEY),
+      courtListener: Boolean(env.COURTLISTENER_API_KEY),
       usaspending: true,
       sbir: true,
       federalRegister: true,
@@ -36,6 +38,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
       wikipedia: true,
       archiveOrg: true,
       teleport: true,
+      dataGovCatalog: Boolean(env.DATA_GOV_API_KEY),
     },
     warning:
       'This endpoint reports configuration only. It does not verify entity status, certification eligibility, or legal requirements.',

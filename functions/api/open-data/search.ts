@@ -4,6 +4,7 @@ type Env = {
   OPEN_CORPORATES_API_KEY?: string
   OPENSANCTIONS_API_KEY?: string
   DATA_GOV_API_KEY?: string
+  COURTLISTENER_API_KEY?: string
   FEDFUNDING_CACHE?: KVNamespace
 }
 
@@ -44,14 +45,56 @@ async function searchOpenData(source: string, q: string, limit: number, env: Env
   if (source === 'archive') return searchArchive(q)
   if (source === 'teleport') return searchTeleport(q, limit)
   if (source === 'opencorporates') return searchOpenCorporates(q, limit, env)
+  if (source === 'courtlistener') return searchCourtListener(q, limit, env)
+  if (source === 'data-gov-catalog') return searchDataGovCatalog(q, limit, env)
 
   return {
     source,
     live: false,
     warning:
-      'Unknown open-data source. Use opensanctions, microlink, college-scorecard, universities, wikidata, wikipedia, archive, teleport, or opencorporates.',
+      'Unknown open-data source. Use opensanctions, microlink, college-scorecard, universities, wikidata, wikipedia, archive, teleport, opencorporates, courtlistener, or data-gov-catalog.',
     results: [],
   }
+}
+
+async function searchCourtListener(q: string, limit: number, env: Env) {
+  if (!env.COURTLISTENER_API_KEY) {
+    return {
+      source: 'CourtListener Case Law Search',
+      live: false,
+      warning: 'Set COURTLISTENER_API_KEY in Cloudflare Pages to enable live bid protest and case law search.',
+      results: [],
+    }
+  }
+  const url = new URL('https://www.courtlistener.com/api/rest/v4/search/')
+  url.searchParams.set('q', q)
+  url.searchParams.set('type', 'o')
+  return packResponse(
+    'CourtListener Case Law Search',
+    await fetch(url.toString(), {
+      headers: { Authorization: `Token ${env.COURTLISTENER_API_KEY}` },
+    }),
+  )
+}
+
+async function searchDataGovCatalog(q: string, limit: number, env: Env) {
+  if (!env.DATA_GOV_API_KEY) {
+    return {
+      source: 'Data.gov Dataset Catalog',
+      live: false,
+      warning: 'Set DATA_GOV_API_KEY in Cloudflare Pages to enable live federal dataset catalog search.',
+      results: [],
+    }
+  }
+  const url = new URL('https://api.gsa.gov/technology/datagov/v4/search')
+  url.searchParams.set('q', q)
+  url.searchParams.set('per_page', String(limit))
+  return packResponse(
+    'Data.gov Dataset Catalog',
+    await fetch(url.toString(), {
+      headers: { 'X-Api-Key': env.DATA_GOV_API_KEY },
+    }),
+  )
 }
 
 async function searchOpenSanctions(q: string, limit: number, env: Env) {
