@@ -298,14 +298,14 @@ export default function BookingCalendar() {
                 <User className="inline w-4 h-4 mr-1 text-gray-400" /> First Name *
               </label>
               <input id="b-firstName" type="text" className="input-field" placeholder="Your first name" {...register('firstName')} />
-              {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>}
+              {errors.firstName && <p className="mt-1 text-sm text-brand-maroon">{errors.firstName.message}</p>}
             </div>
             <div>
               <label htmlFor="b-lastName" className="block text-sm font-accent font-semibold text-gray-700 mb-1.5">
                 <User className="inline w-4 h-4 mr-1 text-gray-400" /> Last Name *
               </label>
               <input id="b-lastName" type="text" className="input-field" placeholder="Your last name" {...register('lastName')} />
-              {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>}
+              {errors.lastName && <p className="mt-1 text-sm text-brand-maroon">{errors.lastName.message}</p>}
             </div>
           </div>
 
@@ -315,14 +315,14 @@ export default function BookingCalendar() {
                 <Mail className="inline w-4 h-4 mr-1 text-gray-400" /> Email *
               </label>
               <input id="b-email" type="email" className="input-field" placeholder="you@company.com" {...register('email')} />
-              {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
+              {errors.email && <p className="mt-1 text-sm text-brand-maroon">{errors.email.message}</p>}
             </div>
             <div>
               <label htmlFor="b-phone" className="block text-sm font-accent font-semibold text-gray-700 mb-1.5">
                 <Phone className="inline w-4 h-4 mr-1 text-gray-400" /> Phone *
               </label>
               <input id="b-phone" type="tel" className="input-field" placeholder="(555) 123-4567" {...register('phone')} />
-              {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>}
+              {errors.phone && <p className="mt-1 text-sm text-brand-maroon">{errors.phone.message}</p>}
             </div>
           </div>
 
@@ -331,7 +331,7 @@ export default function BookingCalendar() {
               <Building2 className="inline w-4 h-4 mr-1 text-gray-400" /> Company Name *
             </label>
             <input id="b-company" type="text" className="input-field" placeholder="Your business name" {...register('company')} />
-            {errors.company && <p className="mt-1 text-sm text-red-600">{errors.company.message}</p>}
+            {errors.company && <p className="mt-1 text-sm text-brand-maroon">{errors.company.message}</p>}
           </div>
 
           <div>
@@ -345,7 +345,7 @@ export default function BookingCalendar() {
               ))}
               <option value="general">General Consultation / Not Sure</option>
             </select>
-            {errors.service && <p className="mt-1 text-sm text-red-600">{errors.service.message}</p>}
+            {errors.service && <p className="mt-1 text-sm text-brand-maroon">{errors.service.message}</p>}
           </div>
 
           <div>

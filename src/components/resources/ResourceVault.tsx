@@ -44,7 +44,7 @@ const TRUST_BADGE_STYLES: Record<TrustLabel, string> = {
   commercial: 'bg-purple-50 text-purple-700 border-purple-200',
   'directory-only': 'bg-gray-100 text-gray-600 border-gray-300',
   'manual-contact': 'bg-yellow-50 text-yellow-700 border-yellow-200',
-  unavailable: 'bg-red-50 text-red-700 border-red-200',
+  unavailable: 'bg-brand-maroon/5 text-brand-maroon border-brand-maroon/30',
 }
 
 interface ResourceVaultProps {

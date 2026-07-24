@@ -35,7 +35,10 @@ export const viewport: Viewport = {
   maximumScale: 5,
 }
 
-export const metadata: Metadata = generateSEO()
+export const metadata: Metadata = {
+  ...generateSEO(),
+  manifest: '/manifest.json',
+}
 
 export default function RootLayout({
   children,

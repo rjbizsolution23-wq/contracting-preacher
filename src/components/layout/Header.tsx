@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone, Mail, ChevronDown, BookOpen } from 'lucide-react'
+import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react'
 import { NAV_LINKS, SITE_CONFIG } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import Button from '@/components/ui/Button'
+import Logo from '@/components/ui/Logo'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -60,15 +61,7 @@ export default function Header() {
         <nav className="container-custom" aria-label="Main navigation">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group" aria-label="The Contracting Preacher - Home">
-              <div className="w-12 h-12 bg-brand-navy rounded-xl flex items-center justify-center group-hover:bg-brand-blue transition-colors duration-300">
-                <BookOpen className="w-6 h-6 text-brand-gold" />
-              </div>
-              <div className="hidden sm:block">
-                <div className="text-xl font-heading font-bold text-brand-navy leading-tight">The Contracting</div>
-                <div className="text-xs font-accent font-bold text-brand-gold uppercase tracking-wider">Preacher</div>
-              </div>
-            </Link>
+            <Logo variant="light" />
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">

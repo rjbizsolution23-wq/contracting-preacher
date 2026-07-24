@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { Phone, Mail, MapPin, BookOpen, Facebook, Linkedin, Youtube, Instagram, ArrowRight } from 'lucide-react'
+import { Phone, Mail, MapPin, Facebook, Linkedin, Youtube, Instagram, ArrowRight } from 'lucide-react'
 import { SITE_CONFIG, SERVICES } from '@/lib/constants'
+import Logo from '@/components/ui/Logo'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -11,15 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-brand-blue rounded-xl flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-brand-gold" />
-              </div>
-              <div>
-                <div className="text-lg font-heading font-bold text-white leading-tight">The Contracting</div>
-                <div className="text-xs font-accent font-bold text-brand-gold uppercase tracking-wider">Preacher</div>
-              </div>
-            </Link>
+            <Logo variant="dark" className="mb-6" />
             <p className="text-gray-400 mb-6 leading-relaxed text-sm">
               Dr. McKnight helps small businesses navigate the federal contracting landscape with faith, expertise, and a commitment to your success. 15 offices nationwide.
             </p>

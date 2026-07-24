@@ -17,11 +17,11 @@ export default function TruthBanner() {
           ))}
         </ul>
       </div>
-      <div className="rounded-lg border border-red-200 bg-red-50 p-6">
-        <h3 className="flex items-center gap-2 font-accent text-lg font-bold text-red-900">
+      <div className="rounded-lg border border-brand-maroon/30 bg-brand-maroon/5 p-6">
+        <h3 className="flex items-center gap-2 font-accent text-lg font-bold text-brand-darkMaroon">
           <ShieldAlert className="h-5 w-5" /> AI must not
         </h3>
-        <ul className="mt-4 space-y-2 text-sm leading-6 text-red-900">
+        <ul className="mt-4 space-y-2 text-sm leading-6 text-brand-darkMaroon">
           {AI_MUST_NOT.map((item) => (
             <li key={item} className="flex gap-2">
               <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" />

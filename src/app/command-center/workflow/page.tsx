@@ -38,14 +38,14 @@ export default function WorkflowPage() {
       </section>
 
       <section className="container-custom pb-12">
-        <div className="rounded-lg border border-red-200 bg-red-50 p-6">
-          <h2 className="font-accent text-2xl font-bold text-red-900">Required owner/AOR approval gates</h2>
-          <p className="mt-2 text-sm text-red-900">
+        <div className="rounded-lg border border-brand-maroon/30 bg-brand-maroon/5 p-6">
+          <h2 className="font-accent text-2xl font-bold text-brand-darkMaroon">Required owner/AOR approval gates</h2>
+          <p className="mt-2 text-sm text-brand-darkMaroon">
             The AI must not complete these on the business owner&apos;s behalf without an explicit, recorded approval.
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {REQUIRED_APPROVAL_GATES.map((gate) => (
-              <div key={gate.key} className="rounded-lg bg-white p-4 text-sm font-bold text-red-900">{gate.label}</div>
+              <div key={gate.key} className="rounded-lg bg-white p-4 text-sm font-bold text-brand-darkMaroon">{gate.label}</div>
             ))}
           </div>
         </div>

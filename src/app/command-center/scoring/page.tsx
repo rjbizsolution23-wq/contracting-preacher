@@ -25,7 +25,7 @@ const BAND_TONE: Record<string, string> = {
   'pursue-with-partner': 'bg-yellow-100 text-yellow-800',
   monitor: 'bg-yellow-100 text-yellow-800',
   'no-bid': 'bg-gray-200 text-gray-700',
-  reject: 'bg-red-100 text-red-800',
+  reject: 'bg-brand-maroon/10 text-brand-darkMaroon',
 }
 
 export default function ScoringPage() {
@@ -42,11 +42,11 @@ export default function ScoringPage() {
 
       <section className="container-custom grid gap-8 py-12 lg:grid-cols-[1fr_1fr]">
         <div className="space-y-6">
-          <div className="rounded-lg border border-red-200 bg-red-50 p-6">
-            <h3 className="flex items-center gap-2 font-accent text-lg font-bold text-red-900">
+          <div className="rounded-lg border border-brand-maroon/30 bg-brand-maroon/5 p-6">
+            <h3 className="flex items-center gap-2 font-accent text-lg font-bold text-brand-darkMaroon">
               <ShieldAlert className="h-5 w-5" /> Hard disqualifiers (automatic reject)
             </h3>
-            <ul className="mt-4 space-y-2 text-sm text-red-900">
+            <ul className="mt-4 space-y-2 text-sm text-brand-darkMaroon">
               {HARD_DISQUALIFIERS.map((item) => <li key={item}>{item}</li>)}
             </ul>
           </div>

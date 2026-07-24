@@ -188,7 +188,7 @@ export default function IntakeClient() {
           </div>
 
           {message && (
-            <div className={`mt-6 flex gap-3 rounded-lg p-4 text-sm ${status === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+            <div className={`mt-6 flex gap-3 rounded-lg p-4 text-sm ${status === 'success' ? 'bg-green-50 text-green-800' : 'bg-brand-maroon/5 text-brand-darkMaroon'}`}>
               {status === 'success' ? <CheckCircle2 className="h-5 w-5 shrink-0" /> : <AlertCircle className="h-5 w-5 shrink-0" />}
               {message}
             </div>
