@@ -1,4 +1,4 @@
-import { json, options, requireAdmin } from '../../_shared/http'
+import { adminGateReason, ipHint, json, logAuditEvent, options } from '../../_shared/http'
 import { LeadInput, makeLead, seededLeads, validateLead } from '../../_shared/scoring'
 
 type Env = {
@@ -7,7 +7,15 @@ type Env = {
 }
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  if (!requireAdmin(request, env.ADMIN_ACCESS_CODE)) {
+  const gate = adminGateReason(request, env.ADMIN_ACCESS_CODE)
+  if (!gate.allowed) {
+    await logAuditEvent(env, {
+      action: 'crm.leads.list',
+      resourceType: 'leads',
+      result: 'denied',
+      detail: gate.reason,
+      ipHint: ipHint(request),
+    })
     return json({ error: 'Unauthorized admin CRM request.' }, { status: 401 })
   }
 
@@ -21,11 +29,20 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   const rows = await env.DB.prepare(
     `SELECT id, first_name, last_name, email, phone, company, industry, website, employees,
       annual_revenue, naics, sam_status, certifications, services, goals, readiness_score,
-      stage, strengths, risks, created_at
+      stage, strengths, risks, source, utm_source, utm_medium, utm_campaign, referrer,
+      consent_email, consent_sms, score_explanation, created_at, updated_at
      FROM leads
      ORDER BY created_at DESC
      LIMIT 100`
   ).all()
+
+  await logAuditEvent(env, {
+    action: 'crm.leads.list',
+    resourceType: 'leads',
+    result: 'success',
+    detail: `returned ${(rows.results || []).length} rows`,
+    ipHint: ipHint(request),
+  })
 
   return json({
     leads: (rows.results || []).map((row) => ({
@@ -48,7 +65,16 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
       stage: row.stage,
       strengths: JSON.parse(String(row.strengths || '[]')),
       risks: JSON.parse(String(row.risks || '[]')),
+      source: row.source,
+      utmSource: row.utm_source,
+      utmMedium: row.utm_medium,
+      utmCampaign: row.utm_campaign,
+      referrer: row.referrer,
+      consentEmail: Boolean(row.consent_email),
+      consentSms: Boolean(row.consent_sms),
+      scoreExplanation: JSON.parse(String(row.score_explanation || '[]')),
       createdAt: row.created_at,
+      updatedAt: row.updated_at,
     })),
   })
 }
@@ -65,8 +91,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       `INSERT INTO leads (
         id, first_name, last_name, email, phone, company, industry, website, employees,
         annual_revenue, naics, sam_status, certifications, services, goals, readiness_score,
-        stage, strengths, risks, created_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        stage, strengths, risks, source, utm_source, utm_medium, utm_campaign, referrer,
+        consent_email, consent_sms, score_explanation, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     )
       .bind(
         lead.id,
@@ -88,9 +115,28 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
         lead.stage,
         JSON.stringify(lead.strengths),
         JSON.stringify(lead.risks),
-        lead.createdAt
+        lead.source,
+        lead.utmSource,
+        lead.utmMedium,
+        lead.utmCampaign,
+        lead.referrer,
+        lead.consentEmail ? 1 : 0,
+        lead.consentSms ? 1 : 0,
+        JSON.stringify(lead.scoreExplanation),
+        lead.createdAt,
+        lead.updatedAt
       )
       .run()
+
+    await logAuditEvent(env, {
+      actor: lead.email,
+      action: 'crm.leads.create',
+      resourceType: 'lead',
+      resourceId: lead.id,
+      result: 'success',
+      detail: `source=${lead.source} readinessScore=${lead.readinessScore}`,
+      ipHint: ipHint(request),
+    })
   }
 
   return json({

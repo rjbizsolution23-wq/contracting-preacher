@@ -1,6 +1,7 @@
 interface Env {
   SENDGRID_API_KEY?: string
   SENDGRID_FROM_EMAIL?: string
+  DB?: D1Database
 }
 
 interface ContactBody {
@@ -11,6 +12,11 @@ interface ContactBody {
   company?: string
   service?: string
   message?: string
+  source?: string
+  utmSource?: string
+  utmMedium?: string
+  utmCampaign?: string
+  referrer?: string
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -21,7 +27,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
   try {
     const body: ContactBody = await context.request.json()
-    const { firstName, lastName, email, phone, company, service, message } = body
+    const { firstName, lastName, email, phone, company, service, message, source, utmSource, utmMedium, utmCampaign, referrer } = body
 
     if (!firstName || !lastName || !email || !phone || !company || !service || !message) {
       return new Response(JSON.stringify({ error: 'All fields are required' }), {
@@ -39,6 +45,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 
     const { env } = context
+    let emailDelivery = 'not-configured'
 
     if (env.SENDGRID_API_KEY) {
       const sgResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
@@ -79,7 +86,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         }),
       })
 
-      if (!sgResponse.ok) {
+      if (sgResponse.ok) {
+        emailDelivery = 'sent'
+      } else {
+        emailDelivery = 'failed'
         console.error('SendGrid error:', await sgResponse.text())
       }
     } else {
@@ -87,6 +97,43 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         firstName, lastName, email, phone, company, service, message,
         submittedAt: new Date().toISOString(),
       })
+    }
+
+    // Persist to the CRM. Previously this endpoint only sent an email and
+    // the submission was otherwise invisible to the admin CRM dashboard.
+    if (env.DB) {
+      try {
+        await env.DB.prepare(
+          `INSERT INTO contact_submissions (
+            id, first_name, last_name, email, phone, company, service, message,
+            source, utm_source, utm_medium, utm_campaign, referrer, status, email_delivery, created_at
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        )
+          .bind(
+            crypto.randomUUID(),
+            firstName,
+            lastName,
+            email.trim().toLowerCase(),
+            phone,
+            company,
+            service,
+            message,
+            source || 'contact-form',
+            utmSource || '',
+            utmMedium || '',
+            utmCampaign || '',
+            referrer || '',
+            'new',
+            emailDelivery,
+            new Date().toISOString()
+          )
+          .run()
+      } catch (dbError) {
+        // Do not fail the user-facing request if the CRM write fails
+        // (e.g. migration 0003 not yet applied) -- the email path already
+        // succeeded or was attempted above.
+        console.error('Contact CRM persistence error:', dbError)
+      }
     }
 
     return new Response(

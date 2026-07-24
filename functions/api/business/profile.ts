@@ -1,4 +1,4 @@
-import { json, options, requireAdmin } from '../../_shared/http'
+import { adminGateReason, ipHint, json, logAuditEvent, options } from '../../_shared/http'
 import { BusinessProfileInput, makeBusinessProfile, validateBusinessProfile } from '../../_shared/dataRoom'
 
 type Env = {
@@ -119,7 +119,9 @@ function rowToProfile(row: Record<string, unknown>) {
 }
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  if (!requireAdmin(request, env.ADMIN_ACCESS_CODE)) {
+  const gate = adminGateReason(request, env.ADMIN_ACCESS_CODE)
+  if (!gate.allowed) {
+    await logAuditEvent(env, { action: 'business.profile.list', resourceType: 'business_profile', result: 'denied', detail: gate.reason, ipHint: ipHint(request) })
     return json({ error: 'Unauthorized business data room request.' }, { status: 401 })
   }
 
@@ -146,6 +148,15 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     await env.DB.prepare(
       `INSERT INTO business_profiles (${COLUMNS.join(', ')}) VALUES (${placeholders})`
     ).bind(...rowFromRecord(record)).run()
+
+    await logAuditEvent(env, {
+      actor: record.email,
+      action: 'business.profile.create',
+      resourceType: 'business_profile',
+      resourceId: record.id,
+      result: 'success',
+      detail: `legalName=${record.legalName}`,
+    })
   }
 
   return json({

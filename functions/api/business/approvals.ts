@@ -1,4 +1,4 @@
-import { json, options, requireAdmin } from '../../_shared/http'
+import { adminGateReason, ipHint, json, logAuditEvent, options } from '../../_shared/http'
 import { APPROVAL_GATES, isKnownGate } from '../../_shared/dataRoom'
 
 type Env = {
@@ -21,7 +21,9 @@ function str(value: unknown) {
 }
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  if (!requireAdmin(request, env.ADMIN_ACCESS_CODE)) {
+  const gate = adminGateReason(request, env.ADMIN_ACCESS_CODE)
+  if (!gate.allowed) {
+    await logAuditEvent(env, { action: 'business.approvals.list', resourceType: 'business_approval', result: 'denied', detail: gate.reason, ipHint: ipHint(request) })
     return json({ error: 'Unauthorized approval-gate request.' }, { status: 401 })
   }
 
@@ -42,15 +44,25 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 // Records an owner/AOR approval decision. This endpoint never submits anything
 // on its own behalf \u2014 it only creates an audit-trail record that a human made
 // the required decision before any submission-type action proceeds.
+// SECURITY: this is the human/AOR approval audit trail. It must be
+// admin-gated -- otherwise anyone on the public internet could write a
+// fabricated "approved" record and defeat the entire purpose of the
+// approval-gate pattern documented in dataRoom.ts.
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+  const authGate = adminGateReason(request, env.ADMIN_ACCESS_CODE)
+  if (!authGate.allowed) {
+    await logAuditEvent(env, { action: 'business.approvals.create', resourceType: 'business_approval', result: 'denied', detail: authGate.reason, ipHint: ipHint(request) })
+    return json({ error: 'Unauthorized approval-gate request.' }, { status: 401 })
+  }
+
   const input: ApprovalInput = await request.json().catch(() => ({}))
 
   const profileId = str(input.profileId)
-  const gate = str(input.gate)
+  const approvalGate = str(input.gate)
   const decision = str(input.decision) || 'pending'
 
   if (!profileId) return json({ error: 'profileId is required.' }, { status: 400 })
-  if (!isKnownGate(gate)) {
+  if (!isKnownGate(approvalGate)) {
     return json({ error: `gate must be one of: ${APPROVAL_GATES.join(', ')}` }, { status: 400 })
   }
   if (!['approved', 'denied', 'pending'].includes(decision)) {
@@ -64,7 +76,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     id: crypto.randomUUID(),
     profileId,
     opportunityId: str(input.opportunityId),
-    gate,
+    gate: approvalGate,
     approvedByName: str(input.approvedByName),
     approvedByRole: str(input.approvedByRole),
     decision,
@@ -81,6 +93,15 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       record.id, record.profileId, record.opportunityId, record.gate, record.approvedByName,
       record.approvedByRole, record.decision, record.notes, record.createdAt
     ).run()
+
+    await logAuditEvent(env, {
+      actor: record.approvedByName || 'unknown',
+      action: 'business.approvals.create',
+      resourceType: 'business_approval',
+      resourceId: record.id,
+      result: 'success',
+      detail: `profileId=${record.profileId} gate=${record.gate} decision=${record.decision}`,
+    })
   }
 
   return json({

@@ -1,4 +1,4 @@
-import { json, options, requireAdmin } from '../../_shared/http'
+import { adminGateReason, ipHint, json, logAuditEvent, options } from '../../_shared/http'
 import { decisionBandFor, evaluateHardDisqualifiers, OpportunityScoreInput, scoreOpportunity } from '../../_shared/dataRoom'
 
 type Env = {
@@ -21,7 +21,9 @@ function str(value: unknown) {
 }
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  if (!requireAdmin(request, env.ADMIN_ACCESS_CODE)) {
+  const gate = adminGateReason(request, env.ADMIN_ACCESS_CODE)
+  if (!gate.allowed) {
+    await logAuditEvent(env, { action: 'business.opportunities.list', resourceType: 'business_opportunity', result: 'denied', detail: gate.reason, ipHint: ipHint(request) })
     return json({ error: 'Unauthorized opportunity pipeline request.' }, { status: 401 })
   }
 
@@ -85,6 +87,14 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       JSON.stringify(record.scoreBreakdown), record.decisionBand, record.bidNoBid, record.status,
       record.notes, record.createdAt, record.updatedAt
     ).run()
+
+    await logAuditEvent(env, {
+      action: 'business.opportunities.create',
+      resourceType: 'business_opportunity',
+      resourceId: record.id,
+      result: 'success',
+      detail: `profileId=${record.profileId} band=${record.decisionBand} fitScore=${record.fitScore}`,
+    })
   }
 
   return json({

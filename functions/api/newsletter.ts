@@ -1,6 +1,7 @@
 interface Env {
   SENDGRID_API_KEY?: string
   SENDGRID_FROM_EMAIL?: string
+  DB?: D1Database
 }
 
 interface NewsletterBody {
@@ -118,6 +119,27 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }
     } else {
       console.log('Newsletter signup (no SendGrid key):', { email, firstName, subscribedAt: new Date().toISOString() })
+    }
+
+    // Persist a CRM-visible, CAN-SPAM-relevant subscription record (source,
+    // status, timestamps) so unsubscribes/suppressions can be tracked here
+    // even though SendGrid also holds its own marketing-contacts copy.
+    if (env.DB) {
+      try {
+        await env.DB.prepare(
+          `INSERT INTO newsletter_subscribers (id, email, first_name, status, source, subscribed_at)
+           VALUES (?, ?, ?, 'subscribed', 'newsletter-form', ?)
+           ON CONFLICT(email) DO UPDATE SET
+             status = 'subscribed',
+             first_name = excluded.first_name,
+             subscribed_at = excluded.subscribed_at,
+             unsubscribed_at = ''`
+        )
+          .bind(crypto.randomUUID(), email.trim().toLowerCase(), firstName || '', new Date().toISOString())
+          .run()
+      } catch (dbError) {
+        console.error('Newsletter CRM persistence error:', dbError)
+      }
     }
 
     return new Response(
