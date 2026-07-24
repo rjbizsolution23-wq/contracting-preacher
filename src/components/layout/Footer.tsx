@@ -114,7 +114,21 @@ export default function Footer() {
       <div className="border-t border-brand-blue/30">
         <div className="container-custom py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
           <p>&copy; {currentYear} {SITE_CONFIG.name}. All rights reserved. | Dr. McKnight, Federal Contracting Consultant</p>
-          <p className="flex items-center gap-1">Built with faith &amp; excellence</p>
+          <p className="flex items-center gap-1 flex-wrap justify-center">
+            <span>Built with faith &amp; excellence</span>
+            <span aria-hidden="true">&middot;</span>
+            <span>
+              Site by{' '}
+              <a
+                href="https://rjbusinesssolutions.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-brand-gold transition-colors underline underline-offset-2"
+              >
+                RJ Business Solutions (Rick Jefferson)
+              </a>
+            </span>
+          </p>
         </div>
       </div>
     </footer>
