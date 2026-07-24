@@ -32,17 +32,17 @@ export default function FinancialsPage() {
         <FieldChecklist title="Historical financials (up to 3 years)" items={HISTORICAL_FINANCIAL_FIELDS} columns={2} />
         <FieldChecklist title="Forecasts" items={FORECAST_FIELDS} columns={2} />
         <FieldChecklist title="Funding request" items={FUNDING_REQUEST_FIELDS} columns={2} />
-        <div className="rounded-lg border border-red-200 bg-red-50 p-6">
-          <h3 className="flex items-center gap-2 font-accent text-lg font-bold text-red-900">
+        <div className="rounded-lg border border-brand-maroon/30 bg-brand-maroon/5 p-6">
+          <h3 className="flex items-center gap-2 font-accent text-lg font-bold text-brand-darkMaroon">
             <LockKeyhole className="h-5 w-5" /> Owner financial information \u2014 restricted vault only
           </h3>
-          <p className="mt-2 text-sm text-red-900">
+          <p className="mt-2 text-sm text-brand-darkMaroon">
             Only collect when a specific application requires it. This belongs in an encrypted
             restricted vault \u2014 not in ordinary chat, email, or shared folders.
           </p>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">
             {OWNER_FINANCIAL_RESTRICTED_FIELDS.map((item) => (
-              <li key={item} className="rounded bg-white p-3 text-sm text-red-900">{item}</li>
+              <li key={item} className="rounded bg-white p-3 text-sm text-brand-darkMaroon">{item}</li>
             ))}
           </ul>
         </div>

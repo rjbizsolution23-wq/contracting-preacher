@@ -150,7 +150,7 @@ export default function OpportunitiesClient() {
 
       {error && (
         <section className="container-custom pb-6">
-          <div className="rounded-lg bg-red-50 p-4 text-sm text-red-800">{error}</div>
+          <div className="rounded-lg bg-brand-maroon/5 p-4 text-sm text-brand-darkMaroon">{error}</div>
         </section>
       )}
 

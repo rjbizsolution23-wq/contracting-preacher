@@ -1,4 +1,4 @@
-import { json, options, requireAdmin } from '../../_shared/http'
+import { adminGateReason, ipHint, json, logAuditEvent, options } from '../../_shared/http'
 import { isKnownFolder } from '../../_shared/dataRoom'
 
 type Env = {
@@ -27,7 +27,9 @@ function str(value: unknown) {
 }
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  if (!requireAdmin(request, env.ADMIN_ACCESS_CODE)) {
+  const gate = adminGateReason(request, env.ADMIN_ACCESS_CODE)
+  if (!gate.allowed) {
+    await logAuditEvent(env, { action: 'business.documents.list', resourceType: 'business_document', result: 'denied', detail: gate.reason, ipHint: ipHint(request) })
     return json({ error: 'Unauthorized business data room request.' }, { status: 401 })
   }
 
@@ -93,6 +95,14 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       record.verifiedStatus, record.supportingEvidence, record.allowedUse,
       record.lastReviewedDate, record.notes, record.createdAt, record.updatedAt
     ).run()
+
+    await logAuditEvent(env, {
+      action: 'business.documents.create',
+      resourceType: 'business_document',
+      resourceId: record.id,
+      result: 'success',
+      detail: `profileId=${record.profileId} folder=${record.folder} name=${record.name}`,
+    })
   }
 
   return json({

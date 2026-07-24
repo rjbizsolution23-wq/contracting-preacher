@@ -28,7 +28,7 @@ export default function InvestorsPage() {
       />
       <CCSubNav />
       <section className="container-custom grid gap-6 py-12">
-        <div className="flex gap-3 rounded-lg border border-red-200 bg-red-50 p-5 text-sm text-red-900">
+        <div className="flex gap-3 rounded-lg border border-brand-maroon/30 bg-brand-maroon/5 p-5 text-sm text-brand-darkMaroon">
           <ShieldAlert className="h-5 w-5 shrink-0" />
           <span>
             The AI drafts investor materials and target-investor research \u2014 it does not provide

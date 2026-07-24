@@ -1,6 +1,7 @@
 interface Env {
   SENDGRID_API_KEY?: string
   SENDGRID_FROM_EMAIL?: string
+  DB?: D1Database
 }
 
 interface BookingBody {
@@ -41,6 +42,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 
     const { env } = context
+    let emailDelivery = 'not-configured'
 
     if (env.SENDGRID_API_KEY) {
       // Send notification to Dr. McKnight
@@ -91,6 +93,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
       if (!notificationResponse.ok) {
         console.error('SendGrid notification error:', await notificationResponse.text())
+        emailDelivery = 'failed'
+      } else {
+        emailDelivery = 'sent'
       }
 
       // Send confirmation to client
@@ -150,6 +155,37 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         firstName, lastName, email, phone, company, service, notes, date, time,
         submittedAt: new Date().toISOString(),
       })
+    }
+
+    // Persist to the CRM. Previously this endpoint only sent email and the
+    // booking request was otherwise invisible to the admin CRM dashboard.
+    if (env.DB) {
+      try {
+        await env.DB.prepare(
+          `INSERT INTO booking_requests (
+            id, first_name, last_name, email, phone, company, service, notes,
+            requested_date, requested_time, status, email_delivery, created_at
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        )
+          .bind(
+            crypto.randomUUID(),
+            firstName,
+            lastName,
+            email.trim().toLowerCase(),
+            phone,
+            company,
+            service,
+            notes || '',
+            date,
+            time,
+            'requested',
+            emailDelivery,
+            new Date().toISOString()
+          )
+          .run()
+      } catch (dbError) {
+        console.error('Booking CRM persistence error:', dbError)
+      }
     }
 
     return new Response(

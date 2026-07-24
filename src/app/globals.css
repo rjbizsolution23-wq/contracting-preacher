@@ -15,6 +15,8 @@
   --color-brand-lightBlue: #2A5080;
   --color-brand-accent: #D4AF37;
   --color-brand-offWhite: #F5F3EF;
+  --color-brand-maroon: #7A1A1A;
+  --color-brand-darkMaroon: #5C1313;
 
   --background-image-hero-pattern: linear-gradient(135deg, #0A1628 0%, #1E3A5F 50%, #0A1628 100%);
   --background-image-gold-gradient: linear-gradient(135deg, #C9A84C 0%, #E8D48B 50%, #C9A84C 100%);

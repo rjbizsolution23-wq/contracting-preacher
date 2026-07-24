@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { AlertCircle, ArrowRight, CheckCircle2 } from 'lucide-react'
 import Button from '@/components/ui/Button'
@@ -20,6 +20,8 @@ type IntakeState = {
   certifications: string
   services: string
   goals: string
+  consentEmail: boolean
+  consentSms: boolean
 }
 
 const INITIAL_STATE: IntakeState = {
@@ -37,12 +39,33 @@ const INITIAL_STATE: IntakeState = {
   certifications: '',
   services: '',
   goals: '',
+  consentEmail: false,
+  consentSms: false,
 }
 
 export default function IntakeClient() {
   const [form, setForm] = useState<IntakeState>(INITIAL_STATE)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [message, setMessage] = useState('')
+  const [attribution, setAttribution] = useState({ source: 'intake-form', utmSource: '', utmMedium: '', utmCampaign: '', referrer: '' })
+
+  // Capture lead attribution (blueprint section 4: "Lead record requirements")
+  // client-side only, from the current page URL and document.referrer. This
+  // never reads third-party tracking cookies -- only same-visit UTM params.
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search)
+      setAttribution({
+        source: 'intake-form',
+        utmSource: params.get('utm_source') || '',
+        utmMedium: params.get('utm_medium') || '',
+        utmCampaign: params.get('utm_campaign') || '',
+        referrer: document.referrer || '',
+      })
+    } catch {
+      // Attribution capture is best-effort; never block the form.
+    }
+  }, [])
 
   const completion = useMemo(() => {
     const required = ['firstName', 'lastName', 'email', 'phone', 'company', 'industry', 'services', 'goals'] as const
@@ -63,7 +86,7 @@ export default function IntakeClient() {
       const response = await fetch('/api/crm/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, ...attribution }),
       })
       const data = await response.json().catch(() => ({}))
 
@@ -142,8 +165,30 @@ export default function IntakeClient() {
             <TextArea label="Goals, deadlines, and contract targets" value={form.goals} onChange={(value) => update('goals', value)} required />
           </div>
 
+          <div className="mt-6 space-y-3 rounded-lg border border-gray-200 bg-brand-offWhite p-4">
+            <p className="text-xs font-bold uppercase tracking-wide text-brand-navy">Communication preferences</p>
+            <label className="flex items-start gap-3 text-sm text-gray-700">
+              <input
+                type="checkbox"
+                className="mt-0.5"
+                checked={form.consentEmail}
+                onChange={(event) => setForm((current) => ({ ...current, consentEmail: event.target.checked }))}
+              />
+              I agree to receive email updates about my federal contracting readiness, opportunities, and next steps. I can unsubscribe at any time.
+            </label>
+            <label className="flex items-start gap-3 text-sm text-gray-700">
+              <input
+                type="checkbox"
+                className="mt-0.5"
+                checked={form.consentSms}
+                onChange={(event) => setForm((current) => ({ ...current, consentSms: event.target.checked }))}
+              />
+              I agree to receive SMS/text messages about my consultation and deadlines. Message and data rates may apply; reply STOP to opt out.
+            </label>
+          </div>
+
           {message && (
-            <div className={`mt-6 flex gap-3 rounded-lg p-4 text-sm ${status === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+            <div className={`mt-6 flex gap-3 rounded-lg p-4 text-sm ${status === 'success' ? 'bg-green-50 text-green-800' : 'bg-brand-maroon/5 text-brand-darkMaroon'}`}>
               {status === 'success' ? <CheckCircle2 className="h-5 w-5 shrink-0" /> : <AlertCircle className="h-5 w-5 shrink-0" />}
               {message}
             </div>

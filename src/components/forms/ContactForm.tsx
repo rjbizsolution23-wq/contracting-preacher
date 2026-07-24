@@ -61,14 +61,14 @@ export default function ContactForm() {
             First Name *
           </label>
           <input id="firstName" type="text" className="input-field" placeholder="Your first name" {...register('firstName')} />
-          {errors.firstName && <p className="mt-1 text-sm text-red-600" role="alert">{errors.firstName.message}</p>}
+          {errors.firstName && <p className="mt-1 text-sm text-brand-maroon" role="alert">{errors.firstName.message}</p>}
         </div>
         <div>
           <label htmlFor="lastName" className="block text-sm font-accent font-semibold text-gray-700 mb-2">
             Last Name *
           </label>
           <input id="lastName" type="text" className="input-field" placeholder="Your last name" {...register('lastName')} />
-          {errors.lastName && <p className="mt-1 text-sm text-red-600" role="alert">{errors.lastName.message}</p>}
+          {errors.lastName && <p className="mt-1 text-sm text-brand-maroon" role="alert">{errors.lastName.message}</p>}
         </div>
       </div>
 
@@ -78,14 +78,14 @@ export default function ContactForm() {
             Email Address *
           </label>
           <input id="email" type="email" className="input-field" placeholder="you@company.com" {...register('email')} />
-          {errors.email && <p className="mt-1 text-sm text-red-600" role="alert">{errors.email.message}</p>}
+          {errors.email && <p className="mt-1 text-sm text-brand-maroon" role="alert">{errors.email.message}</p>}
         </div>
         <div>
           <label htmlFor="phone" className="block text-sm font-accent font-semibold text-gray-700 mb-2">
             Phone Number *
           </label>
           <input id="phone" type="tel" className="input-field" placeholder="(555) 123-4567" {...register('phone')} />
-          {errors.phone && <p className="mt-1 text-sm text-red-600" role="alert">{errors.phone.message}</p>}
+          {errors.phone && <p className="mt-1 text-sm text-brand-maroon" role="alert">{errors.phone.message}</p>}
         </div>
       </div>
 
@@ -94,7 +94,7 @@ export default function ContactForm() {
           Company Name *
         </label>
         <input id="company" type="text" className="input-field" placeholder="Your business name" {...register('company')} />
-        {errors.company && <p className="mt-1 text-sm text-red-600" role="alert">{errors.company.message}</p>}
+        {errors.company && <p className="mt-1 text-sm text-brand-maroon" role="alert">{errors.company.message}</p>}
       </div>
 
       <div>
@@ -108,7 +108,7 @@ export default function ContactForm() {
           ))}
           <option value="other">Other / Not Sure</option>
         </select>
-        {errors.service && <p className="mt-1 text-sm text-red-600" role="alert">{errors.service.message}</p>}
+        {errors.service && <p className="mt-1 text-sm text-brand-maroon" role="alert">{errors.service.message}</p>}
       </div>
 
       <div>
@@ -122,7 +122,7 @@ export default function ContactForm() {
           placeholder="Tell us about your business, what you're looking for, and any questions you have..."
           {...register('message')}
         />
-        {errors.message && <p className="mt-1 text-sm text-red-600" role="alert">{errors.message.message}</p>}
+        {errors.message && <p className="mt-1 text-sm text-brand-maroon" role="alert">{errors.message.message}</p>}
       </div>
 
       <Button type="submit" variant="primary" size="lg" fullWidth loading={isSubmitting}>

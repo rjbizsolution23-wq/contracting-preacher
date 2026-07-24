@@ -20,6 +20,8 @@ const config: Config = {
           lightBlue: '#2A5080',
           accent: '#D4AF37',
           offWhite: '#F5F3EF',
+          maroon: '#7A1A1A',
+          darkMaroon: '#5C1313',
         },
       },
       fontFamily: {

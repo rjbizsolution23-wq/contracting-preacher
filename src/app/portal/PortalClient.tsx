@@ -78,7 +78,7 @@ export default function PortalClient() {
             <input className="input-field" type="password" value={accessCode} onChange={(event) => setAccessCode(event.target.value)} required />
           </label>
           {error && (
-            <div className="mt-5 flex gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-800">
+            <div className="mt-5 flex gap-2 rounded-lg bg-brand-maroon/5 p-3 text-sm text-brand-darkMaroon">
               <AlertCircle className="h-5 w-5 shrink-0" />
               {error}
             </div>

@@ -210,7 +210,7 @@ export default function CommandCenterIntakeClient() {
           </div>
 
           {message && (
-            <div className={`mt-6 flex gap-3 rounded-lg p-4 text-sm ${status === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+            <div className={`mt-6 flex gap-3 rounded-lg p-4 text-sm ${status === 'success' ? 'bg-green-50 text-green-800' : 'bg-brand-maroon/5 text-brand-darkMaroon'}`}>
               {status === 'success' ? <CheckCircle2 className="h-5 w-5 shrink-0" /> : <AlertCircle className="h-5 w-5 shrink-0" />}
               {message}
             </div>
@@ -228,17 +228,17 @@ export default function CommandCenterIntakeClient() {
         </form>
 
         <aside className="space-y-5">
-          <div className="rounded-lg border border-red-200 bg-red-50 p-6">
-            <h2 className="flex items-center gap-2 font-accent text-lg font-bold text-red-900">
+          <div className="rounded-lg border border-brand-maroon/30 bg-brand-maroon/5 p-6">
+            <h2 className="flex items-center gap-2 font-accent text-lg font-bold text-brand-darkMaroon">
               <ShieldAlert className="h-5 w-5" /> Never enter here
             </h2>
-            <ul className="mt-4 space-y-2 text-sm text-red-900">
+            <ul className="mt-4 space-y-2 text-sm text-brand-darkMaroon">
               <li>Passwords or login credentials</li>
               <li>Bank account or routing numbers</li>
               <li>Full Social Security Numbers</li>
               <li>MFA codes</li>
             </ul>
-            <p className="mt-4 text-sm text-red-900">
+            <p className="mt-4 text-sm text-brand-darkMaroon">
               Owner personal financial data (SBA Form 413, personal tax returns) belongs in an
               encrypted restricted vault \u2014 see the Financing module.
             </p>

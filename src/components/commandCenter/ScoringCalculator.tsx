@@ -80,7 +80,7 @@ const BAND_TONE: Record<string, string> = {
   'pursue-with-partner': 'bg-yellow-100 text-yellow-800',
   monitor: 'bg-yellow-100 text-yellow-800',
   'no-bid': 'bg-gray-200 text-gray-700',
-  reject: 'bg-red-100 text-red-800',
+  reject: 'bg-brand-maroon/10 text-brand-darkMaroon',
 }
 
 export default function ScoringCalculator() {
@@ -233,7 +233,7 @@ export default function ScoringCalculator() {
       </div>
 
       {error && (
-        <div className="mt-5 flex gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-800">
+        <div className="mt-5 flex gap-2 rounded-lg bg-brand-maroon/5 p-3 text-sm text-brand-darkMaroon">
           <AlertTriangle className="h-5 w-5 shrink-0" />
           {error}
         </div>
@@ -253,7 +253,7 @@ export default function ScoringCalculator() {
             </span>
           </div>
           {result.disqualifiers.length > 0 && (
-            <div className="mt-4 rounded-lg bg-red-50 p-4 text-sm text-red-800">
+            <div className="mt-4 rounded-lg bg-brand-maroon/5 p-4 text-sm text-brand-darkMaroon">
               <div className="mb-2 flex items-center gap-2 font-bold"><ShieldAlert className="h-4 w-4" /> Hard disqualifiers triggered</div>
               <ul className="space-y-1">
                 {result.disqualifiers.map((flag) => <li key={flag}>{flag}</li>)}

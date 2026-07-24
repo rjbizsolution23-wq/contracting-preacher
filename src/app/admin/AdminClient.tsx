@@ -171,7 +171,7 @@ export default function AdminClient() {
           </div>
 
           {leadError && (
-            <div className="mt-5 rounded-lg bg-red-50 p-4 text-sm text-red-800">{leadError}</div>
+            <div className="mt-5 rounded-lg bg-brand-maroon/5 p-4 text-sm text-brand-darkMaroon">{leadError}</div>
           )}
 
           <div className="mt-6 space-y-4">
