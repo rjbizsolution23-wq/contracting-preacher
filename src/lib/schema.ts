@@ -9,6 +9,8 @@ export function generateOrganizationSchema() {
     alternateName: 'The Contracting Preacher',
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
+    logo: `${SITE_CONFIG.url}/images/brand/icon-512.png`,
+    image: `${SITE_CONFIG.url}/images/brand/icon-512.png`,
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
     founder: {
