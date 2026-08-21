@@ -23,6 +23,7 @@ const SUB_LINKS = [
   { href: '/command-center/workflow', label: 'AI Workflow' },
   { href: '/command-center/south-carolina', label: 'South Carolina' },
   { href: '/command-center/starter-intake', label: 'Starter Intake' },
+  { href: '/command-center/housing-recovery', label: 'Housing & Recovery' },
 ]
 
 export default function CCSubNav() {
