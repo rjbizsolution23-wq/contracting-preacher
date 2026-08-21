@@ -7,14 +7,33 @@ pages_build_output_dir = "out"
 AGENT_MODEL = "@cf/meta/llama-3.1-8b-instruct"
 OPENAI_MODEL = "gpt-4o-mini"
 
-[ai]
-binding = "AI"
-
 [[d1_databases]]
 binding = "DB"
 database_name = "contracting_preacher_crm"
 database_id = "dba14308-749f-4bbf-b367-0249da7bf156"
 
-[[kv_namespaces]]
-binding = "FEDFUNDING_CACHE"
-id = "d874d9b122594f7c9bcb39a1d86da7ca"
+# NOTE: the [ai] Workers AI binding and the FEDFUNDING_CACHE KV namespace were
+# removed here because the Genspark Hosted Deploy pipeline (Cloudflare
+# Workers for Platform) only auto-provisions one D1 database and one R2
+# bucket per worker -- it does not provision `ai` or `kv_namespaces`
+# bindings, and a wrangler config that declares them fails deployment with
+# "Unsupported Wrangler deployment field(s): ai, kv_namespaces".
+#
+# The application code already handles both as optional (see
+# functions/api/agent/chat.ts, functions/api/agent/housing-chat.ts, and
+# functions/api/funding/discover.ts): when env.AI is absent it falls back to
+# OPENAI_API_KEY, and when env.FEDFUNDING_CACHE is absent it simply skips the
+# cache read/write and always does a live fetch. Set OPENAI_API_KEY via
+# `gsk hosted secret_put` (or the equivalent Cloudflare Pages secret) so the
+# hosted deploy still gets live LLM answers instead of the deterministic
+# tool-summary fallback.
+#
+# If a future deploy target *does* support Workers AI / KV bindings again
+# (e.g. a direct wrangler deploy to a dedicated Cloudflare account via
+# cf-byok-deploy), these two blocks can be restored:
+#   [ai]
+#   binding = "AI"
+#
+#   [[kv_namespaces]]
+#   binding = "FEDFUNDING_CACHE"
+#   id = "d874d9b122594f7c9bcb39a1d86da7ca"
