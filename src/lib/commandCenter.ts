@@ -755,4 +755,5 @@ export const COMMAND_CENTER_MODULES: CommandCenterModule[] = [
   { href: '/command-center/workflow', title: 'End-to-End AI Workflow', description: 'The 19-step pipeline from intake to business-memory update, with required human approval gates.' },
   { href: '/command-center/south-carolina', title: 'South Carolina Profile Addendum', description: 'County, congressional district, HUBZone, SC MBE, SCDOT, SCEIS, and target SC agencies.' },
   { href: '/command-center/starter-intake', title: 'Copy-and-Complete Starter Intake', description: 'A plain-text fillable template excluding passwords, SSNs, and banking credentials.' },
+  { href: '/command-center/housing-recovery', title: 'Housing & Recovery Housing Intelligence (Marcus)', description: 'South Carolina affordable housing, sober living / recovery housing, HUD grants, and government housing contracts research framework.' },
 ]
