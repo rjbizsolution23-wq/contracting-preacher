@@ -184,6 +184,7 @@ Release checklist: [docs/RELEASE-CHECKLIST.md](docs/RELEASE-CHECKLIST.md)
 | File | Purpose |
 | --- | --- |
 | [docs/STARTER-PACK.md](docs/STARTER-PACK.md) | **Start here if you're Dr. McKnight** — plain-language login guide, walkthrough tour guide, GHL/booking wiring explanation, and monetary value breakdown |
+| [docs/PROPOSAL-SOW.md](docs/PROPOSAL-SOW.md) | Full proposal & statement of work — every phase built, full deliverables inventory, and total system value |
 | [docs/PRODUCT.md](docs/PRODUCT.md) | Product brief and workflows |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design |
 | [docs/API.md](docs/API.md) | API reference |
