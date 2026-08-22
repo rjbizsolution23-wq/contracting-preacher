@@ -1,7 +1,11 @@
+import { pushToGhl } from '../_shared/ghl'
+
 interface Env {
   SENDGRID_API_KEY?: string
   SENDGRID_FROM_EMAIL?: string
   DB?: D1Database
+  GHL_PIT?: string
+  GHL_LOCATION_ID?: string
 }
 
 interface BookingBody {
@@ -187,6 +191,24 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         console.error('Booking CRM persistence error:', dbError)
       }
     }
+
+    // Push to GoHighLevel CRM (best-effort; never blocks the response).
+    await pushToGhl(env, {
+      firstName,
+      lastName,
+      email,
+      phone,
+      companyName: company,
+      tags: ['booking-request'],
+      customFields: {
+        company,
+        service_interested_in: service,
+        booking_requested_date: date,
+        booking_requested_time: time,
+        booking_notes: notes || '',
+        booking_status: 'pending',
+      },
+    })
 
     return new Response(
       JSON.stringify({ success: true, message: 'Consultation booked successfully' }),

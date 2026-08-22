@@ -1,7 +1,11 @@
+import { pushToGhl } from '../_shared/ghl'
+
 interface Env {
   SENDGRID_API_KEY?: string
   SENDGRID_FROM_EMAIL?: string
   DB?: D1Database
+  GHL_PIT?: string
+  GHL_LOCATION_ID?: string
 }
 
 interface ContactBody {
@@ -135,6 +139,26 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         console.error('Contact CRM persistence error:', dbError)
       }
     }
+
+    // Push to GoHighLevel CRM (best-effort; never blocks the response).
+    await pushToGhl(env, {
+      firstName,
+      lastName,
+      email,
+      phone,
+      companyName: company,
+      tags: ['contact-form'],
+      customFields: {
+        company,
+        service_interested_in: service,
+        inquiry_message: message,
+        lead_source: source || 'contact-form',
+        utm_source: utmSource || '',
+        utm_medium: utmMedium || '',
+        utm_campaign: utmCampaign || '',
+        referrer_url: referrer || '',
+      },
+    })
 
     return new Response(
       JSON.stringify({ success: true, message: 'Contact form submitted successfully' }),

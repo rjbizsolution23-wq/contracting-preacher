@@ -1,7 +1,11 @@
+import { pushToGhl } from '../_shared/ghl'
+
 interface Env {
   SENDGRID_API_KEY?: string
   SENDGRID_FROM_EMAIL?: string
   DB?: D1Database
+  GHL_PIT?: string
+  GHL_LOCATION_ID?: string
 }
 
 interface NewsletterBody {
@@ -141,6 +145,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         console.error('Newsletter CRM persistence error:', dbError)
       }
     }
+
+    // Push to GoHighLevel CRM (best-effort; never blocks the response).
+    await pushToGhl(env, {
+      firstName,
+      email,
+      tags: ['newsletter-subscriber'],
+      customFields: {
+        newsletter_subscriber: ['Yes'],
+        newsletter_source: 'newsletter-form',
+      },
+    })
 
     return new Response(
       JSON.stringify({ success: true, message: 'Successfully subscribed to the newsletter' }),

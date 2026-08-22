@@ -1,9 +1,12 @@
 import { adminGateReason, ipHint, json, logAuditEvent, options } from '../../_shared/http'
 import { BusinessProfileInput, makeBusinessProfile, validateBusinessProfile } from '../../_shared/dataRoom'
+import { pushToGhl } from '../../_shared/ghl'
 
 type Env = {
   ADMIN_ACCESS_CODE?: string
   DB?: D1Database
+  GHL_PIT?: string
+  GHL_LOCATION_ID?: string
 }
 
 const COLUMNS = [
@@ -158,6 +161,60 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       detail: `legalName=${record.legalName}`,
     })
   }
+
+  // Push to GoHighLevel CRM (best-effort; never blocks the response).
+  const lanes = String(record.lanesOfInterest || '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+  const tags = ['command-center-intake']
+  if (record.samStatus === 'active') tags.push('sam-active')
+  else if (record.samStatus === 'not-started' || record.samStatus === 'unknown') tags.push('sam-not-started')
+  if (record.certifications && String(record.certifications).trim()) tags.push('certification-interested')
+  if (String(record.stateOfFormation || '').toLowerCase().includes('south carolina')) tags.push('south-carolina')
+  if (lanes.includes('Federal contracts')) tags.push('federal-contracts-lane')
+  if (lanes.includes('Grants')) tags.push('grants-lane')
+
+  await pushToGhl(env, {
+    firstName: undefined,
+    lastName: undefined,
+    email: String(record.email || ''),
+    phone: String(record.phone || ''),
+    companyName: String(record.legalName || ''),
+    website: String(record.website || ''),
+    tags,
+    customFields: {
+      legal_business_name: record.legalName,
+      dba__brand_name: record.dbaName,
+      entity_type: record.entityType,
+      state_of_formation: record.stateOfFormation,
+      formation_date: record.formationDate,
+      principal_business_address: record.principalAddress,
+      service_area: record.serviceArea,
+      profit_status: record.profitStatus,
+      uei_number: record.uei,
+      cage_code: record.cageCode,
+      samgov_status: record.samStatus,
+      sc_vendor_number: record.scVendorNumber,
+      grantsgov_status: record.grantsGovStatus,
+      primary_naics: record.primaryNaics,
+      secondary_naics: record.secondaryNaics,
+      core_offering: record.coreOffering,
+      employees: record.employees,
+      contractors_1099: record.contractors,
+      certifications: record.certifications,
+      business_licenses: record.licenses,
+      revenue_2023: record.revenue2023,
+      revenue_2024: record.revenue2024,
+      revenue_2025: record.revenue2025,
+      funding_amount_requested: record.fundingAmountRequested,
+      use_of_funds: record.useOfFunds,
+      lanes_of_interest: lanes,
+      top_past_projects: record.topProjects,
+      biggest_goal: record.biggestGoal,
+      biggest_gap: record.biggestGap,
+    },
+  })
 
   return json({
     success: true,
