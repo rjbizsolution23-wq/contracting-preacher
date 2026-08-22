@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { AlertCircle, ArrowRight, CheckCircle2 } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import GuidedTour from '@/components/onboarding/GuidedTour'
+import HelpMenu from '@/components/onboarding/HelpMenu'
 
 type IntakeState = {
   firstName: string
@@ -105,6 +107,8 @@ export default function IntakeClient() {
 
   return (
     <div className="bg-brand-offWhite">
+      <GuidedTour tourId="intake" />
+      <HelpMenu tourIds={['intake']} />
       <section className="bg-brand-navy py-14 text-white">
         <div className="container-custom">
           <p className="font-accent text-sm font-bold uppercase tracking-widest text-brand-lightGold">
@@ -121,7 +125,7 @@ export default function IntakeClient() {
       </section>
 
       <section className="container-custom grid gap-8 py-12 lg:grid-cols-[1fr_360px]">
-        <form onSubmit={submit} className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+        <form onSubmit={submit} data-tour="intake-form" className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
               <h2 className="font-accent text-2xl font-bold text-brand-navy">Business Profile</h2>

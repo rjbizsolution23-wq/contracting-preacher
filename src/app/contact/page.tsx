@@ -3,6 +3,8 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 import { generateSEO } from '@/lib/seo'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import ContactForm from '@/components/forms/ContactForm'
+import GuidedTour from '@/components/onboarding/GuidedTour'
+import HelpMenu from '@/components/onboarding/HelpMenu'
 import { SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = generateSEO({
@@ -15,13 +17,15 @@ export const metadata: Metadata = generateSEO({
 export default function ContactPage() {
   return (
     <>
+      <GuidedTour tourId="contact" />
+      <HelpMenu tourIds={['contact']} />
       <Breadcrumbs items={[{ label: 'Contact', href: '/contact' }]} />
 
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid lg:grid-cols-5 gap-16">
             {/* Info */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2" data-tour="contact-info">
               <span className="text-brand-gold font-accent font-bold text-sm uppercase tracking-widest mb-4 block">
                 Get In Touch
               </span>
@@ -61,7 +65,7 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3" data-tour="contact-form">
               <div className="card-elevated p-8 md:p-10">
                 <h2 className="text-2xl font-heading font-bold text-brand-navy mb-2">Send Us a Message</h2>
                 <p className="text-gray-500 mb-8">Fill out the form and we&apos;ll get back to you within 24 hours.</p>

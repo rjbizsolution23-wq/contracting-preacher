@@ -1,4 +1,4 @@
-import { pushToGhl } from '../_shared/ghl'
+import { pushToGhl, createGhlAppointment } from '../_shared/ghl'
 
 interface Env {
   SENDGRID_API_KEY?: string
@@ -6,6 +6,27 @@ interface Env {
   DB?: D1Database
   GHL_PIT?: string
   GHL_LOCATION_ID?: string
+  GHL_CALENDAR_ID?: string
+}
+
+/**
+ * Converts the booking form's "2026-09-05" + "10:00 AM" (always interpreted
+ * as the site's published EST hours -- see BookingCalendar.tsx / the
+ * confirmation emails below, both of which say "EST") into an ISO-8601
+ * date-time WITH an explicit -05:00 offset, e.g. "2026-09-05T10:00:00-05:00".
+ * GHL's calendar/appointments API requires an explicit offset -- a bare or
+ * UTC timestamp gets checked against the wrong wall-clock hour and either
+ * 400s with "slot no longer available" or books the wrong hour silently.
+ * Returns null if date/time can't be parsed.
+ */
+function toEstIso(date: string, time: string): string | null {
+  const m = /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i.exec(time.trim())
+  if (!m || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return null
+  let hour = parseInt(m[1], 10) % 12
+  if (/pm/i.test(m[3])) hour += 12
+  const minute = m[2]
+  const hh = String(hour).padStart(2, '0')
+  return `${date}T${hh}:${minute}:00-05:00`
 }
 
 interface BookingBody {
@@ -192,8 +213,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }
     }
 
-    // Push to GoHighLevel CRM (best-effort; never blocks the response).
-    await pushToGhl(env, {
+    // Push to GoHighLevel CRM (best-effort; never blocks the response), then
+    // -- using the contact id it returns -- book a real appointment on the
+    // GHL Calendar so the slot actually appears on Dr. McKnight's calendar
+    // (and any connected Google Calendar), not just as a tagged contact.
+    const ghlPush = await pushToGhl(env, {
       firstName,
       lastName,
       email,
@@ -209,6 +233,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         booking_status: 'pending',
       },
     })
+
+    if (ghlPush.ok && ghlPush.contactId) {
+      const startTime = toEstIso(date, time)
+      if (startTime) {
+        const apptResult = await createGhlAppointment(env, {
+          contactId: ghlPush.contactId,
+          startTime,
+          title: `Free Consultation — ${firstName} ${lastName} (${company})`,
+        })
+        if (!apptResult.ok && !apptResult.skipped) {
+          console.error('GHL appointment booking failed:', apptResult.status, apptResult.error)
+        }
+      }
+    }
 
     return new Response(
       JSON.stringify({ success: true, message: 'Consultation booked successfully' }),
