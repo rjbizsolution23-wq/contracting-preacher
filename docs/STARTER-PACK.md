@@ -10,6 +10,10 @@ built-in walkthrough.** Look for the gold circle "?" button in the bottom-left
 corner of any screen and click it — it will explain that page to you, step by
 step, right on screen.
 
+> Looking for the full build history, everything included, and the total
+> dollar value of the whole system laid out as a formal proposal? See
+> [docs/PROPOSAL-SOW.md](PROPOSAL-SOW.md).
+
 ---
 
 ## 1. How to Log In (Cloudflare Access / "TCP Cloud Tunnel")
