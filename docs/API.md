@@ -3,7 +3,7 @@
 Base URL:
 
 ```text
-https://contracting-preacher.pages.dev
+https://contracting-preacher-fyf.pages.dev
 ```
 
 ## Agent
@@ -76,7 +76,7 @@ Query parameters:
 Example:
 
 ```bash
-curl 'https://contracting-preacher.pages.dev/api/funding/discover?q=cybersecurity&limit=5'
+curl 'https://contracting-preacher-fyf.pages.dev/api/funding/discover?q=cybersecurity&limit=5'
 ```
 
 ### `GET /api/funding/search`
@@ -94,7 +94,7 @@ Supported `source` values:
 Example:
 
 ```bash
-curl 'https://contracting-preacher.pages.dev/api/funding/search?source=nofo&q=construction'
+curl 'https://contracting-preacher-fyf.pages.dev/api/funding/search?source=nofo&q=construction'
 ```
 
 ### `GET /api/funding/status`
@@ -120,7 +120,7 @@ Supported `source` values:
 Example:
 
 ```bash
-curl 'https://contracting-preacher.pages.dev/api/open-data/search?source=wikipedia&q=Department%20of%20Defense'
+curl 'https://contracting-preacher-fyf.pages.dev/api/open-data/search?source=wikipedia&q=Department%20of%20Defense'
 ```
 
 ## Portal

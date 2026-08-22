@@ -5,7 +5,7 @@
 Production URL:
 
 ```text
-https://contracting-preacher.pages.dev
+https://contracting-preacher-fyf.pages.dev
 ```
 
 Cloudflare Pages project:
@@ -79,11 +79,11 @@ npx wrangler d1 execute contracting_preacher_crm --remote --file db/0001_fedfund
 ## Post-Deploy Checks
 
 ```bash
-curl -I https://contracting-preacher.pages.dev/
-curl https://contracting-preacher.pages.dev/api/agent/status
-curl https://contracting-preacher.pages.dev/api/funding/status
-curl 'https://contracting-preacher.pages.dev/api/funding/discover?q=cybersecurity&limit=2'
-curl -X POST https://contracting-preacher.pages.dev/api/agent/chat \
+curl -I https://contracting-preacher-fyf.pages.dev/
+curl https://contracting-preacher-fyf.pages.dev/api/agent/status
+curl https://contracting-preacher-fyf.pages.dev/api/funding/status
+curl 'https://contracting-preacher-fyf.pages.dev/api/funding/discover?q=cybersecurity&limit=2'
+curl -X POST https://contracting-preacher-fyf.pages.dev/api/agent/chat \
   -H 'Content-Type: application/json' \
   --data '{"messages":[{"role":"user","content":"Find construction grants and contracts in South Carolina"}]}'
 ```
