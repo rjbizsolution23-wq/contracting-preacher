@@ -92,7 +92,7 @@ export default function NewsletterSection() {
               </div>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handleSubmit} noValidate data-tour="newsletter-form">
               <div className="flex flex-col sm:flex-row gap-3 mb-3">
                 <input
                   type="text"

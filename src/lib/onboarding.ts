@@ -239,6 +239,27 @@ export const TOURS: Record<string, Tour> = {
       },
     ],
   },
+  newsletter: {
+    id: 'newsletter',
+    name: 'Newsletter Signup Walkthrough',
+    replayLabel: 'Newsletter signup walkthrough',
+    steps: [
+      {
+        id: 'newsletter-form',
+        target: "[data-tour='newsletter-form']",
+        title: 'Free federal contracting tips by email',
+        body:
+          'Enter your email (name optional) to get practical tips on SAM registration, SBA certifications, proposal writing, and new contract opportunities \u2014 straight from Dr. McKnight. No spam, unsubscribe anytime.',
+      },
+      {
+        id: 'newsletter-after',
+        target: null,
+        title: 'What happens after you subscribe',
+        body:
+          'You\u2019ll get an instant welcome email and be added to Dr. McKnight\u2019s GoHighLevel contact list under a "newsletter" tag, so future tips and announcements reach your inbox automatically.',
+      },
+    ],
+  },
 }
 
 /** Maps an exact pathname to the tour that should auto-play there. */
@@ -250,6 +271,7 @@ export const PATH_TOUR_MAP: Record<string, string> = {
   '/contact': 'contact',
   '/free-consultation': 'booking',
   '/intake': 'intake',
+  '/': 'newsletter',
 }
 
 const STORAGE_KEYS = {

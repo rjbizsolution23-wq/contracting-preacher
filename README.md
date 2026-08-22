@@ -6,8 +6,8 @@ Federal contracting website, CRM, client portal, opportunity finder, and Cloudfl
 
 | Environment | URL |
 | --- | --- |
-| Production | https://contracting-preacher.pages.dev |
-| Latest verified deployment | https://48d49e43.contracting-preacher.pages.dev |
+| Production | https://contracting-preacher-fyf.pages.dev |
+| Latest verified deployment | https://2ef81e89.contracting-preacher-fyf.pages.dev |
 | GitHub | https://github.com/rjbizsolution23-wq/contracting-preacher |
 | Future custom domain | https://thecontractingpreacher.com |
 
@@ -168,11 +168,11 @@ The requested admin access code has been set in Cloudflare production. Do not pu
 ## Production Smoke Checks
 
 ```bash
-curl -I https://contracting-preacher.pages.dev/
-curl https://contracting-preacher.pages.dev/api/agent/status
-curl https://contracting-preacher.pages.dev/api/funding/status
-curl 'https://contracting-preacher.pages.dev/api/funding/discover?q=cybersecurity&limit=2'
-curl -X POST https://contracting-preacher.pages.dev/api/agent/chat \
+curl -I https://contracting-preacher-fyf.pages.dev/
+curl https://contracting-preacher-fyf.pages.dev/api/agent/status
+curl https://contracting-preacher-fyf.pages.dev/api/funding/status
+curl 'https://contracting-preacher-fyf.pages.dev/api/funding/discover?q=cybersecurity&limit=2'
+curl -X POST https://contracting-preacher-fyf.pages.dev/api/agent/chat \
   -H 'Content-Type: application/json' \
   --data '{"messages":[{"role":"user","content":"Find construction grants and contracts in South Carolina"}]}'
 ```
@@ -183,6 +183,7 @@ Release checklist: [docs/RELEASE-CHECKLIST.md](docs/RELEASE-CHECKLIST.md)
 
 | File | Purpose |
 | --- | --- |
+| [docs/STARTER-PACK.md](docs/STARTER-PACK.md) | **Start here if you're Dr. McKnight** — plain-language login guide, walkthrough tour guide, GHL/booking wiring explanation, and monetary value breakdown |
 | [docs/PRODUCT.md](docs/PRODUCT.md) | Product brief and workflows |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design |
 | [docs/API.md](docs/API.md) | API reference |
