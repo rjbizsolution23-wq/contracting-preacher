@@ -6,6 +6,8 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import CCHero from '@/components/commandCenter/CCHero'
 import CCSubNav from '@/components/commandCenter/CCSubNav'
 import TruthBanner from '@/components/commandCenter/TruthBanner'
+import GuidedTour from '@/components/onboarding/GuidedTour'
+import HelpMenu from '@/components/onboarding/HelpMenu'
 import { COMMAND_CENTER_MODULES, LAUNCH_REQUIREMENTS, WORKFLOW_STEPS } from '@/lib/commandCenter'
 
 export const metadata: Metadata = generateSEO({
@@ -22,6 +24,8 @@ export const metadata: Metadata = generateSEO({
 export default function CommandCenterPage() {
   return (
     <div className="bg-brand-offWhite">
+      <GuidedTour tourId="command-center" />
+      <HelpMenu tourIds={['command-center']} />
       <Breadcrumbs items={[{ label: 'Business Funding Command Center', href: '/command-center' }]} />
       <CCHero
         eyebrow="Business Funding + Contracting AI Command Center"
@@ -35,7 +39,7 @@ export default function CommandCenterPage() {
         ]}
       >
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/command-center/intake" className="btn-primary">
+          <Link data-tour="cc-start-intake" href="/command-center/intake" className="btn-primary">
             Start the intake
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
@@ -73,7 +77,7 @@ export default function CommandCenterPage() {
         </div>
       </section>
 
-      <section className="container-custom pb-16">
+      <section data-tour="cc-launch-requirements" className="container-custom pb-16">
         <div className="rounded-lg bg-brand-navy p-8 text-white">
           <h2 className="font-accent text-2xl font-bold">Immediate launch requirements</h2>
           <p className="mt-2 max-w-3xl text-gray-300">

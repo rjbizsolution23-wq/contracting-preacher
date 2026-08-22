@@ -10,7 +10,7 @@ interface CCHeroProps {
 
 export default function CCHero({ eyebrow, title, description, stats, children }: CCHeroProps) {
   return (
-    <section className="bg-brand-navy py-14 text-white">
+    <section data-tour="cc-hero" className="bg-brand-navy py-14 text-white">
       <div className="container-custom grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
         <div>
           <p className="font-accent text-sm font-bold uppercase tracking-widest text-brand-lightGold">

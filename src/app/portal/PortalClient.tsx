@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { AlertCircle, Bot, CheckCircle2, Loader2, LogIn } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import GuidedTour from '@/components/onboarding/GuidedTour'
+import HelpMenu from '@/components/onboarding/HelpMenu'
 import { PORTAL_MODULES } from '@/lib/fedfunding'
 
 type PortalData = {
@@ -48,6 +50,8 @@ export default function PortalClient() {
 
   return (
     <div className="min-h-screen bg-brand-offWhite">
+      <GuidedTour tourId="portal" />
+      <HelpMenu tourIds={['portal']} />
       <section className="bg-brand-navy py-14 text-white">
         <div className="container-custom">
           <p className="font-accent text-sm font-bold uppercase tracking-widest text-brand-lightGold">
@@ -64,7 +68,7 @@ export default function PortalClient() {
       </section>
 
       <section className="container-custom grid gap-8 py-12 lg:grid-cols-[380px_1fr]">
-        <form onSubmit={login} className="h-fit rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+        <form data-tour="portal-login-form" onSubmit={login} className="h-fit rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
           <h2 className="font-accent text-2xl font-bold text-brand-navy">Portal Login</h2>
           <p className="mt-2 text-sm leading-6 text-gray-600">
             Enter the client email and access code issued by The Contracting Preacher team.
