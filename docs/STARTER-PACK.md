@@ -179,6 +179,38 @@ Public — no login needed, so you can point prospective clients to it directly.
 
 ---
 
+## 7.5 Your Own Domain Is Live
+
+`thecontractingpreacher.com` and `www.thecontractingpreacher.com` are both
+connected and working — real visitors can reach the site at either address,
+with a valid HTTPS padlock (no browser warnings), and both are locked down
+by the same Cloudflare Access login on `/admin`, `/command-center`, and the
+Business API described in Section 1.
+
+What's set up under the hood, in plain terms:
+
+- **Two DNS records** point your domain names at the website itself, so
+  typing `thecontractingpreacher.com` or `www.thecontractingpreacher.com`
+  into a browser loads your site.
+- **Email routing** is turned on for `@thecontractingpreacher.com`. Anyone who
+  emails an address at your domain (e.g. `info@thecontractingpreacher.com`)
+  will have that message forwarded straight into your existing inbox — no new
+  mailbox or email software needed on your end.
+- **Anti-spoofing records** (SPF, DKIM, DMARC) are in place so that email
+  claiming to be "from" your domain is verified as genuinely coming from your
+  systems (SendGrid, for the site's automated confirmation emails) — this
+  makes it much harder for scammers to impersonate
+  `@thecontractingpreacher.com` in phishing emails, and keeps your legitimate
+  emails out of spam folders.
+
+If you ever want to send *and reply to* email as
+`info@thecontractingpreacher.com` (not just receive forwarded mail), that
+requires connecting a mailbox provider (e.g. Google Workspace or Microsoft
+365) — ask your developer if/when you want that set up; it's a small
+additional step on top of what's already live.
+
+---
+
 ## 8. The Monetary Value of This System
 
 ### A) What your services are worth (from the site's own published pricing)
@@ -238,9 +270,17 @@ There is no large recurring software bill hiding behind this system.
 
 ## 9. Quick Reference — Where Everything Lives
 
-- **Live site:** https://contracting-preacher-fyf.pages.dev
-  (once your custom domain `thecontractingpreacher.com` is connected, it will
-  serve the same site)
+- **Live site (your domain):** https://thecontractingpreacher.com and
+  https://www.thecontractingpreacher.com — both are live, both have valid
+  HTTPS certificates, and both are protected by the same Cloudflare Access
+  login on `/admin`, `/command-center`, and the Business API.
+- **Underlying Cloudflare Pages URL:** https://contracting-preacher-fyf.pages.dev
+  (still works too — it's the same site, just the platform-assigned address)
+- **Email:** Cloudflare Email Routing forwards anything sent to
+  `@thecontractingpreacher.com` straight to your inbox (fmimmi29@gmail.com),
+  with SPF, DKIM, and DMARC configured so mail sent *from*
+  `info@thecontractingpreacher.com` (via SendGrid, for confirmation emails) is
+  authenticated and can't be spoofed by scammers.
 - **GitHub code repository (private):** https://github.com/rjbizsolution23-wq/contracting-preacher
 - **Admin CRM:** `/admin` (Cloudflare Access + access code)
 - **Command Center:** `/command-center` (Cloudflare Access)
