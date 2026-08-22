@@ -11,6 +11,8 @@ import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
 import FAQPreview from '@/components/home/FAQPreview'
 import CTASection from '@/components/home/CTASection'
 import NewsletterSection from '@/components/home/NewsletterSection'
+import GuidedTour from '@/components/onboarding/GuidedTour'
+import HelpMenu from '@/components/onboarding/HelpMenu'
 
 export const metadata: Metadata = generateSEO({
   title: 'Federal Contracting Consultant — Win Government Contracts Nationwide',
@@ -44,6 +46,8 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
+      <GuidedTour tourId="newsletter" />
+      <HelpMenu tourIds={['newsletter']} />
       <HeroSection />
       <TrustBadges />
       <StatsCounter />
