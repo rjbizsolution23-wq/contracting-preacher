@@ -3,6 +3,8 @@ import { CheckCircle2, Phone, Clock, Shield, Star } from 'lucide-react'
 import { generateSEO } from '@/lib/seo'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import BookingCalendar from '@/components/forms/BookingCalendar'
+import GuidedTour from '@/components/onboarding/GuidedTour'
+import HelpMenu from '@/components/onboarding/HelpMenu'
 import { SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = generateSEO({
@@ -22,6 +24,8 @@ export const metadata: Metadata = generateSEO({
 export default function FreeConsultationPage() {
   return (
     <>
+      <GuidedTour tourId="booking" />
+      <HelpMenu tourIds={['booking']} />
       <Breadcrumbs items={[{ label: 'Free Consultation', href: '/free-consultation' }]} />
 
       <section className="section-padding bg-white">
@@ -107,7 +111,9 @@ export default function FreeConsultationPage() {
                 <p className="text-gray-500 mb-6 text-sm">
                   Choose a date, pick a time, and fill out a quick form. Takes under 2 minutes.
                 </p>
-                <BookingCalendar />
+                <div data-tour="booking-calendar">
+                  <BookingCalendar />
+                </div>
               </div>
             </div>
           </div>

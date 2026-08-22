@@ -155,6 +155,90 @@ export const TOURS: Record<string, Tour> = {
       },
     ],
   },
+
+  /*
+   * ─── Public, prospective-client tours ───
+   * These run for anonymous visitors (no login), so they must never
+   * assume the visitor is staff. Each one auto-plays once per browser
+   * on its page, same as the staff tours above.
+   */
+  contact: {
+    id: 'contact',
+    name: 'Contact Form Walkthrough',
+    replayLabel: 'Contact page walkthrough',
+    steps: [
+      {
+        id: 'contact-info',
+        target: "[data-tour='contact-info']",
+        title: 'Prefer to call or email directly?',
+        body:
+          'Dr. McKnight\u2019s phone, email, office address, and hours are listed here \u2014 use whichever works best for you.',
+      },
+      {
+        id: 'contact-form',
+        target: "[data-tour='contact-form']",
+        title: 'Or send a message right here',
+        body:
+          'Fill in your contact details, pick the service you\u2019re interested in, and describe your business and goals. Dr. McKnight typically responds within 24 hours \u2014 your information is 100% confidential.',
+      },
+    ],
+  },
+  booking: {
+    id: 'booking',
+    name: 'Free Consultation Booking Walkthrough',
+    replayLabel: 'Booking page walkthrough',
+    steps: [
+      {
+        id: 'booking-calendar',
+        target: "[data-tour='booking-calendar']",
+        title: 'Step 1 \u2014 Pick a date and time',
+        body:
+          'Choose any open weekday slot. All times shown are Eastern (EST). Once you pick a date and time, click "Continue" to enter your info.',
+      },
+      {
+        id: 'booking-info',
+        target: null,
+        title: 'Step 2 \u2014 Tell us about your business',
+        body:
+          'A few quick fields: your name, contact info, company, and the service you\u2019re most interested in. Takes under a minute.',
+      },
+      {
+        id: 'booking-confirm',
+        target: null,
+        title: 'Step 3 \u2014 Confirm your booking',
+        body:
+          'Review your date, time, and details, then click "Confirm Booking." You\u2019ll get an instant email confirmation, and the appointment is placed directly on Dr. McKnight\u2019s calendar \u2014 no back-and-forth needed.',
+      },
+    ],
+  },
+  intake: {
+    id: 'intake',
+    name: 'Client Intake Walkthrough',
+    replayLabel: 'Intake form walkthrough',
+    steps: [
+      {
+        id: 'intake-purpose',
+        target: "[data-tour='intake-form']",
+        title: 'What this form is for',
+        body:
+          'This is the master intake for The Contracting Preacher. It feeds Dr. McKnight\u2019s CRM, generates your federal-contracting readiness score, reviews certification fit (8(a), HUBZone, WOSB, SDVOSB), and drafts your first 12-month roadmap.',
+      },
+      {
+        id: 'intake-detail',
+        target: null,
+        title: 'The more detail, the better the roadmap',
+        body:
+          'Business basics, NAICS codes, SAM.gov status, and your goals all directly shape the recommendations you get back \u2014 there\u2019s no such thing as "too much detail" here.',
+      },
+      {
+        id: 'intake-after',
+        target: null,
+        title: 'What happens after you submit',
+        body:
+          'Your submission lands directly in Dr. McKnight\u2019s CRM and GoHighLevel contact record. Expect a follow-up call or email to schedule your strategy session.',
+      },
+    ],
+  },
 }
 
 /** Maps an exact pathname to the tour that should auto-play there. */
@@ -163,6 +247,9 @@ export const PATH_TOUR_MAP: Record<string, string> = {
   '/admin': 'admin',
   '/portal': 'portal',
   '/agent': 'agent',
+  '/contact': 'contact',
+  '/free-consultation': 'booking',
+  '/intake': 'intake',
 }
 
 const STORAGE_KEYS = {
