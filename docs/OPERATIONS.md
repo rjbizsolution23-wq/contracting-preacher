@@ -25,9 +25,13 @@ Cause: wrong `ADMIN_ACCESS_CODE`, missing production secret, or request hitting 
 Fix:
 
 ```bash
-printf '%s' 'mcknight1' | npx wrangler pages secret put ADMIN_ACCESS_CODE --project-name contracting-preacher
-npx wrangler pages deploy out --project-name contracting-preacher --branch production --commit-dirty=true
+printf '%s' '<the real ADMIN_ACCESS_CODE>' | npx wrangler pages secret put ADMIN_ACCESS_CODE --project-name contracting-preacher
+npx wrangler pages deploy out --project-name contracting-preacher --branch main --commit-dirty=true
 ```
+
+Note: the production branch is `main` — deploying to a different branch name
+(e.g. `production`) creates a *preview* deployment on a different URL and will
+not update the live site.
 
 ### Agent responds, but contract search says SAM.gov is not configured
 

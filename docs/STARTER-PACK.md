@@ -48,8 +48,24 @@ Cloudflare puts up.
    this (each of the four areas remembers your login separately for 24 hours).
 7. After Cloudflare's checkpoint, `/admin` has a **second, simpler** lock — a
    private access code (just a password, no email needed). Enter it once and
-   the browser remembers it after that. (Ask whoever manages the site for this
-   code if you don't have it — it's stored as `ADMIN_ACCESS_CODE`.)
+   the browser remembers it after that.
+
+### Your personal admin access code
+
+You now have your own dedicated code for that second lock — it's yours alone,
+separate from the placeholder demo code that was used during development:
+
+```
+Lonnie-O8GJ-nSxp-12Al
+```
+
+This has already been set as the live production code — the old demo code no
+longer works anywhere (verified on the pages.dev address and both
+`thecontractingpreacher.com` / `www.thecontractingpreacher.com`). Keep this
+code somewhere private (a password manager, not a sticky note). If it's ever
+lost or you want it changed, your developer can rotate it in under a minute —
+it does not require touching Cloudflare at all, it's a separate, simpler
+secret than the Access checkpoint above.
 
 ### If you get stuck
 
@@ -286,7 +302,8 @@ There is no large recurring software bill hiding behind this system.
   `info@thecontractingpreacher.com` (via SendGrid, for confirmation emails) is
   authenticated and can't be spoofed by scammers.
 - **GitHub code repository (private):** https://github.com/rjbizsolution23-wq/contracting-preacher
-- **Admin CRM:** `/admin` (Cloudflare Access + access code)
+- **Admin CRM:** `/admin` (Cloudflare Access + your personal access code —
+  see Section 1)
 - **Command Center:** `/command-center` (Cloudflare Access)
 - **Client Portal:** `/portal` (portal access code, given to clients individually)
 - **AI Agent:** `/agent` (public)

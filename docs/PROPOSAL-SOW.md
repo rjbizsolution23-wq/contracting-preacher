@@ -166,13 +166,29 @@ A full robustness pass across the private/admin side of the system:
 - Updated all technical documentation (README, API docs, deployment docs,
   and the client-facing Starter Pack) to reflect the live domain.
 
-### Phase 9 — Lonnie's Personal Admin Access *(in progress)*
+### Phase 9 — Lonnie's Personal Admin Access
+*(Aug 22, 2026 — complete)*
 
-- **Requested:** a dedicated, personal admin-level login for Dr. McKnight,
-  separate from/in addition to the current setup, so he has full,
-  independent access to his own system.
-- **Status:** scoped, not yet executed — see the note at the end of this
-  document for what's needed to complete this step.
+- **Investigated the outer login layer (Cloudflare Access):** confirmed that
+  all three protected applications (`TCP - Admin`, `TCP - Command Center`,
+  `TCP - API Business`) already allow-list `fmimmi29@gmail.com` — and that
+  the domain's own registrant of record is "Lonzell McKnight" at that same
+  address. In other words, the Cloudflare Access checkpoint (email + one-time
+  code) was already Dr. McKnight's own login; no change was needed there.
+- **Issued a dedicated personal admin passcode.** Previously, the second lock
+  on `/admin` (`ADMIN_ACCESS_CODE`) used a generic placeholder code left over
+  from development (`mcknight1`), shared by anyone who had it. Generated a
+  new, unique, high-entropy code for Dr. McKnight and deployed it to
+  production as the live `ADMIN_ACCESS_CODE` secret.
+- **Verified end-to-end on every live address:** confirmed the old code now
+  fails (`401`) and the new personal code succeeds (`200`) on
+  `contracting-preacher-fyf.pages.dev`, `thecontractingpreacher.com`, and
+  `www.thecontractingpreacher.com`. Also re-confirmed the outer Cloudflare
+  Access checkpoint still correctly challenges (`302`) `/admin` and
+  `/command-center` on all three addresses — nothing was loosened while
+  making this change.
+- **Delivered the new code directly to Dr. McKnight's team** — see
+  `docs/STARTER-PACK.md` §1 ("Your personal admin access code").
 
 ---
 
@@ -286,35 +302,20 @@ government API keys, small pay-per-use AI cost).
 
 ## 6. What Remains / Next Step
 
-One open item from this proposal is **not yet complete**:
+Everything requested in this engagement to date is **complete**, including
+Dr. McKnight's personal admin login (Phase 9 above). Two smaller loose ends
+are worth tracking:
 
-> **Give Dr. McKnight his own personal admin-level login**, independent
-> access to the system (separate from/in addition to what exists today).
-
-To execute this cleanly and securely, the following is needed:
-
-1. **A valid Cloudflare API token** (or direct dashboard access) — the token
-   used earlier in this engagement is no longer active in this session, and
-   Cloudflare Access policies / account membership can only be changed with
-   valid credentials.
-2. **Confirmation of the email address Dr. McKnight will personally use to
-   log in.** Cloudflare Access is currently allow-listed to
-   `fmimmi29@gmail.com`, and the domain's own registration is already under
-   that same email/name (Lonzell McKnight) — if that is an inbox Dr.
-   McKnight personally controls, he may already be able to log in today with
-   no further changes needed. If he needs a **separate, personal** login
-   (a different email address, so access can be attributed to him
-   individually rather than shared), that email address is needed to set it
-   up.
-3. **Whether "admin-level" means:** (a) the Cloudflare Access checkpoint
-   login (email + one-time code) that gates `/admin` and
-   `/command-center`, (b) his own personal site passcode
-   (`ADMIN_ACCESS_CODE`) distinct from any other, (c) being added as a full
-   member of the Cloudflare account itself, or (d) some combination —
-   confirming which is needed avoids setting up the wrong thing.
-
-Once these three items are confirmed, this can be completed in one pass and
-this document will be updated to mark Phase 9 complete.
+1. **Email forwarding destination is still "unverified."** Cloudflare emailed
+   a one-time confirmation link to `fmimmi29@gmail.com` when email routing
+   was enabled for the domain. Until that link is clicked, mail sent to
+   `@thecontractingpreacher.com` addresses will not actually forward to that
+   inbox yet. Action: check that inbox for a "Verify your email routing
+   destination" message from Cloudflare and click confirm.
+2. **Optional hygiene:** rotate the Cloudflare API token that has been used
+   throughout this engagement's deployment work, now that all outstanding
+   setup tasks are finished, as a routine security best practice (not
+   required, no known exposure).
 
 ---
 
