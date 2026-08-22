@@ -1,9 +1,12 @@
 import { adminGateReason, ipHint, json, logAuditEvent, options } from '../../_shared/http'
 import { LeadInput, makeLead, seededLeads, validateLead } from '../../_shared/scoring'
+import { pushToGhl } from '../../_shared/ghl'
 
 type Env = {
   ADMIN_ACCESS_CODE?: string
   DB?: D1Database
+  GHL_PIT?: string
+  GHL_LOCATION_ID?: string
 }
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
@@ -138,6 +141,50 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       ipHint: ipHint(request),
     })
   }
+
+  // Push to GoHighLevel CRM (best-effort; never blocks the response).
+  const tags = ['master-intake']
+  if (lead.samStatus === 'active') tags.push('sam-active')
+  else if (lead.samStatus === 'not-started' || lead.samStatus === 'unknown') tags.push('sam-not-started')
+  if (lead.certifications?.trim()) tags.push('certification-interested')
+  if (lead.consentEmail) tags.push('consent-email-yes')
+  if (lead.consentSms) tags.push('consent-sms-yes')
+  else tags.push('consent-sms-no')
+  if (lead.readinessScore >= 60) tags.push('readiness-high')
+  else tags.push('readiness-low')
+
+  await pushToGhl(env, {
+    firstName: lead.firstName,
+    lastName: lead.lastName,
+    email: lead.email,
+    phone: lead.phone,
+    companyName: lead.company,
+    website: lead.website,
+    tags,
+    customFields: {
+      company: lead.company,
+      industry: lead.industry,
+      employees: lead.employees,
+      annual_revenue: lead.annualRevenue,
+      naics_codes: lead.naics,
+      samgov_status: lead.samStatus,
+      certifications: lead.certifications,
+      services_needed: lead.services,
+      goals__deadlines__contract_targets: lead.goals,
+      readiness_score: lead.readinessScore,
+      pipeline_stage: lead.stage,
+      strengths: lead.strengths.join('; '),
+      risk_flags: lead.risks.join('; '),
+      score_explanation: JSON.stringify(lead.scoreExplanation),
+      lead_source: lead.source || 'intake-form',
+      utm_source: lead.utmSource || '',
+      utm_medium: lead.utmMedium || '',
+      utm_campaign: lead.utmCampaign || '',
+      referrer_url: lead.referrer || '',
+      consent__email_updates: lead.consentEmail ? ['Yes'] : [],
+      consent__smstext_messages: lead.consentSms ? ['Yes'] : [],
+    },
+  })
 
   return json({
     success: true,
