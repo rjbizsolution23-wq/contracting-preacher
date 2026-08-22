@@ -9,7 +9,7 @@ Federal contracting website, CRM, client portal, opportunity finder, and Cloudfl
 | Production | https://contracting-preacher-fyf.pages.dev |
 | Latest verified deployment | https://2ef81e89.contracting-preacher-fyf.pages.dev |
 | GitHub | https://github.com/rjbizsolution23-wq/contracting-preacher |
-| Future custom domain | https://thecontractingpreacher.com |
+| Custom domain (live) | https://thecontractingpreacher.com and https://www.thecontractingpreacher.com |
 
 ## What This Repo Contains
 
