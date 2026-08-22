@@ -14,6 +14,8 @@ import {
   Wrench,
 } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import GuidedTour from '@/components/onboarding/GuidedTour'
+import HelpMenu from '@/components/onboarding/HelpMenu'
 
 type ChatMessage = {
   role: 'user' | 'assistant'
@@ -84,6 +86,8 @@ export default function AgentClient() {
 
   return (
     <div className="min-h-screen bg-brand-offWhite">
+      <GuidedTour tourId="agent" />
+      <HelpMenu tourIds={['agent']} />
       <section className="bg-brand-navy py-14 text-white">
         <div className="container-custom grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <div>
@@ -120,7 +124,7 @@ export default function AgentClient() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </div>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div data-tour="agent-prompts" className="mt-4 flex flex-wrap gap-2">
               {prompts.map((prompt) => (
                 <button
                   key={prompt}
@@ -134,7 +138,7 @@ export default function AgentClient() {
             </div>
           </div>
 
-          <div className="h-[520px] overflow-y-auto p-5">
+          <div data-tour="agent-chat" className="h-[520px] overflow-y-auto p-5">
             <div className="space-y-4">
               {messages.map((message, index) => (
                 <div
@@ -185,7 +189,7 @@ export default function AgentClient() {
         </div>
 
         <aside className="space-y-5">
-          <div className="rounded-lg border border-gray-200 bg-white p-5">
+          <div data-tour="agent-capabilities" className="rounded-lg border border-gray-200 bg-white p-5">
             <h2 className="font-accent text-xl font-bold text-brand-navy">What It Does</h2>
             <AgentCapability icon={CheckCircle2} title="Find opportunities" body="Searches federal contracts, grants, SBIR/STTR funding, NOFOs, and past awards." />
             <AgentCapability icon={ShieldCheck} title="Check readiness" body="Shows what a business should fix before pursuing a bid or grant." />

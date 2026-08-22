@@ -14,6 +14,8 @@ import {
   Users,
 } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import GuidedTour from '@/components/onboarding/GuidedTour'
+import HelpMenu from '@/components/onboarding/HelpMenu'
 import { CRM_PIPELINE_STAGES, FEDERAL_FUNDING_SOURCES } from '@/lib/fedfunding'
 
 type Lead = {
@@ -112,6 +114,8 @@ export default function AdminClient() {
 
   return (
     <div className="min-h-screen bg-brand-offWhite">
+      <GuidedTour tourId="admin" />
+      <HelpMenu tourIds={['admin']} />
       <section className="bg-brand-navy py-12 text-white">
         <div className="container-custom flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div>
@@ -131,7 +135,7 @@ export default function AdminClient() {
       </section>
 
       <section className="container-custom py-8">
-        <div className="rounded-lg border border-gray-200 bg-white p-5">
+        <div data-tour="admin-access-code" className="rounded-lg border border-gray-200 bg-white p-5">
           <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
             <label>
               <span className="mb-2 block text-sm font-bold text-brand-navy">Admin access code</span>
@@ -151,14 +155,14 @@ export default function AdminClient() {
         </div>
       </section>
 
-      <section className="container-custom grid gap-5 pb-8 md:grid-cols-3">
+      <section data-tour="admin-metrics" className="container-custom grid gap-5 pb-8 md:grid-cols-3">
         <Metric icon={Users} label="CRM Leads" value={String(leads.length)} />
         <Metric icon={ShieldCheck} label="Average Readiness" value={`${metrics.averageScore}%`} />
         <Metric icon={AlertTriangle} label="Open Risk Flags" value={String(metrics.riskCount)} />
       </section>
 
       <section className="container-custom grid gap-8 pb-12 xl:grid-cols-[1.1fr_0.9fr]">
-        <div className="rounded-lg border border-gray-200 bg-white p-6">
+        <div data-tour="admin-pipeline" className="rounded-lg border border-gray-200 bg-white p-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h2 className="font-accent text-2xl font-bold text-brand-navy">Client Pipeline</h2>
@@ -210,7 +214,7 @@ export default function AdminClient() {
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-lg border border-gray-200 bg-white p-6">
+          <div data-tour="admin-live-search" className="rounded-lg border border-gray-200 bg-white p-6">
             <h2 className="font-accent text-2xl font-bold text-brand-navy">Live Opportunity Search</h2>
             <div className="mt-5 grid gap-4">
               <label>

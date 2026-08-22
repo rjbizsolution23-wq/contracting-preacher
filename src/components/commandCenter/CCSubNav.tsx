@@ -30,7 +30,7 @@ export default function CCSubNav() {
   const pathname = usePathname()
 
   return (
-    <nav aria-label="Business Funding Command Center sections" className="border-b border-gray-200 bg-white">
+    <nav data-tour="cc-subnav" aria-label="Business Funding Command Center sections" className="border-b border-gray-200 bg-white">
       <div className="container-custom">
         <div className="flex gap-1 overflow-x-auto py-3 [scrollbar-width:thin]">
           {SUB_LINKS.map((link) => (
